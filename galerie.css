@@ -1,0 +1,101 @@
+@font-face
+{
+font-family: Allura;
+src: url(./fonts/Allura-Regular.woff);
+}
+@font-face
+{
+font-family: Bonveno;
+src: url(./fonts/BonvenoCF-Light.otf);
+}
+@font-face
+{
+font-family: Aaargh;
+src: url(./fonts/Aaargh.ttf);
+}
+@font-face
+{
+font-family: Molengo;
+src: url(./fonts/Molengo-Regular.ttf);
+}
+
+
+h1
+{
+text-align:center;
+color:#41261f;
+font-family: Allura;
+font-size: 90px; font-size: 7vw;
+position: relative;
+margin-top:150px; margin-top: 8vw;
+}
+
+h2 
+{
+text-align:center;
+color:black;
+font-family: Bonveno;
+font-size: 35px; /*font-size: 5vw;*/
+margin-top:250px; margin-top: 15vw;
+}
+
+ul
+{
+list-style-type:none;
+margin:20px;
+padding:0;
+}
+
+p 
+{
+font-family:Molengo;
+font-size: 14px;
+text-align: left;
+margin-top:5%;
+margin-left:34%;
+margin-right:34%;
+}
+
+body 
+{
+font-size: 100%;
+background-image:url("bilder/website-banner_leaves.png");
+background-size: 100%;
+background-repeat: no-repeat;
+}
+
+a:link {color:#cc9999;}      /* unvisited link */
+a:visited {color:#cc5555;}  /* visited link */
+/*a:hover {color:#ffffff;}  /* mouse over link */
+
+div.imgx
+  {
+margin:2vw;10px;
+border-color:#555555;
+/*border-width:2px;*/
+/*border-style:solid;*/
+height:auto;
+width:auto;
+display:inline;
+float:left;
+  }
+div.gallerygroup
+  {
+margin:2vw;10px;
+border-color:#554433;
+border-width:2px;
+border-style:solid;
+height:auto;
+width:auto;
+display:inline;
+float:left;
+  }
+div.desc
+  {
+padding-top:5px;
+text-align:center;
+font-family:Bonveno;
+font-weight:normal;
+color:#555555;
+width:150px;
+  }
