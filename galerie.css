@@ -25,42 +25,47 @@ h1
 text-align:center;
 color:#41261f;
 font-family: Allura;
-font-size: 90px; font-size: 7vw;
+font-size: 75px; font-size: 5vw;
 position: relative;
 margin-top:150px; margin-top: 8vw;
+margin-bottom:50px;
+/*border: 25px solid navy;*/
+max-width: 720px;
+position: absolute;
+left: 30%;
+right: 30%;
 }
 
-h2 
+menu
 {
 text-align:center;
-color:black;
 font-family: Bonveno;
-font-size: 35px; /*font-size: 5vw;*/
-margin-top:250px; margin-top: 15vw;
+font-size: 1.5em;
+background-color:#f1efe3;
+position:fixed;
+margin:0;
+top: 0;
+left:-3%;
+width: 103%;
+height: 1.6em;
 }
 
-ul
-{
-list-style-type:none;
-margin:20px;
-padding:0;
-}
+
 
 p 
 {
 font-family:Molengo;
 font-size: 14px;
 text-align: left;
-margin-top:5%;
+margin-top:1000px;
 margin-left:34%;
 margin-right:34%;
 }
 
 body 
 {
-font-size: 100%;
 background-image:url("bilder/website-banner_leaves.png");
-background-size: 100%;
+background-size:100%;
 background-repeat: no-repeat;
 }
 
@@ -71,7 +76,7 @@ a:visited {color:#cc5555;}  /* visited link */
 div.imgx
   {
 margin:2vw;10px;
-border-color:#555555;
+/*border-color:#FF0000;*/
 /*border-width:2px;*/
 /*border-style:solid;*/
 height:auto;
@@ -81,8 +86,11 @@ float:left;
   }
 div.gallerygroup
   {
-margin:2vw;10px;
-border-color:#554433;
+margin-top:40vw;
+margin-left:5em;
+margin-right:5em;
+margin-bottom:5em;
+border-color:#993355;
 border-width:2px;
 border-style:solid;
 height:auto;
