@@ -73,6 +73,11 @@ a:link {color:#cc9999;}      /* unvisited link */
 a:visited {color:#cc5555;}  /* visited link */
 /*a:hover {color:#ffffff;}  /* mouse over link */
 
+img.single
+{
+max-width:100%;
+}
+
 div.img
 {
 margin-top:20px;
