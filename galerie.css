@@ -73,6 +73,15 @@ a:link {color:#cc9999;}      /* unvisited link */
 a:visited {color:#cc5555;}  /* visited link */
 /*a:hover {color:#ffffff;}  /* mouse over link */
 
+div.img
+{
+margin-top:20px;
+margin-left:25%;
+margin-right:25%;
+width:auto;
+height:auto;
+}
+
 div.imgx
   {
 margin:2vw;10px;
