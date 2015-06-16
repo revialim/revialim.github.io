@@ -80,11 +80,12 @@ max-width:100%;
 
 div.img
 {
-margin-top:20px;
+margin-top:30px;
 margin-left:25%;
 margin-right:25%;
 width:auto;
 height:auto;
+/*border: 25px solid navy;*/
 }
 
 div.imgx
@@ -115,9 +116,14 @@ float:left;
 div.desc
   {
 padding-top:5px;
-text-align:center;
+text-align:left;
 font-family:Bonveno;
-font-weight:normal;
-color:#555555;
-width:150px;
+font-weight:bold;
+color:#cc5555;
+width:auto;
   }
+
+canvas{
+margin-top:10px;
+margin-bottom:10px;
+}
