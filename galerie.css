@@ -115,6 +115,8 @@ float:left;
   }
 div.desc
   {
+margin-left:25%;
+margin-right:25%;
 padding-top:5px;
 text-align:left;
 font-family:Bonveno;
