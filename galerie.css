@@ -30,10 +30,10 @@ position: relative;
 margin-top:150px; margin-top: 8vw;
 margin-bottom:50px;
 /*border: 25px solid navy;*/
-max-width: 720px;
+/*max-width: 720px;*/
 position: absolute;
-left: 30%;
-right: 30%;
+left: 33%;
+right: 33%;
 }
 
 menu
@@ -50,8 +50,6 @@ width: 103%;
 height: 1.6em;
 }
 
-
-
 p 
 {
 font-family:Molengo;
@@ -60,6 +58,18 @@ text-align: left;
 margin-top:40vw;
 margin-left:25%;
 margin-right:25%;
+margin-bottom:10px;
+}
+
+p.notop
+{
+font-family:Molengo;
+font-size: 16px;
+text-align: left;
+margin-top:10px;
+margin-left:25%;
+margin-right:25%;
+margin-bottom:10px;
 }
 
 body 
@@ -101,7 +111,8 @@ float:left;
   }
 div.gallerygroup
   {
-margin-top:40vw;
+/*margin-top:40vw;*/
+margin-top:10px;
 margin-left:5em;
 margin-right:5em;
 margin-bottom:5em;

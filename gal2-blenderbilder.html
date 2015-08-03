@@ -1,0 +1,52 @@
+<head>
+<title> Work </title>
+<link rel="stylesheet" type="text/css" href="./galerie.css">
+<!-- Lightbox Source: https://github.com/duncanmcdougall/Responsive-Lightbox --> 
+<script src="jquery.min.js"></script> 
+<script src="jquery.lightbox.min.js"></script>
+<link href="jquery.lightbox.min.css" rel="stylesheet" />
+</head>
+
+<body>
+<h1>Pictures with Blender</h1><br>
+<menu>
+<a href="./index.html">Home</a> | <a href="./work.html">Work</a> | <a href="./kontakt.html">Contact</a>
+</menu>
+
+<p>
+ <a href="./gal1-bilder.html"> Traditional and Digital Paintings</a> 
+| <a href="./animations.html"> 2D Animation </a> 
+| <a href="./processing-files/processing-gal.html">Processing</a> 
+| <a href="./gal2-blenderbilder.html">Blender</a> 
+| <a href="./gal3-photomanipulation.html"> Photomanipulation </a>
+</p>
+ 
+<div class="gallerygroup g1">
+
+<div class="imgx">
+<a href="./bilder/gal2-blenderbilder/blanko-berge.png">
+<img src="./bilder/gal2-blenderbilder/x-blanko-berge.png"></a>
+</div>
+
+<div class="imgx">
+<a href="./bilder/gal2-blenderbilder/blanko-berge-mistynight.png">
+<img src="./bilder/gal2-blenderbilder/x-blanko-berge-mistynight.png"></a>
+</div>
+
+</div>
+<script>
+ $(function()
+ {
+    $('.g1 a').lightbox();
+	// If you want seperate galleries on the same page
+	// just specify different class names. 
+ });
+</script>
+
+<video width="600" controls>
+  <source src="./bilder/gal2-blenderbilder/v-purple-monster.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</body>
+</body>
