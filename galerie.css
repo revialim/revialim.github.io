@@ -36,7 +36,7 @@ left: 33%;
 right: 33%;
 }
 
-menu
+ul
 {
 text-align:center;
 font-family: Bonveno;
@@ -48,6 +48,12 @@ top: 0;
 left:-3%;
 width: 103%;
 height: 1.6em;
+list-style-type: none;
+}
+li
+{
+    display:inline;
+
 }
 
 p 
