@@ -1,7 +1,7 @@
 @font-face
 {
 font-family: Allura;
-src: url(./fonts/Allura-Regular.woff);
+src: url(./fonts/Allura-Regular.otf);
 }
 @font-face
 {
@@ -23,8 +23,8 @@ src: url(./fonts/Molengo-Regular.ttf);
 h1
 {
 text-align:center;
-color:#41261f;
-font-family: Allura;
+color:azure;
+font-family: Aaargh;
 font-size: 75px; font-size: 5vw;
 position: relative;
 margin-top:150px; margin-top: 8vw;
@@ -34,6 +34,13 @@ margin-bottom:50px;
 position: absolute;
 left: 33%;
 right: 33%;
+border-radius: 25px;
+background: rgba(50,50,50,0.5);
+-moz-box-shadow: 0 0 5px 5px rgba(50,50,50,0.5);
+;
+-webkit-box-shadow: 0 0 5px 5px rgba(50,50,50,0.5);
+;
+box-shadow: 0 0 5px 5px rgba(50,50,50,0.5);
 }
 
 ul
@@ -41,7 +48,7 @@ ul
 text-align:center;
 font-family: Bonveno;
 font-size: 1.5em;
-background-color:#f1efe3;
+background-color:dimgrey;
 position:fixed;
 margin:0;
 top: 0;
@@ -79,13 +86,16 @@ margin-bottom:10px;
 
 body 
 {
-background-image:url("bilder/website-banner_leaves.png");
+background-image:url("bilder/bg-02.jpg");
 background-size:100%;
 background-repeat: no-repeat;
+background-color: black;
+color: darkgrey;
 }
 
 a:link {color:#cc9999;}      /* unvisited link */
-a:visited {color:#cc5555;}  /* visited link */
+a:visited {color:#cc9999;}      /* unvisited link */
+;}  /* visited link */
 /*a:hover {color:#ffffff;}  /* mouse over link */
 
 img.single
