@@ -15,7 +15,7 @@ bodyend = "</div>\n<script>\n $(function()\n {\n    $('.g1 a').lightbox();\n	// 
 bodyend2 = "</body>\n</body>\n"
 
 def makebodystart(galerietitel):
-    bodystart = "<body>\n<h1>"+galerietitel+"</h1><br>\n<ul>\n<li><a href=\"./index.html\">Home</a> |</li> <li><a href=\"./work.html\">Work</a> |</li> <li><a href=\"./kontakt.html\">Contact</a>\n</li></ul>\n\n<p>\n <a href=\"./gal1-bilder.html\"> Traditional and Digital Paintings</a> \n| <a href=\"./animations.html\"> 2D Animation </a> \n| <a href=\"./processing-files/processing-gal.html\">Processing</a> \n| <a href=\"./gal2-blenderbilder.html\">Blender</a> \n| <a href=\"./gal3-photomanipulation.html\"> Photomanipulation </a>\n</p>\n \n<div class=\"gallerygroup g1\">\n\n"
+    bodystart = "<body>\n<h1>"+galerietitel+"</h1><br>\n<ul>\n<li><a href=\"./index.html\">Home</a> |</li> <li><a href=\"./work.html\">Work</a> |</li> <li><a href=\"./kontakt.html\">Contact</a>\n</li></ul>\n\n<p>\n  <a href=\"./my-javascripts.html\">JavaScript</a>\n| <a href=\"./gal2-blenderbilder.html\">Blender</a>\n| <a href=\"./processing-files/processing-gal.html\">Processing</a> \n| <a href=\"./gal1-bilder.html\"> Traditional and Digital Paintings</a>\n| <a href=\"./animations.html\"> 2D Animation </a> \n| <a href=\"./gal3-photomanipulation.html\"> Photomanipulation </a>\n</p> \n \n<div class=\"gallerygroup g1\">\n\n"
 
     return bodystart;
 
@@ -31,7 +31,7 @@ def makebodymiddle(p):
     #print "pics of "+p+": \n"
     for pic in pics:
         if(pic[:1]=="x"):
-            smallname = pic
+            smallname = pic #preview image
             imagename = pic[2:]
             bodymiddlesec = "<div class=\"imgx\">\n<a href=\""+p[1:] + imagename +"\">\n<img src=\""+p[1:] + smallname +"\"></a>\n</div>\n\n"
             bodymiddle = bodymiddle + bodymiddlesec
