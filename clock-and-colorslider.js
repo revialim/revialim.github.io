@@ -22,12 +22,28 @@ function startTime() {
 }
 
 var t;
-var intervar;//to stop interval
+var intervar = 0;//to stop interval
 
-function initTimer(init) {
-    t = init*60;//minutes to seconds
-    setTimer();
-    intervar = setInterval(setTimer,1000);
+
+/*
+TODO:
+check for running interval with boolean var – not by intervar != 0
+*/
+
+function initTimer() {
+    var init = parseInt(document.forms["promodoro"].elements['minutes'].value);
+    if(init != "NaN") {
+        t = init * 60;//minutes to seconds
+        setTimer();
+        if(intervar != 0) {//if a timer exists, delete running interval
+            clearInterval(intervar);
+            intervar = 0;
+        }
+        intervar = setInterval(setTimer,1000);
+    }
+    else {
+        document.getElementById("timer").innerHTML = "Incorrect time value!";
+    }
 }
 
 function setTimer() {
@@ -43,6 +59,7 @@ function setTimer() {
     }  else { 
         //no more remaining time
         clearInterval(intervar);
+        intervar = 0;
         document.getElementById("timer").innerHTML = "TIME UP!";
     }  
 }
