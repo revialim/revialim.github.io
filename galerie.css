@@ -48,7 +48,7 @@ ul
 text-align:center;
 font-family: Bonveno;
 font-size: 1.5em;
-background-color:dimgrey;
+background-color:#000000;
 position:fixed;
 margin:0;
 top: 0;
@@ -86,15 +86,15 @@ margin-bottom:10px;
 
 body 
 {
-background-image:url("bilder/bg-02.jpg");
+/*background-image:url("bilder/bg-02.jpg");*/
 background-size:100%;
 background-repeat: no-repeat;
-background-color: black;
+background-color:#f4f3f0;
 color: darkgrey;
 }
 
-a:link {color:#cc9999;}      /* unvisited link */
-a:visited {color:#cc9999;}      /* unvisited link */
+a:link {color:#27180d;}      /* unvisited link */
+a:visited {color:#65625c;}      /* unvisited link */
 ;}  /* visited link */
 /*a:hover {color:#ffffff;}  /* mouse over link */
 
