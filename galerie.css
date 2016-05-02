@@ -79,7 +79,9 @@ a {
 a:hover{
     color:darkgrey;
 }
-
+a:active{
+    color: darkseagreen;
+}
 
     
 .content-instagram {
