@@ -97,12 +97,15 @@ a:active{
     .instagrampicture {
         display: inline-block;
         padding: 0;
+        width:30vw;
         max-width: 30vw;
     }
     .content-instagram {
         width: 85%;
         margin: auto;
     }
+    
+    
 }
 
 

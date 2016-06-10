@@ -12,10 +12,10 @@ head = "<head>\n<title> Work </title>\n<link rel=\"stylesheet\" type=\"text/css\
 
 bodyend = "</div>\n<script>\n $(function()\n {\n    $('.g1 a').lightbox();\n	// If you want seperate galleries on the same page\n	// just specify different class names. \n });\n</script>\n\n"
 
-bodyend2 = "</body>\n</body>\n"
+bodyend2 = "\n</body>\n"
 
 def makebodystart(galerietitel):
-    bodystart = "<body>\n<h1>"+galerietitel+"</h1><br>\n<ul>\n<li><a href=\"./index.html\">Home</a> |</li> <li><a href=\"./work.html\">Work</a> |</li> <li><a href=\"./kontakt.html\">Contact</a>\n</li></ul>\n\n<p>\n  <a href=\"./my-javascripts.html\">JavaScript</a>\n| <a href=\"./gal2-blenderbilder.html\">Blender</a>\n| <a href=\"./processing-files/processing-gal.html\">Processing</a> \n| <a href=\"./gal1-bilder.html\"> Traditional and Digital Paintings</a>\n| <a href=\"./animations.html\"> 2D Animation </a> \n| <a href=\"./gal3-photomanipulation.html\"> Photomanipulation </a>\n</p> \n \n<div class=\"gallerygroup g1\">\n\n"
+    bodystart = "<body>\n<h1>"+galerietitel+"</h1><br>\n<ul class=\"lemenu\">\n <li><a href=\"./index.html\">Home</a> |</li>\n <li><a href=\"./work.html\">Work</a> |</li>\n <li><a href=\"./kontakt.html\">Contact</a></li>\n</ul>\n\n<p>\n  <a href=\"./my-javascripts.html\">JavaScript</a>\n| <a href=\"./gal2-blenderbilder.html\">Blender</a>\n| <a href=\"./processing-files/processing-gal.html\">Processing</a> \n| <a href=\"./gal1-bilder.html\"> Traditional and Digital Paintings</a>\n| <a href=\"./animations.html\"> 2D Animation </a> \n| <a href=\"./gal3-photomanipulation.html\"> Photomanipulation </a>\n</p> \n \n<div class=\"gallerygroup g1\">\n\n"
 
     return bodystart;
 
