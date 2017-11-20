@@ -1,6 +1,6 @@
 <head>
   <title>Jump and Run</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
   <script src="./processing.js"></script>
 </head>
 
@@ -8,7 +8,7 @@
   <h1>ASDF</h1>
     
   <ul class="main-menu">
-    <li><a href="./index.html">back home</a></li>
+    <li><a href="../index.html">back home</a></li>
   </ul>
 
   <div class="citation">
@@ -16,9 +16,27 @@
     Let's have some fun!
     </p>
   </div>
-  
-  <div id="jump"></div>
-  
+
+  <script type="text/processing" data-processing-target="testcanvas">
+    //jump and run script
+    void setup(){
+        size(400, 400, P3D);
+        fill(#4f79c1);
+        stroke(180);
+        strokeWeight(2);
+    }
+    
+    void draw(){
+        background(240);
+        ellipse(50,50,25,25);
+        
+       
+    }
+  </script>
+  <canvas id="testcanvas">
+  </canvas>
+
+
   
   <div id="footer">
       

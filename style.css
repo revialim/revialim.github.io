@@ -66,6 +66,10 @@ span {
 img {
   max-width: 100%; }
 
+canvas {
+  margin: auto;
+  display: block; }
+
 .half {
   width: 49%;
   display: inline-block;
@@ -76,5 +80,10 @@ ul.main-menu {
   text-align: center; }
   ul.main-menu li {
     display: inline-block; }
+
+.citation p {
+  font-size: 2.5em;
+  font-family: Bonveno;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
