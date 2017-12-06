@@ -2,6 +2,8 @@
 <head>
 <title>Welcome to Lilisart</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
+  
+<script type="text/javascript" src="./days-on-this-earth.js"></script>
 </head>
 
 <body>
@@ -41,9 +43,13 @@
         
     </div>
   
-    <input id="birthday-field" type="date" onChange="calcDaysOnEarth()">
+    <div>
+      Check if today is your Earthday – just enter the date of your birth.
+      <input id="birthday-field" type="date" onChange="calcDaysOnEarth()">
+      <div id="earthday-field"></div>
+    </div>
     
-    <script src="./days-on-this-earth.js"></script>
+    
     
     
     <div id="footer">
