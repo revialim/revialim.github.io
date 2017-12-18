@@ -15,15 +15,15 @@ var JUMP_GAME = {
 ;(function () {
   function main( tFrame ) {
     JUMP_GAME.stopMain = window.requestAnimationFrame( main );
-    var nextTick = MyGame.lastTick + MyGame.tickLength; 
+    var nextTick = JUMP_GAME.lastTick + JUMP_GAME.tickLength; 
     //lastTick keeps track of last update time. Always increments by tickLength
     //tickLength is how frequently the game state updates. It is 20 Hz (50ms) here.
     var numTicks = 0; //numTicks is how many updates should have happened between these two rendered frames.
     
     if (tFrame > nextTick) {
-      var timeSinceTick = tFrame - MyGame.lastTick; 
+      var timeSinceTick = tFrame - JUMP_GAME.lastTick; 
       //timeSinceTick is the time between requestAnimationFrame callback and last update.
-      numTicks = Math.floor( timeSinceTick / MyGame.tickLength );
+      numTicks = Math.floor( timeSinceTick / JUMP_GAME.tickLength );
     }
     
     update( tFrame ); //Call your update method. In our case, we give it rAF's timestamp.
