@@ -1,11 +1,59 @@
-function draw() {
-  var canvas = document.getElementById("jump");
-  var height = 300;
-  var width = 400;
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
-    oneRect(ctx, 10, 250);
+var CANVAS_HEIGHT = 300;
+var CANVAS_WIDTH = 400;
+var JUMP_GAME = {
+  player: new Image(),
+  stopMain: null
+}
+
+/**
+ * REFERENCES
+ * https://developer.mozilla.org/en-US/docs/Games/Anatomy
+ *
+ *
+ */
+
+;(function () {
+  function main( tFrame ) {
+    JUMP_GAME.stopMain = window.requestAnimationFrame( main );
+    var nextTick = MyGame.lastTick + MyGame.tickLength; 
+    //lastTick keeps track of last update time. Always increments by tickLength
+    //tickLength is how frequently the game state updates. It is 20 Hz (50ms) here.
+    var numTicks = 0; //numTicks is how many updates should have happened between these two rendered frames.
+    
+    if (tFrame > nextTick) {
+      var timeSinceTick = tFrame - MyGame.lastTick; 
+      //timeSinceTick is the time between requestAnimationFrame callback and last update.
+      numTicks = Math.floor( timeSinceTick / MyGame.tickLength );
+    }
+    
+    update( tFrame ); //Call your update method. In our case, we give it rAF's timestamp.
+    render();
   }
+  
+  main(); // Start the cycle
+  
+})();
+
+//to stop main loop
+//use
+//window.cancelAnimationFrame( JUMP_GAME.stopMain );
+
+
+function init(){
+  PLAYER.scr = "./jump-and-run_graphics/jump-and-run_main-character_stand.png";
+  window.requestAnimationFrame(draw);
+  var ctx = document.getElementById("jump").getContext('2d');
+
+  
+}
+
+function draw(){
+  
+}
+
+function drawOnCanvas() {
+  var ctx = document.getElementById("jump").getContext('2d');
+  oneRect(ctx, 10, 250);
 }
 
 function oneRect(canvasContext, x, y){
@@ -14,7 +62,7 @@ function oneRect(canvasContext, x, y){
 }
 
 function moveRect(canvasContext, x, y){
-  clearRect();
+  canvasContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   oneRect(canvasContext, x, y);
 }
 
@@ -26,13 +74,18 @@ function twoRects(canvasContext, x, y){
 }
 
 function checkKeyPressed(e) {
-  if (e.keyCode == "32") {
-    console.log("The 'space' key is pressed.");
+  var canvas = document.getElementById("jump");
+  if (canvas.getContext) {
+    var ctx = canvas.getContext("2d");
+    if (e.keyCode == "32") {
+      console.log("The 'space' key is pressed.");
+      moveRect(ctx, 60, 200);
+    }
   }
 }
 
 function start() {
-  draw();
+  drawOnCanvas();
   window.addEventListener("keydown", checkKeyPressed, false);
   
 }
