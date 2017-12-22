@@ -15,9 +15,7 @@ h1 {
   text-align: center;
   color: #000;
   width: 50%;
-  margin: auto;
-  margin-top: 3em;
-  margin-bottom: 3em; }
+  margin: 2% auto; }
 
 h2, h3 {
   font-size: 1.5em;
@@ -71,17 +69,33 @@ canvas {
   display: block;
   border: 2px solid #999; }
 
+#header {
+  background-color: #333;
+  background-image: url(./imgs/bg-img.jpg);
+  background-size: 100%;
+  background-position-y: 40%;
+  width: 100%;
+  height: 60vh;
+  padding: 0; }
+
 .half {
   width: 49%;
   display: inline-block;
   vertical-align: top; }
 
-ul.main-menu {
+ul#main-menu {
   list-style-type: none;
   text-align: center;
-  padding: 0; }
-  ul.main-menu li {
+  padding: 0;
+  margin: 0.8em; }
+  ul#main-menu li {
     display: inline-block; }
+    ul#main-menu li a {
+      padding: 0.8em; }
+    ul#main-menu li a.current {
+      background-color: #9966aa;
+      font-style: italic;
+      color: #eee; }
 
 .citation p {
   font-size: 2.5em;

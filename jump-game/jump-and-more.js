@@ -12,8 +12,8 @@ function init() {
   ballRadius = 10;
   x = canvas.width/2;
   y = canvas.height-30;
-  dx = 2;
-  dy = -2; 
+  dx = 1;
+  dy = -1; 
   
   drawBall();
 }
