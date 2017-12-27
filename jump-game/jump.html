@@ -6,7 +6,20 @@
 </head>
 
 <body onload="main();">
-  <div id="header">
+  <div id="header" class="slideshow">
+    <div class="slide slide-0">
+      <img src="../imgs/bg-img.jpg">
+    </div>
+    <div class="slide slide-1">
+      <img src="../imgs/bg-img_blue.jpg">
+    </div>
+    <div class="slide slide-2">
+      <img src="../imgs/bg-img_bw.jpg">
+    </div>
+    
+    
+    <div class="slide-prev" onclick="switchSlide(-1)">prev</div>
+    <div class="slide-next" onclick="switchSlide(1)">next</div>
   </div>
     
   <ul id="main-menu">

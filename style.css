@@ -78,6 +78,27 @@ canvas {
   height: 60vh;
   padding: 0; }
 
+.slideshow .slide {
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
+  padding: inherit; }
+  .slideshow .slide img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+.slideshow .slide-next, .slideshow .slide-prev {
+  position: absolute;
+  top: 28%;
+  width: auto;
+  padding: inherit;
+  margin: 2px; }
+.slideshow .slide-next {
+  right: 0; }
+.slideshow .slide-prev {
+  left: 0; }
+
 .half {
   width: 49%;
   display: inline-block;
