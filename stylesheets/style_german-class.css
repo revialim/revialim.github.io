@@ -1,0 +1,86 @@
+@font-face {
+  font-family: Allura;
+  src: url(../fonts/Allura-Regular.otf); }
+@font-face {
+  font-family: Bonveno;
+  src: url(../fonts/BonvenoCF-Light.otf); }
+@font-face {
+  font-family: Aaargh;
+  src: url(../fonts/Aaargh.ttf); }
+@font-face {
+  font-family: Molengo;
+  src: url(../fonts/Molengo-Regular.ttf); }
+@font-face {
+  font-family: CrimsonTextRegular;
+  src: url(../fonts/Crimson_Text/CrimsonText-Regular.ttf); }
+@font-face {
+  font-family: Cookie;
+  src: url(../fonts/Cookie/Cookie-Regular.ttf); }
+body {
+  font-family: CrimsonTextRegular;
+  background-color: #f7f7f7; }
+
+p {
+  font-family: CrimsonTextRegular; }
+
+h1, h2, h3, .lection-title {
+  font-family: Cookie;
+  text-align: center; }
+
+.lection-title {
+  font-size: 2.5em;
+  color: #013a66; }
+
+h3 {
+  font-size: 1.7em; }
+
+h4 {
+  font-size: 1.3em;
+  text-align: center;
+  font-family: Bonveno;
+  margin-top: 0;
+  margin-bottom: 1em; }
+
+div.practice, div.vocabulary, div.grammar, div.tasks {
+  width: 80%;
+  margin: auto; }
+
+div.practice p {
+  background-color: #fff;
+  padding: 1.3em;
+  margin-bottom: 0.7em; }
+  div.practice p .name {
+    padding-right: 0.7em;
+    color: #0268b6; }
+
+div.vocabulary .voc {
+  background-color: #fff;
+  padding: 0.3em 1.3em;
+  margin-bottom: 0.3em; }
+  div.vocabulary .voc span {
+    border-right: 2px solid #0987e7;
+    padding: 0 0.7em; }
+    div.vocabulary .voc span:first-child {
+      border-left: 2px solid #0987e7; }
+
+div.grammar .section {
+  background-color: #fff;
+  padding: 1.3em;
+  margin-bottom: 0.7em; }
+div.grammar div.table-container {
+  border-bottom: 2px solid #999; }
+
+div.tasks .task {
+  background-color: #fff;
+  padding: 1.3em;
+  margin-bottom: 0.7em; }
+div.tasks .subtask {
+  color: #0987e7;
+  font-family: Bonveno; }
+  div.tasks .subtask.indent {
+    padding-left: 2em; }
+
+.highlited {
+  color: #0987e7; }
+
+/*# sourceMappingURL=style_german-class.css.map */
