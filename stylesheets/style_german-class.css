@@ -16,29 +16,35 @@
 @font-face {
   font-family: Cookie;
   src: url(../fonts/Cookie/Cookie-Regular.ttf); }
-@media screen and (max-width: 719px) {
+@media only screen and (max-width: 719px) {
   .lection-title {
-    font-size: 8em; }
+    font-size: 4.5em; }
 
   h1 {
-    font-size: 6.5em; }
+    font-size: 4em; }
 
   h2 {
-    font-size: 5em; }
+    font-size: 2.5em; }
 
   h3 {
-    font-size: 5em; }
+    font-size: 1.7em; }
 
   h4 {
-    font-size: 3.5em; }
+    font-size: 1.5em; }
 
   div.grammar .table-container table, div.vocabulary .voc, div.practice p, div.tasks .task {
-    font-size: 3em; }
+    font-size: 1.3em; }
 
   div.practice, div.vocabulary, div.grammar, div.tasks {
     width: 100%;
-    margin: auto; } }
-@media screen and (min-width: 720px) {
+    margin: auto; }
+
+  div.tasks .subtask.indent {
+    padding-left: 0.5em; }
+
+  .navbar a {
+    display: block; } }
+@media only screen and (min-width: 720px) {
   .lection-title {
     font-size: 2.5em; }
 
@@ -50,7 +56,14 @@
 
   div.practice, div.vocabulary, div.grammar, div.tasks {
     width: 80%;
-    margin: auto; } }
+    margin: auto; }
+
+  div.tasks .subtask.indent {
+    padding-left: 2em; }
+
+  .navbar a {
+    margin: 0.2em;
+    display: inline-block; } }
 body {
   font-family: CrimsonReg;
   background-color: #f7f7f7; }
@@ -75,6 +88,9 @@ table th {
   text-align: left; }
 table td, table th {
   padding-right: 0.5em; }
+
+.navbar a {
+  font-family: Bonveno; }
 
 div.practice p {
   background-color: #fff;
@@ -108,8 +124,6 @@ div.tasks .task {
 div.tasks .subtask {
   color: #0987e7;
   font-family: Bonveno; }
-  div.tasks .subtask.indent {
-    padding-left: 2em; }
 
 .highlited {
   color: #0987e7; }

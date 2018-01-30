@@ -34,31 +34,38 @@ $theme-base: #0268b6
 $theme-darker: #013a66
 
   
-@media screen and (max-width: 719px)
+@media only screen and (max-width: 719px)
   .lection-title
-    font-size: 8em
+    font-size: 4.5em
     
   h1
-    font-size: 6.5em
+    font-size: 4em
       
   h2
-    font-size: 5em
+    font-size: 2.5em
       
   h3
-    font-size: 5em
+    font-size: 1.7em
     
   h4
-    font-size: 3.5em
+    font-size: 1.5em
     
   div.grammar .table-container table, div.vocabulary .voc, div.practice p, div.tasks .task
-    font-size: 3em
+    font-size: 1.3em
     
   div
     &.practice, &.vocabulary, &.grammar, &.tasks
       width: 100%
       margin: auto
+  
+  div.tasks .subtask.indent
+    padding-left: 0.5em
+  
+  .navbar a
+    display: block
     
-@media screen and (min-width: 720px)
+    
+@media only screen and (min-width: 720px)
   .lection-title
     font-size: 2.5em
     
@@ -72,6 +79,13 @@ $theme-darker: #013a66
     &.practice, &.vocabulary, &.grammar, &.tasks
       width: 80%
       margin: auto
+  
+  div.tasks .subtask.indent
+    padding-left: 2em
+  
+  .navbar a
+    margin: 0.2em
+    display: inline-block
   
 body
   font-family: CrimsonReg
@@ -99,6 +113,9 @@ table
     
   td, th
     padding-right: 0.5em
+
+.navbar a
+  font-family: Bonveno
     
 div.practice
   p
@@ -141,10 +158,6 @@ div.tasks
   .subtask
     color: $theme-highlite
     font-family: Bonveno
-    
-    &.indent
-      padding-left: 2em
-    
     
 .highlited
   color: $theme-highlite
