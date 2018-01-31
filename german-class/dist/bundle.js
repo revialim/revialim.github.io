@@ -67,39 +67,340 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var TestComponent = function (_React$Component) {
-	  _inherits(TestComponent, _React$Component);
+	var VocabularyAll = function (_React$Component) {
+	  _inherits(VocabularyAll, _React$Component);
 	
-	  function TestComponent() {
-	    _classCallCheck(this, TestComponent);
+	  function VocabularyAll() {
+	    _classCallCheck(this, VocabularyAll);
 	
-	    return _possibleConstructorReturn(this, (TestComponent.__proto__ || Object.getPrototypeOf(TestComponent)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).apply(this, arguments));
 	  }
 	
-	  _createClass(TestComponent, [{
+	  _createClass(VocabularyAll, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'settings' },
+	        { 'class': 'vocabulary' },
 	        _react2.default.createElement(
-	          'h1',
+	          'h3',
 	          null,
-	          ' asdfasdf '
+	          ' Vokabeln \u2013 Vocabulary \u2013 \u55AE\u5B57'
+	        ),
+	        _react2.default.createElement(VocabularySingle, { german: 'Hanna', english: 'female Name', chinese: '\u5973\u6027\u540D' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'Marie', english: 'female Name', chinese: '\u5973\u6027\u540D' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'hallo', english: 'hello', chinese: '\u4F60\u597D' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'ich', english: 'I', chinese: '\u6211' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'du', english: 'you (singular)', chinese: '\u4F60' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'sein', english: 'to be', chinese: '\u662F' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'hei\xDFen', english: 'to be called', chinese: '\u53EB\uFF0C\u59D3\uFF0C\u8B02' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'sich freuen', english: 'to be happy', chinese: '\u9AD8\u8208\uFF0C\u958B\u5FC3' }),
+	        _react2.default.createElement(VocabularySingle, { german: '(jemanden) kennenlernen', english: 'to get to know (someone)', chinese: '\u8A8D\u8B58 \uFF08\u4E00\u500B\u4EBA\uFF09' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'wie', english: 'how', chinese: '\u600E\u9EBC\uFF0C\u600E\u6A23' }),
+	        _react2.default.createElement(VocabularySingle, { german: 'auch', english: 'also, too, as well', chinese: '\u4E5F' })
+	      );
+	    }
+	  }]);
+	
+	  return VocabularyAll;
+	}(_react2.default.Component);
+	
+	var VocabularySingle = function (_React$Component2) {
+	  _inherits(VocabularySingle, _React$Component2);
+	
+	  function VocabularySingle(props) {
+	    _classCallCheck(this, VocabularySingle);
+	
+	    return _possibleConstructorReturn(this, (VocabularySingle.__proto__ || Object.getPrototypeOf(VocabularySingle)).call(this, props));
+	  }
+	
+	  _createClass(VocabularySingle, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'voc' },
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'german' },
+	          this.props.german
 	        ),
 	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'testtest react:)'
+	          'span',
+	          { className: 'english' },
+	          this.props.english
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'chinese' },
+	          this.props.chinese
 	        )
 	      );
 	    }
 	  }]);
 	
-	  return TestComponent;
+	  return VocabularySingle;
 	}(_react2.default.Component);
 	
-	_reactDom2.default.render(_react2.default.createElement(TestComponent, null), document.getElementById('react-elem'));
+	var PracticeText = function (_React$Component3) {
+	  _inherits(PracticeText, _React$Component3);
+	
+	  function PracticeText() {
+	    _classCallCheck(this, PracticeText);
+	
+	    return _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).apply(this, arguments));
+	  }
+	
+	  _createClass(PracticeText, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'practice' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          ' \xDCbungstext \u2013 Reading Practice \u2013 \u6703\u8A71\u5167\u5BB9'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'german' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Hanna:'
+	          ),
+	          ' Hallo, ich bin Hanna. Wie hei\xDFt du?',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Marie:'
+	          ),
+	          ' Hallo, Hanna. Ich hei\xDFe Marie. Freut mich dich kennenzulernen!',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Hanna:'
+	          ),
+	          ' Freut mich auch!'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'english' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Hanna:'
+	          ),
+	          ' Hello, I am Hanna. What is your name?',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Marie:'
+	          ),
+	          ' Hello, Hanna. My name is Marie. Nice to meet you! \uFF08Literally: I am happy to get to know you!)',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Hanna:'
+	          ),
+	          ' Nice to meet you too! (Lit.: I am happy too!)'
+	        ),
+	        _react2.default.createElement(PracticeTextBox, { language: 'chinese', text: [_react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Hanna:'
+	          ), "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）", _react2.default.createElement('br', null), _react2.default.createElement('br', null), _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Marie:'
+	          ), "你好，Hanna。 我叫Marie。 高興認識你！", _react2.default.createElement('br', null), _react2.default.createElement('br', null), _react2.default.createElement(
+	            'span',
+	            { className: 'name' },
+	            'Hanna:'
+	          ), "我也高興認識你！"] })
+	      );
+	    }
+	  }]);
+	
+	  return PracticeText;
+	}(_react2.default.Component);
+	
+	var PracticeTextBox = function (_React$Component4) {
+	  _inherits(PracticeTextBox, _React$Component4);
+	
+	  function PracticeTextBox(props) {
+	    _classCallCheck(this, PracticeTextBox);
+	
+	    return _possibleConstructorReturn(this, (PracticeTextBox.__proto__ || Object.getPrototypeOf(PracticeTextBox)).call(this, props));
+	  }
+	
+	  _createClass(PracticeTextBox, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'p',
+	        { className: this.props.language },
+	        this.props.text
+	      );
+	    }
+	  }]);
+	
+	  return PracticeTextBox;
+	}(_react2.default.Component);
+	
+	var MainComponent = function (_React$Component5) {
+	  _inherits(MainComponent, _React$Component5);
+	
+	  function MainComponent(props) {
+	    _classCallCheck(this, MainComponent);
+	
+	    return _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+	  }
+	
+	  _createClass(MainComponent, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(NavBar, null),
+	        _react2.default.createElement(StartPage, null),
+	        _react2.default.createElement(AllLessons, null)
+	      );
+	    }
+	  }]);
+	
+	  return MainComponent;
+	}(_react2.default.Component);
+	
+	var StartPage = function (_React$Component6) {
+	  _inherits(StartPage, _React$Component6);
+	
+	  function StartPage() {
+	    _classCallCheck(this, StartPage);
+	
+	    return _possibleConstructorReturn(this, (StartPage.__proto__ || Object.getPrototypeOf(StartPage)).apply(this, arguments));
+	  }
+	
+	  _createClass(StartPage, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Introduction to this German class'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return StartPage;
+	}(_react2.default.Component);
+	
+	var AllLessons = function (_React$Component7) {
+	  _inherits(AllLessons, _React$Component7);
+	
+	  function AllLessons() {
+	    _classCallCheck(this, AllLessons);
+	
+	    return _possibleConstructorReturn(this, (AllLessons.__proto__ || Object.getPrototypeOf(AllLessons)).apply(this, arguments));
+	  }
+	
+	  _createClass(AllLessons, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'all' },
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: './lesson01.html' },
+	              'Lektion 1 \u2013 Lesson 1 \u2013 \u7B2C\u4E00\u8AB2'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: './lesson_numbers.html' },
+	              'Zahlen \u2013 Numbers \u2013 \u6578\u76EE\u5B57'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: './lesson_abc.html' },
+	              'Das Alphabet \u2013 The alphabet \u2013 \u5FB7\u6587\u5B57\u6BCD'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return AllLessons;
+	}(_react2.default.Component);
+	
+	var NavBar = function (_React$Component8) {
+	  _inherits(NavBar, _React$Component8);
+	
+	  function NavBar() {
+	    _classCallCheck(this, NavBar);
+	
+	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).apply(this, arguments));
+	  }
+	
+	  _createClass(NavBar, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'navbar' },
+	        _react2.default.createElement(
+	          'a',
+	          { href: '#all' },
+	          'Alle Lektionen \u2013 All lessons \u2013 '
+	        ),
+	        ' |',
+	        _react2.default.createElement(
+	          'a',
+	          { href: './lesson01.html' },
+	          'N\xE4chste Lektion \u2013  Next lesson \u2013 \u4E0B\u4E00\u8AB2'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NavBar;
+	}(_react2.default.Component);
+	
+	_reactDom2.default.render(_react2.default.createElement(MainComponent, null), document.getElementById('react-elem'));
 
 /***/ }),
 /* 1 */
