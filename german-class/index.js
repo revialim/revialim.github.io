@@ -1,10 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+class LessonPage extends React.Component {
+  
+  render() {
+    return(
+      <div className="lection">
+        <h2> Lektion 1 – Lesson 1 – 第一課</h2>
+        <div className="lection-title"> Hallo! </div>
+        <PracticeText />
+        <VocabularyAll />
+      </div>
+    );
+  }
+}
+
 class VocabularyAll extends React.Component {
   render() {
     return (
-  <div class="vocabulary">
+  <div className="vocabulary">
       <h3> Vokabeln – Vocabulary – 單字</h3>
       <VocabularySingle german="Hanna" english="female Name" chinese="女性名" />
       <VocabularySingle german="Marie" english="female Name" chinese="女性名" />
@@ -94,13 +108,34 @@ class PracticeTextBox extends React.Component {
 class MainComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.handlePageClick = this.handlePageClick.bind(this);
+    this.state = {currentPage: 0};
+  }
+
+  handlePageClick(pageId) {
+    this.setState({currentPage: pageId});
   }
   
-  render(){
+  /*
+  handlePageButtonClick(clickedPageId) { //passed by/to Menu component (in menu's "onClick" prop)
+    this.setState({currentpage: clickedPageId});
+  }
+  */
+  
+  render() {
+    let pageContent = null;
+    if(this.state.currentPage == 0){
+      pageContent = <StartPage />;
+    }
+    
+    if(this.state.currentPage == 1){
+      pageContent = <LessonPage lessonId="1" />
+    }
+    
     return (
       <div>
-        <NavBar />
-        <StartPage />
+        <NavBar onClick={this.handlePageClick}/>
+        {pageContent}
         <AllLessons />
       </div>
     );
@@ -137,10 +172,35 @@ class NavBar extends React.Component {
   render() {
     return(
       <div className="navbar">
-        <a href="#all">Alle Lektionen – All lessons – </a> | 
-        <a href="./lesson01.html">Nächste Lektion –  Next lesson – 下一課</a>
+        <NavElem onClick={this.props.onClick} contentId="0" navTitle="Home" />
+        <NavElem navUrl="#all" navTitle="Alle Lektionen – All lessons – " /> |
+        <NavElem onClick={this.props.onClick} contentId="1" navTitle="Nächste Lektion –  Next lesson – 下一課" />
       </div>
     );
+  }
+}
+
+class NavElem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.navItemClicked = this.navItemClicked.bind(this)
+  }
+  
+  navItemClicked() {
+    this.props.onClick(this.props.contentId);
+  }
+  
+  render() {
+    if(this.props.navUrl != null){
+      return(
+        <a href={this.props.navUrl}>{this.props.navTitle}</a>
+      );
+    }
+    else {
+      return(
+        <div onClick={this.navItemClicked.bind(this, this.props.contentId)} className="navItem">{this.props.navTitle}</div> 
+      );
+    }
   }
 }
 

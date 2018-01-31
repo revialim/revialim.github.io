@@ -67,8 +67,42 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var VocabularyAll = function (_React$Component) {
-	  _inherits(VocabularyAll, _React$Component);
+	var LessonPage = function (_React$Component) {
+	  _inherits(LessonPage, _React$Component);
+	
+	  function LessonPage() {
+	    _classCallCheck(this, LessonPage);
+	
+	    return _possibleConstructorReturn(this, (LessonPage.__proto__ || Object.getPrototypeOf(LessonPage)).apply(this, arguments));
+	  }
+	
+	  _createClass(LessonPage, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'lection' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          ' Lektion 1 \u2013 Lesson 1 \u2013 \u7B2C\u4E00\u8AB2'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'lection-title' },
+	          ' Hallo! '
+	        ),
+	        _react2.default.createElement(PracticeText, null),
+	        _react2.default.createElement(VocabularyAll, null)
+	      );
+	    }
+	  }]);
+	
+	  return LessonPage;
+	}(_react2.default.Component);
+	
+	var VocabularyAll = function (_React$Component2) {
+	  _inherits(VocabularyAll, _React$Component2);
 	
 	  function VocabularyAll() {
 	    _classCallCheck(this, VocabularyAll);
@@ -81,7 +115,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { 'class': 'vocabulary' },
+	        { className: 'vocabulary' },
 	        _react2.default.createElement(
 	          'h3',
 	          null,
@@ -105,8 +139,8 @@
 	  return VocabularyAll;
 	}(_react2.default.Component);
 	
-	var VocabularySingle = function (_React$Component2) {
-	  _inherits(VocabularySingle, _React$Component2);
+	var VocabularySingle = function (_React$Component3) {
+	  _inherits(VocabularySingle, _React$Component3);
 	
 	  function VocabularySingle(props) {
 	    _classCallCheck(this, VocabularySingle);
@@ -142,8 +176,8 @@
 	  return VocabularySingle;
 	}(_react2.default.Component);
 	
-	var PracticeText = function (_React$Component3) {
-	  _inherits(PracticeText, _React$Component3);
+	var PracticeText = function (_React$Component4) {
+	  _inherits(PracticeText, _React$Component4);
 	
 	  function PracticeText() {
 	    _classCallCheck(this, PracticeText);
@@ -234,8 +268,8 @@
 	  return PracticeText;
 	}(_react2.default.Component);
 	
-	var PracticeTextBox = function (_React$Component4) {
-	  _inherits(PracticeTextBox, _React$Component4);
+	var PracticeTextBox = function (_React$Component5) {
+	  _inherits(PracticeTextBox, _React$Component5);
 	
 	  function PracticeTextBox(props) {
 	    _classCallCheck(this, PracticeTextBox);
@@ -257,23 +291,48 @@
 	  return PracticeTextBox;
 	}(_react2.default.Component);
 	
-	var MainComponent = function (_React$Component5) {
-	  _inherits(MainComponent, _React$Component5);
+	var MainComponent = function (_React$Component6) {
+	  _inherits(MainComponent, _React$Component6);
 	
 	  function MainComponent(props) {
 	    _classCallCheck(this, MainComponent);
 	
-	    return _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+	    var _this6 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+	
+	    _this6.handlePageClick = _this6.handlePageClick.bind(_this6);
+	    _this6.state = { currentPage: 0 };
+	    return _this6;
 	  }
 	
 	  _createClass(MainComponent, [{
+	    key: 'handlePageClick',
+	    value: function handlePageClick(pageId) {
+	      this.setState({ currentPage: pageId });
+	    }
+	
+	    /*
+	    handlePageButtonClick(clickedPageId) { //passed by/to Menu component (in menu's "onClick" prop)
+	      this.setState({currentpage: clickedPageId});
+	    }
+	    */
+	
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var pageContent = null;
+	      if (this.state.currentPage == 0) {
+	        pageContent = _react2.default.createElement(StartPage, null);
+	      }
+	
+	      if (this.state.currentPage == 1) {
+	        pageContent = _react2.default.createElement(LessonPage, { lessonId: '1' });
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(NavBar, null),
-	        _react2.default.createElement(StartPage, null),
+	        _react2.default.createElement(NavBar, { onClick: this.handlePageClick }),
+	        pageContent,
 	        _react2.default.createElement(AllLessons, null)
 	      );
 	    }
@@ -282,8 +341,8 @@
 	  return MainComponent;
 	}(_react2.default.Component);
 	
-	var StartPage = function (_React$Component6) {
-	  _inherits(StartPage, _React$Component6);
+	var StartPage = function (_React$Component7) {
+	  _inherits(StartPage, _React$Component7);
 	
 	  function StartPage() {
 	    _classCallCheck(this, StartPage);
@@ -314,8 +373,8 @@
 	  return StartPage;
 	}(_react2.default.Component);
 	
-	var AllLessons = function (_React$Component7) {
-	  _inherits(AllLessons, _React$Component7);
+	var AllLessons = function (_React$Component8) {
+	  _inherits(AllLessons, _React$Component8);
 	
 	  function AllLessons() {
 	    _classCallCheck(this, AllLessons);
@@ -367,8 +426,8 @@
 	  return AllLessons;
 	}(_react2.default.Component);
 	
-	var NavBar = function (_React$Component8) {
-	  _inherits(NavBar, _React$Component8);
+	var NavBar = function (_React$Component9) {
+	  _inherits(NavBar, _React$Component9);
 	
 	  function NavBar() {
 	    _classCallCheck(this, NavBar);
@@ -382,22 +441,54 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'navbar' },
-	        _react2.default.createElement(
-	          'a',
-	          { href: '#all' },
-	          'Alle Lektionen \u2013 All lessons \u2013 '
-	        ),
+	        _react2.default.createElement(NavElem, { onClick: this.props.onClick, contentId: '0', navTitle: 'Home' }),
+	        _react2.default.createElement(NavElem, { navUrl: '#all', navTitle: 'Alle Lektionen \u2013 All lessons \u2013 ' }),
 	        ' |',
-	        _react2.default.createElement(
-	          'a',
-	          { href: './lesson01.html' },
-	          'N\xE4chste Lektion \u2013  Next lesson \u2013 \u4E0B\u4E00\u8AB2'
-	        )
+	        _react2.default.createElement(NavElem, { onClick: this.props.onClick, contentId: '1', navTitle: 'N\xE4chste Lektion \u2013  Next lesson \u2013 \u4E0B\u4E00\u8AB2' })
 	      );
 	    }
 	  }]);
 	
 	  return NavBar;
+	}(_react2.default.Component);
+	
+	var NavElem = function (_React$Component10) {
+	  _inherits(NavElem, _React$Component10);
+	
+	  function NavElem(props) {
+	    _classCallCheck(this, NavElem);
+	
+	    var _this10 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
+	
+	    _this10.navItemClicked = _this10.navItemClicked.bind(_this10);
+	    return _this10;
+	  }
+	
+	  _createClass(NavElem, [{
+	    key: 'navItemClicked',
+	    value: function navItemClicked() {
+	      this.props.onClick(this.props.contentId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      if (this.props.navUrl != null) {
+	        return _react2.default.createElement(
+	          'a',
+	          { href: this.props.navUrl },
+	          this.props.navTitle
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          { onClick: this.navItemClicked.bind(this, this.props.contentId), className: 'navItem' },
+	          this.props.navTitle
+	        );
+	      }
+	    }
+	  }]);
+	
+	  return NavElem;
 	}(_react2.default.Component);
 	
 	_reactDom2.default.render(_react2.default.createElement(MainComponent, null), document.getElementById('react-elem'));
