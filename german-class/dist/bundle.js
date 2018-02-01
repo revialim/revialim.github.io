@@ -67,16 +67,104 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var LessonPage = function (_React$Component) {
-	  _inherits(LessonPage, _React$Component);
+	var lesson1 = __webpack_require__(/*! ./lessons/lesson1.js */ 27);
+	var lesson2 = __webpack_require__(/*! ./lessons/lesson2.js */ 28);
 	
-	  function LessonPage() {
+	var StartPage = function (_React$Component) {
+	  _inherits(StartPage, _React$Component);
+	
+	  function StartPage() {
+	    _classCallCheck(this, StartPage);
+	
+	    return _possibleConstructorReturn(this, (StartPage.__proto__ || Object.getPrototypeOf(StartPage)).apply(this, arguments));
+	  }
+	
+	  _createClass(StartPage, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'main-contents' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Introduction to this German class'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return StartPage;
+	}(_react2.default.Component);
+	
+	var LessonPage = function (_React$Component2) {
+	  _inherits(LessonPage, _React$Component2);
+	
+	  function LessonPage(props) {
 	    _classCallCheck(this, LessonPage);
 	
-	    return _possibleConstructorReturn(this, (LessonPage.__proto__ || Object.getPrototypeOf(LessonPage)).apply(this, arguments));
+	    var _this2 = _possibleConstructorReturn(this, (LessonPage.__proto__ || Object.getPrototypeOf(LessonPage)).call(this, props));
+	
+	    _this2.getChineseLessonNumber = _this2.getChineseLessonNumber.bind(_this2);
+	    _this2.resolveLessonTitle = _this2.resolveLessonTitle.bind(_this2);
+	    return _this2;
 	  }
 	
 	  _createClass(LessonPage, [{
+	    key: 'getChineseLessonNumber',
+	    value: function getChineseLessonNumber() {
+	      if (this.props.lessonNumber === "1") {
+	        return "一";
+	      }
+	      if (this.props.lessonNumber === "2") {
+	        return "二";
+	      }
+	      if (this.props.lessonNumber === "3") {
+	        return "三";
+	      }
+	      if (this.props.lessonNumber === "4") {
+	        return "四";
+	      }
+	      if (this.props.lessonNumber === "5") {
+	        return "五";
+	      }
+	      if (this.props.lessonNumber === "6") {
+	        return "六";
+	      }
+	      if (this.props.lessonNumber === "7") {
+	        return "七";
+	      }
+	      if (this.props.lessonNumber === "8") {
+	        return "八";
+	      }
+	      if (this.props.lessonNumber === "9") {
+	        return "九";
+	      }
+	      if (this.props.lessonNumber === "10") {
+	        return "十";
+	      } else {
+	        //no conversion for now, todo
+	        return this.props.lessonNumber;
+	      }
+	    }
+	  }, {
+	    key: 'resolveLessonTitle',
+	    value: function resolveLessonTitle() {
+	      if (this.props.lessonNumber == 1) {
+	        return lesson1.lessonTitle;
+	      }
+	      if (this.props.lessonNumber == 2) {
+	        return lesson2.lessonTitle;
+	      } else {
+	        return "lesson not defined";
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -85,15 +173,23 @@
 	        _react2.default.createElement(
 	          'h2',
 	          null,
-	          ' Lektion 1 \u2013 Lesson 1 \u2013 \u7B2C\u4E00\u8AB2'
+	          ' Lektion ',
+	          this.props.lessonNumber,
+	          ' \u2013 Lesson ',
+	          this.props.lessonNumber,
+	          ' \u2013 \u7B2C',
+	          this.getChineseLessonNumber(),
+	          '\u8AB2'
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'lection-title' },
-	          ' Hallo! '
+	          ' ',
+	          this.resolveLessonTitle(),
+	          ' '
 	        ),
-	        _react2.default.createElement(PracticeText, null),
-	        _react2.default.createElement(VocabularyAll, null)
+	        _react2.default.createElement(PracticeText, { lessonNumber: this.props.lessonNumber }),
+	        _react2.default.createElement(VocabularyAll, { lessonNumber: this.props.lessonNumber })
 	      );
 	    }
 	  }]);
@@ -101,8 +197,8 @@
 	  return LessonPage;
 	}(_react2.default.Component);
 	
-	var VocabularyAll = function (_React$Component2) {
-	  _inherits(VocabularyAll, _React$Component2);
+	var VocabularyAll = function (_React$Component3) {
+	  _inherits(VocabularyAll, _React$Component3);
 	
 	  function VocabularyAll() {
 	    _classCallCheck(this, VocabularyAll);
@@ -139,8 +235,8 @@
 	  return VocabularyAll;
 	}(_react2.default.Component);
 	
-	var VocabularySingle = function (_React$Component3) {
-	  _inherits(VocabularySingle, _React$Component3);
+	var VocabularySingle = function (_React$Component4) {
+	  _inherits(VocabularySingle, _React$Component4);
 	
 	  function VocabularySingle(props) {
 	    _classCallCheck(this, VocabularySingle);
@@ -176,8 +272,8 @@
 	  return VocabularySingle;
 	}(_react2.default.Component);
 	
-	var PracticeText = function (_React$Component4) {
-	  _inherits(PracticeText, _React$Component4);
+	var PracticeText = function (_React$Component5) {
+	  _inherits(PracticeText, _React$Component5);
 	
 	  function PracticeText() {
 	    _classCallCheck(this, PracticeText);
@@ -242,8 +338,8 @@
 	  return PracticeText;
 	}(_react2.default.Component);
 	
-	var PracticeTextBox = function (_React$Component5) {
-	  _inherits(PracticeTextBox, _React$Component5);
+	var PracticeTextBox = function (_React$Component6) {
+	  _inherits(PracticeTextBox, _React$Component6);
 	
 	  function PracticeTextBox(props) {
 	    _classCallCheck(this, PracticeTextBox);
@@ -265,17 +361,17 @@
 	  return PracticeTextBox;
 	}(_react2.default.Component);
 	
-	var MainComponent = function (_React$Component6) {
-	  _inherits(MainComponent, _React$Component6);
+	var MainComponent = function (_React$Component7) {
+	  _inherits(MainComponent, _React$Component7);
 	
 	  function MainComponent(props) {
 	    _classCallCheck(this, MainComponent);
 	
-	    var _this6 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+	    var _this7 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
 	
-	    _this6.handlePageClick = _this6.handlePageClick.bind(_this6);
-	    _this6.state = { currentPage: 0 };
-	    return _this6;
+	    _this7.handlePageClick = _this7.handlePageClick.bind(_this7);
+	    _this7.state = { currentPage: 0 };
+	    return _this7;
 	  }
 	
 	  _createClass(MainComponent, [{
@@ -292,7 +388,11 @@
 	      }
 	
 	      if (this.state.currentPage == 1) {
-	        pageContent = _react2.default.createElement(LessonPage, { lessonId: '1' });
+	        pageContent = _react2.default.createElement(LessonPage, { lessonNumber: '1', lessonId: '1' });
+	      }
+	
+	      if (this.state.currentPage == 2) {
+	        pageContent = _react2.default.createElement(LessonPage, { lessonNumber: '2', lessonId: '2' });
 	      }
 	
 	      return _react2.default.createElement(
@@ -308,40 +408,80 @@
 	  return MainComponent;
 	}(_react2.default.Component);
 	
-	var StartPage = function (_React$Component7) {
-	  _inherits(StartPage, _React$Component7);
+	var NavBar = function (_React$Component8) {
+	  _inherits(NavBar, _React$Component8);
 	
-	  function StartPage() {
-	    _classCallCheck(this, StartPage);
+	  function NavBar(props) {
+	    _classCallCheck(this, NavBar);
 	
-	    return _possibleConstructorReturn(this, (StartPage.__proto__ || Object.getPrototypeOf(StartPage)).apply(this, arguments));
+	    var _this8 = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	
+	    _this8.state = { contentId: _this8.props.currentContentId };
+	    return _this8;
 	  }
 	
-	  _createClass(StartPage, [{
+	  _createClass(NavBar, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'main-contents' },
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Introduction to this German class'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-	        )
+	        { className: 'navbar' },
+	        _react2.default.createElement(NavElem, { key: 'nav1', onClick: this.props.onClick, contentId: '0', navTitle: 'Home' }),
+	        _react2.default.createElement(NavElem, { key: 'nav2', navUrl: '#all', navTitle: 'Alle Lektionen \u2013 All lessons \u2013 ' }),
+	        _react2.default.createElement(NavElem, { key: 'nav3', onClick: this.props.onClick,
+	          contentId: this.props.currentContentId - 1,
+	          navTitle: 'Vorherige Lektion \u2013 Previous lesson \u2013 \u524D\u4E00\u8AB2' }),
+	        _react2.default.createElement(NavElem, { key: 'nav4', onClick: this.props.onClick,
+	          contentId: this.props.currentContentId + 1,
+	          navTitle: 'N\xE4chste Lektion \u2013 Next lesson \u2013 \u4E0B\u4E00\u8AB2' })
 	      );
 	    }
 	  }]);
 	
-	  return StartPage;
+	  return NavBar;
 	}(_react2.default.Component);
 	
-	var AllLessons = function (_React$Component8) {
-	  _inherits(AllLessons, _React$Component8);
+	var NavElem = function (_React$Component9) {
+	  _inherits(NavElem, _React$Component9);
+	
+	  function NavElem(props) {
+	    _classCallCheck(this, NavElem);
+	
+	    var _this9 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
+	
+	    _this9.navItemClicked = _this9.navItemClicked.bind(_this9);
+	    return _this9;
+	  }
+	
+	  _createClass(NavElem, [{
+	    key: 'navItemClicked',
+	    value: function navItemClicked() {
+	      this.props.onClick(this.props.contentId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      if (this.props.navUrl != null) {
+	        return _react2.default.createElement(
+	          'a',
+	          { href: this.props.navUrl },
+	          this.props.navTitle
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          { onClick: this.navItemClicked.bind(this, this.props.contentId), className: 'navItem' },
+	          this.props.navTitle
+	        );
+	      }
+	    }
+	  }]);
+	
+	  return NavElem;
+	}(_react2.default.Component);
+	
+	var AllLessons = function (_React$Component10) {
+	  _inherits(AllLessons, _React$Component10);
 	
 	  function AllLessons() {
 	    _classCallCheck(this, AllLessons);
@@ -396,75 +536,6 @@
 	  }]);
 	
 	  return AllLessons;
-	}(_react2.default.Component);
-	
-	var NavBar = function (_React$Component9) {
-	  _inherits(NavBar, _React$Component9);
-	
-	  function NavBar(props) {
-	    _classCallCheck(this, NavBar);
-	
-	    var _this9 = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
-	
-	    _this9.state = { contentId: _this9.props.currentContentId };
-	    return _this9;
-	  }
-	
-	  _createClass(NavBar, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'navbar' },
-	        _react2.default.createElement(NavElem, { key: 'nav1', onClick: this.props.onClick, contentId: '0', navTitle: 'Home' }),
-	        _react2.default.createElement(NavElem, { key: 'nav2', navUrl: '#all', navTitle: 'Alle Lektionen \u2013 All lessons \u2013 ' }),
-	        _react2.default.createElement(NavElem, { key: 'nav3', onClick: this.props.onClick,
-	          contentId: this.state.contentId + 1,
-	          navTitle: 'N\xE4chste Lektion \u2013 Next lesson \u2013 \u4E0B\u4E00\u8AB2' })
-	      );
-	    }
-	  }]);
-	
-	  return NavBar;
-	}(_react2.default.Component);
-	
-	var NavElem = function (_React$Component10) {
-	  _inherits(NavElem, _React$Component10);
-	
-	  function NavElem(props) {
-	    _classCallCheck(this, NavElem);
-	
-	    var _this10 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
-	
-	    _this10.navItemClicked = _this10.navItemClicked.bind(_this10);
-	    return _this10;
-	  }
-	
-	  _createClass(NavElem, [{
-	    key: 'navItemClicked',
-	    value: function navItemClicked() {
-	      this.props.onClick(this.props.contentId);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      if (this.props.navUrl != null) {
-	        return _react2.default.createElement(
-	          'a',
-	          { href: this.props.navUrl },
-	          this.props.navTitle
-	        );
-	      } else {
-	        return _react2.default.createElement(
-	          'div',
-	          { onClick: this.navItemClicked.bind(this, this.props.contentId), className: 'navItem' },
-	          this.props.navTitle
-	        );
-	      }
-	    }
-	  }]);
-	
-	  return NavElem;
 	}(_react2.default.Component);
 	
 	_reactDom2.default.render(_react2.default.createElement(MainComponent, null), document.getElementById('react-elem'));
@@ -8140,6 +8211,40 @@
 	}
 	
 	module.exports = camelize;
+
+/***/ }),
+/* 27 */
+/*!****************************!*\
+  !*** ./lessons/lesson1.js ***!
+  \****************************/
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	module.exports = {
+	  lessonTitle: "Hallo!",
+	  practiceText: "asdf lorem ipsum test test 123",
+	  vocabulary: "asdfasdfasdf, vocs 123",
+	  grammar: "grammar123",
+	  tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
+	};
+
+/***/ }),
+/* 28 */
+/*!****************************!*\
+  !*** ./lessons/lesson2.js ***!
+  \****************************/
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	module.exports = {
+	  lessonTitle: "lesson2 title asdf",
+	  practiceText: "asdf lorem ipsum test test 123",
+	  vocabulary: "asdfasdfasdf, vocs 123",
+	  grammar: "grammar123",
+	  tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
+	};
 
 /***/ })
 /******/ ]);

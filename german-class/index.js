@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+var lesson1 = require('./lessons/lesson1.js');
+var lesson2 = require('./lessons/lesson2.js');
+
 class StartPage extends React.Component {
   render() {
     return(
@@ -14,14 +17,67 @@ class StartPage extends React.Component {
 }
 
 class LessonPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getChineseLessonNumber = this.getChineseLessonNumber.bind(this);
+    this.resolveLessonTitle = this.resolveLessonTitle.bind(this);
+  }
+  
+  getChineseLessonNumber() {
+    if(this.props.lessonNumber === "1"){
+      return "一";
+    }
+    if(this.props.lessonNumber === "2"){
+      return "二";
+    }
+    if(this.props.lessonNumber === "3"){
+      return "三";
+    }      
+    if(this.props.lessonNumber === "4"){
+      return "四";
+    }      
+    if(this.props.lessonNumber === "5"){
+      return "五";
+    }
+    if(this.props.lessonNumber === "6"){
+      return "六";
+    }
+    if(this.props.lessonNumber === "7"){
+      return "七";
+    }
+    if(this.props.lessonNumber === "8"){
+      return "八";
+    }
+    if(this.props.lessonNumber === "9"){
+      return "九";
+    }
+    if(this.props.lessonNumber === "10"){
+      return "十";
+    }
+    else{ //no conversion for now, todo
+      return this.props.lessonNumber;
+    }
+  }
+  
+  resolveLessonTitle() {
+    if(this.props.lessonNumber == 1){
+      return lesson1.lessonTitle;
+    }
+    if(this.props.lessonNumber == 2){
+      return lesson2.lessonTitle;
+    }
+    else {
+      return "lesson not defined";
+    }
+  }
   
   render() {
     return(
       <div className="lection main-contents">
-        <h2> Lektion 1 – Lesson 1 – 第一課</h2>
-        <div className="lection-title"> Hallo! </div>
-        <PracticeText />
-        <VocabularyAll />
+        <h2> Lektion {this.props.lessonNumber} – Lesson {this.props.lessonNumber} – 第{this.getChineseLessonNumber()}課</h2>
+        <div className="lection-title"> {this.resolveLessonTitle()} </div>
+        <PracticeText lessonNumber={this.props.lessonNumber} />
+        <VocabularyAll lessonNumber={this.props.lessonNumber} />
       </div>
     );
   }
@@ -141,7 +197,11 @@ class MainComponent extends React.Component {
     }
     
     if(this.state.currentPage == 1){
-      pageContent = <LessonPage lessonId="1" />
+      pageContent = <LessonPage lessonNumber="1" lessonId="1" />
+    }
+    
+    if(this.state.currentPage == 2){
+      pageContent = <LessonPage lessonNumber="2" lessonId="2" />
     }
     
     return (
@@ -168,7 +228,10 @@ class NavBar extends React.Component {
         <NavElem key="nav1" onClick={this.props.onClick} contentId="0" navTitle="Home" />
         <NavElem key="nav2" navUrl="#all" navTitle="Alle Lektionen – All lessons – " />
         <NavElem key="nav3" onClick={this.props.onClick} 
-          contentId={this.state.contentId + 1} 
+          contentId={this.props.currentContentId - 1} 
+          navTitle="Vorherige Lektion – Previous lesson – 前一課" />
+        <NavElem key="nav4" onClick={this.props.onClick} 
+          contentId={this.props.currentContentId + 1} 
           navTitle="Nächste Lektion – Next lesson – 下一課" />
       </div>
     );
