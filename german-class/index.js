@@ -1,11 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+class StartPage extends React.Component {
+  render() {
+    return(
+      <div className="main-contents">
+        <h2>Introduction to this German class</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    );
+  }
+}
+
 class LessonPage extends React.Component {
   
   render() {
     return(
-      <div className="lection">
+      <div className="lection main-contents">
         <h2> Lektion 1 – Lesson 1 – 第一課</h2>
         <div className="lection-title"> Hallo! </div>
         <PracticeText />
@@ -51,7 +63,6 @@ class VocabularySingle extends React.Component {
     );
   }
 }
-
 
 class PracticeText extends React.Component {
   render() {
@@ -145,32 +156,6 @@ class MainComponent extends React.Component {
   }
 }
 
-class StartPage extends React.Component {
-  render() {
-    return(
-      <div>
-        <h2>Introduction to this German class</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    );
-  }
-}
-
-class AllLessons extends React.Component {
-  render() {
-    return(
-      <div id="all">
-        <ul>
-          <li key="lessons0"><a href="./lesson01.html">Lektion 1 – Lesson 1 – 第一課</a></li>
-          <li key="lessons1"><a href="./lesson_numbers.html">Zahlen – Numbers – 數目字</a></li>
-          <li key="lessons2"><a href="./lesson_abc.html">Das Alphabet – The alphabet – 德文字母</a></li>
-        </ul>
-      </div>
-    );
-  }
-}
-
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -211,6 +196,21 @@ class NavElem extends React.Component {
         <div onClick={this.navItemClicked.bind(this, this.props.contentId)} className="navItem">{this.props.navTitle}</div> 
       );
     }
+  }
+}
+
+class AllLessons extends React.Component {
+  render() {
+    return(
+      <div id="all">
+        <h2>Alle Lektionen – All lessons – </h2>
+        <ul>
+          <li key="lessons0"><a href="./lesson01.html">Lektion 1 – Lesson 1 – 第一課</a></li>
+          <li key="lessons1"><a href="./lesson_numbers.html">Zahlen – Numbers – 數目字</a></li>
+          <li key="lessons2"><a href="./lesson_abc.html">Das Alphabet – The alphabet – 德文字母</a></li>
+        </ul>
+      </div>
+    );
   }
 }
 

@@ -81,7 +81,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'lection' },
+	        { className: 'lection main-contents' },
 	        _react2.default.createElement(
 	          'h2',
 	          null,
@@ -322,7 +322,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'main-contents' },
 	        _react2.default.createElement(
 	          'h2',
 	          null,
@@ -355,6 +355,11 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'all' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Alle Lektionen \u2013 All lessons \u2013 '
+	        ),
 	        _react2.default.createElement(
 	          'ul',
 	          null,

@@ -43,10 +43,28 @@
     padding-left: 0.5em; }
 
   .navbar a {
-    display: block; } }
+    display: block; }
+
+  div#all {
+    padding: 0.3em 0 6em 0; }
+    div#all h2 {
+      margin-top: 0.3em; }
+    div#all ul {
+      padding: 0 2em; }
+
+  .main-contents {
+    margin-bottom: 1em; } }
 @media only screen and (min-width: 720px) {
   .lection-title {
     font-size: 2.5em; }
+
+  .main-contents {
+    margin-bottom: 3em; }
+
+  div#all {
+    padding: 0.5em 0 3em 0; }
+    div#all ul {
+      width: 50%; }
 
   h3 {
     font-size: 1.7em; }
@@ -68,7 +86,8 @@
       display: inline-block; } }
 body {
   font-family: CrimsonReg;
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  margin: 0; }
 
 p {
   font-family: CrimsonReg; }
@@ -90,6 +109,35 @@ table th {
   text-align: left; }
 table td, table th {
   padding-right: 0.5em; }
+
+.main-contents {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+div#all {
+  background: #333; }
+  div#all h2 {
+    color: #5ab0f2; }
+  div#all ul {
+    text-align: center;
+    list-style-type: none;
+    margin: auto; }
+    div#all ul li {
+      display: block;
+      font-family: Bonveno;
+      background-color: #eee;
+      border: 1px solid #0268b6;
+      border-radius: 0.2em;
+      margin-bottom: 0.2em;
+      padding: 0 0.5em;
+      box-shadow: rgba(0, 0, 0, 0.8) 1px 1px 10px; }
+      div#all ul li:hover {
+        background-color: #0268b6; }
+        div#all ul li:hover a {
+          color: #fff; }
+      div#all ul li a {
+        color: #333;
+        text-decoration: unset; }
 
 .navbar .navItem, .navbar a {
   font-family: Bonveno;
