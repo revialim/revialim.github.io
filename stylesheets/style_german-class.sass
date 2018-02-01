@@ -29,6 +29,7 @@
 $darkgrey: #333
 $lightgrey: #eee
 $grey: #999
+$theme-light: #5ab0f2
 $theme-highlite: #0987e7
 $theme-base: #0268b6
 $theme-darker: #013a66
@@ -117,8 +118,21 @@ table
   td, th
     padding-right: 0.5em
 
-.navbar a
-  font-family: Bonveno
+.navbar 
+  .navItem, a
+    font-family: Bonveno
+    background-color: $lightgrey
+    border: 1px solid $theme-base
+    display: inline-block
+    border-radius: 0.2em
+    padding: 0 0.5em
+    box-shadow: rgba(0,0,0,0.6) 1px 1px 10px
+    color: $darkgrey
+    text-decoration: unset
+    
+    &:hover
+      color: #fff
+      background-color: $theme-base
     
 div.practice
   p

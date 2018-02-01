@@ -91,8 +91,19 @@ table th {
 table td, table th {
   padding-right: 0.5em; }
 
-.navbar a {
-  font-family: Bonveno; }
+.navbar .navItem, .navbar a {
+  font-family: Bonveno;
+  background-color: #eee;
+  border: 1px solid #0268b6;
+  display: inline-block;
+  border-radius: 0.2em;
+  padding: 0 0.5em;
+  box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 10px;
+  color: #333;
+  text-decoration: unset; }
+  .navbar .navItem:hover, .navbar a:hover {
+    color: #fff;
+    background-color: #0268b6; }
 
 div.practice p {
   background-color: #fff;

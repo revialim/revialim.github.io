@@ -20,17 +20,17 @@ class VocabularyAll extends React.Component {
     return (
   <div className="vocabulary">
       <h3> Vokabeln – Vocabulary – 單字</h3>
-      <VocabularySingle german="Hanna" english="female Name" chinese="女性名" />
-      <VocabularySingle german="Marie" english="female Name" chinese="女性名" />
-      <VocabularySingle german="hallo" english="hello" chinese="你好" />
-      <VocabularySingle german="ich" english="I" chinese="我" />
-      <VocabularySingle german="du" english="you (singular)" chinese="你" />
-      <VocabularySingle german="sein" english="to be" chinese="是" />
-      <VocabularySingle german="heißen" english="to be called" chinese="叫，姓，謂" />
-      <VocabularySingle german="sich freuen" english="to be happy" chinese="高興，開心" />
-      <VocabularySingle german="(jemanden) kennenlernen" english="to get to know (someone)" chinese="認識 （一個人）" />
-      <VocabularySingle german="wie" english="how" chinese="怎麼，怎樣" />
-      <VocabularySingle german="auch" english="also, too, as well" chinese="也" />
+      <VocabularySingle key="voc1" german="Hanna" english="female Name" chinese="女性名" />
+      <VocabularySingle key="voc2" german="Marie" english="female Name" chinese="女性名" />
+      <VocabularySingle key="voc3" german="hallo" english="hello" chinese="你好" />
+      <VocabularySingle key="voc4" german="ich" english="I" chinese="我" />
+      <VocabularySingle key="voc5" german="du" english="you (singular)" chinese="你" />
+      <VocabularySingle key="voc6" german="sein" english="to be" chinese="是" />
+      <VocabularySingle key="voc7" german="heißen" english="to be called" chinese="叫，姓，謂" />
+      <VocabularySingle key="voc8" german="sich freuen" english="to be happy" chinese="高興，開心" />
+      <VocabularySingle key="voc9" german="(jemanden) kennenlernen" english="to get to know (someone)" chinese="認識 （一個人）" />
+      <VocabularySingle key="voc10" german="wie" english="how" chinese="怎麼，怎樣" />
+      <VocabularySingle key="voc11" german="auch" english="also, too, as well" chinese="也" />
     </div>
     );
   }
@@ -44,9 +44,9 @@ class VocabularySingle extends React.Component {
   render() {
     return(
       <div className="voc">
-        <span className="german">{this.props.german}</span>
-        <span className="english">{this.props.english}</span>
-        <span className="chinese">{this.props.chinese}</span>
+        <span key="voc-german" className="german">{this.props.german}</span>
+        <span key="voc-english" className="english">{this.props.english}</span>
+        <span key="voc-chinese" className="chinese">{this.props.chinese}</span>
       </div>
     );
   }
@@ -59,29 +59,36 @@ class PracticeText extends React.Component {
       <div className="practice">
         <h3> Übungstext – Reading Practice – 會話內容</h3>
   
-        <p className="german">
-          <span className="name">Hanna:</span> Hallo, ich bin Hanna. Wie heißt du?<br/><br/>
-    
-          <span className="name">Marie:</span> Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!<br/><br/>
-    
-          <span className="name">Hanna:</span> Freut mich auch!
-        </p>
-        <p className="english">
-          <span className="name">Hanna:</span> Hello, I am Hanna. What is your name?<br/><br/>
-    
-          <span className="name">Marie:</span> Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)<br/><br/>
-          
-          <span className="name">Hanna:</span> Nice to meet you too! (Lit.: I am happy too!)
-        </p>
+        <PracticeTextBox language="english" text={[
+          <span key="name1" className="name">Hanna:</span>,
+          "Hallo, ich bin Hanna. Wie heißt du?",
+          <br key="br1"/>, <br key="br2"/>,
+          <span key="name2" className="name">Marie:</span>,
+          "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!",
+          <br key="br3"/>, <br key="br4"/>,
+          <span key="name3" className="name">Hanna:</span>,
+          "Freut mich auch!"
+          ]} />
+        
+        <PracticeTextBox language="english" text={[
+          <span key="name1" className="name">Hanna:</span>,
+          "Hello, I am Hanna. What is your name?",
+          <br key="br1"/>, <br key="br2"/>,
+          <span key="name2" className="name">Marie:</span>,
+          "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)",
+          <br key="br3"/>, <br key="br4"/>,
+          <span key="name3" className="name">Hanna:</span>,
+          "Nice to meet you too! (Lit.: I am happy too!)"
+          ]} />
       
         <PracticeTextBox language="chinese" text={[
-          <span className="name">Hanna:</span>, 
+          <span key="name1" className="name">Hanna:</span>, 
           "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）",
-          <br/>, <br/>, 
-          <span className="name">Marie:</span>,
+          <br key="br1"/>, <br key="br2"/>,
+          <span key="name2" className="name">Marie:</span>,
           "你好，Hanna。 我叫Marie。 高興認識你！",
-          <br/>, <br/>,
-          <span className="name">Hanna:</span> ,
+          <br key="br3"/>, <br key="br4"/>,
+          <span key="name3" className="name">Hanna:</span> ,
           "我也高興認識你！"
           ]} />
       
@@ -97,7 +104,7 @@ class PracticeTextBox extends React.Component {
   
   render(){
     return (
-      <p className={this.props.language}>
+      <p key={"pt"+this.props.language} className={this.props.language}>
         {this.props.text}
       </p>
     );
@@ -116,12 +123,6 @@ class MainComponent extends React.Component {
     this.setState({currentPage: pageId});
   }
   
-  /*
-  handlePageButtonClick(clickedPageId) { //passed by/to Menu component (in menu's "onClick" prop)
-    this.setState({currentpage: clickedPageId});
-  }
-  */
-  
   render() {
     let pageContent = null;
     if(this.state.currentPage == 0){
@@ -134,8 +135,10 @@ class MainComponent extends React.Component {
     
     return (
       <div>
-        <NavBar onClick={this.handlePageClick}/>
+        <NavBar onClick={this.handlePageClick} currentContentId={this.state.currentPage}/>
+      
         {pageContent}
+      
         <AllLessons />
       </div>
     );
@@ -159,9 +162,9 @@ class AllLessons extends React.Component {
     return(
       <div id="all">
         <ul>
-          <li><a href="./lesson01.html">Lektion 1 – Lesson 1 – 第一課</a></li>
-          <li><a href="./lesson_numbers.html">Zahlen – Numbers – 數目字</a></li>
-          <li><a href="./lesson_abc.html">Das Alphabet – The alphabet – 德文字母</a></li>
+          <li key="lessons0"><a href="./lesson01.html">Lektion 1 – Lesson 1 – 第一課</a></li>
+          <li key="lessons1"><a href="./lesson_numbers.html">Zahlen – Numbers – 數目字</a></li>
+          <li key="lessons2"><a href="./lesson_abc.html">Das Alphabet – The alphabet – 德文字母</a></li>
         </ul>
       </div>
     );
@@ -169,12 +172,19 @@ class AllLessons extends React.Component {
 }
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {contentId: this.props.currentContentId};
+  }
+  
   render() {
     return(
       <div className="navbar">
-        <NavElem onClick={this.props.onClick} contentId="0" navTitle="Home" />
-        <NavElem navUrl="#all" navTitle="Alle Lektionen – All lessons – " /> |
-        <NavElem onClick={this.props.onClick} contentId="1" navTitle="Nächste Lektion –  Next lesson – 下一課" />
+        <NavElem key="nav1" onClick={this.props.onClick} contentId="0" navTitle="Home" />
+        <NavElem key="nav2" navUrl="#all" navTitle="Alle Lektionen – All lessons – " />
+        <NavElem key="nav3" onClick={this.props.onClick} 
+          contentId={this.state.contentId + 1} 
+          navTitle="Nächste Lektion – Next lesson – 下一課" />
       </div>
     );
   }
