@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 var numOfLessons = 2; //todo find a better way to update
-var lesson1 = require('./lessons/lesson1.js');
-var lesson2 = require('./lessons/lesson2.js');
+var lesson1 = require('./lessons/lesson1');
+var lesson2 = require('./lessons/lesson2');
 
 class StartPage extends React.Component {
   render() {
@@ -85,22 +85,40 @@ class LessonPage extends React.Component {
 }
 
 class VocabularyAll extends React.Component {
+  constructor(props) {
+    super(props);
+    this.resolveVocabularies = this.resolveVocabularies.bind(this);
+  }
+  
+  resolveVocabularies() {
+    if(this.props.lessonNumber == 1){
+      return lesson1.vocabulary;
+    }
+    if(this.props.lessonNumber == 2){
+      return lesson2.vocabulary;
+    }
+    else {
+      return "lesson not defined";
+    }
+  }
+  
   render() {
+    const vocArr = this.resolveVocabularies();
+    const vocComponentArr = [];
+    
+    console.log("vocArr: "+vocArr + " first voc: "+vocArr[0] +" german: "+vocArr[0].german);
+    
+    for(var i = 0; i < vocArr.length; i++){
+        vocComponentArr.push(
+          <VocabularySingle key={"voc"+i} german={vocArr[i].german} english={vocArr[i].english} chinese={vocArr[i].chinese} />
+        );
+    }
+    
     return (
-  <div className="vocabulary">
-      <h3> Vokabeln – Vocabulary – 單字</h3>
-      <VocabularySingle key="voc1" german="Hanna" english="female Name" chinese="女性名" />
-      <VocabularySingle key="voc2" german="Marie" english="female Name" chinese="女性名" />
-      <VocabularySingle key="voc3" german="hallo" english="hello" chinese="你好" />
-      <VocabularySingle key="voc4" german="ich" english="I" chinese="我" />
-      <VocabularySingle key="voc5" german="du" english="you (singular)" chinese="你" />
-      <VocabularySingle key="voc6" german="sein" english="to be" chinese="是" />
-      <VocabularySingle key="voc7" german="heißen" english="to be called" chinese="叫，姓，謂" />
-      <VocabularySingle key="voc8" german="sich freuen" english="to be happy" chinese="高興，開心" />
-      <VocabularySingle key="voc9" german="(jemanden) kennenlernen" english="to get to know (someone)" chinese="認識 （一個人）" />
-      <VocabularySingle key="voc10" german="wie" english="how" chinese="怎麼，怎樣" />
-      <VocabularySingle key="voc11" german="auch" english="also, too, as well" chinese="也" />
-    </div>
+      <div className="vocabulary">
+        <h3> Vokabeln – Vocabulary – 單字</h3>
+        {vocComponentArr}
+      </div>
     );
   }
 }
@@ -122,43 +140,35 @@ class VocabularySingle extends React.Component {
 }
 
 class PracticeText extends React.Component {
+  constructor(props) {
+    super(props);
+    this.resolvePracticeText = this.resolvePracticeText.bind(this);
+  }
+  
+  resolvePracticeText() {
+    if(this.props.lessonNumber == 1){
+      return lesson1.practiceText;
+    }
+    if(this.props.lessonNumber == 2){
+      return lesson2.practiceText;
+    }
+    else {
+      return "lesson not defined";
+    }
+  }
+  
   render() {
+    const practiceText = this.resolvePracticeText();
+    console.log("practiceText: "+practiceText + "german? "+ practiceText.german);
     return (
       <div className="practice">
         <h3> Übungstext – Reading Practice – 會話內容</h3>
   
-        <PracticeTextBox language="english" text={[
-          <span key="name1" className="name">Hanna:</span>,
-          "Hallo, ich bin Hanna. Wie heißt du?",
-          <br key="br1"/>, <br key="br2"/>,
-          <span key="name2" className="name">Marie:</span>,
-          "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!",
-          <br key="br3"/>, <br key="br4"/>,
-          <span key="name3" className="name">Hanna:</span>,
-          "Freut mich auch!"
-          ]} />
+        <PracticeTextBox language="german" text={practiceText.german} />
         
-        <PracticeTextBox language="english" text={[
-          <span key="name1" className="name">Hanna:</span>,
-          "Hello, I am Hanna. What is your name?",
-          <br key="br1"/>, <br key="br2"/>,
-          <span key="name2" className="name">Marie:</span>,
-          "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)",
-          <br key="br3"/>, <br key="br4"/>,
-          <span key="name3" className="name">Hanna:</span>,
-          "Nice to meet you too! (Lit.: I am happy too!)"
-          ]} />
+        <PracticeTextBox language="english" text={practiceText.english} />
       
-        <PracticeTextBox language="chinese" text={[
-          <span key="name1" className="name">Hanna:</span>, 
-          "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）",
-          <br key="br1"/>, <br key="br2"/>,
-          <span key="name2" className="name">Marie:</span>,
-          "你好，Hanna。 我叫Marie。 高興認識你！",
-          <br key="br3"/>, <br key="br4"/>,
-          <span key="name3" className="name">Hanna:</span> ,
-          "我也高興認識你！"
-          ]} />
+        <PracticeTextBox language="chinese" text= {practiceText.chinese}/>
       
       </div>
     );

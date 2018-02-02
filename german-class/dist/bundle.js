@@ -68,8 +68,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var numOfLessons = 2; //todo find a better way to update
-	var lesson1 = __webpack_require__(/*! ./lessons/lesson1.js */ 27);
-	var lesson2 = __webpack_require__(/*! ./lessons/lesson2.js */ 28);
+	var lesson1 = __webpack_require__(/*! ./lessons/lesson1 */ 27);
+	var lesson2 = __webpack_require__(/*! ./lessons/lesson2 */ 28);
 	
 	var StartPage = function (_React$Component) {
 	  _inherits(StartPage, _React$Component);
@@ -201,15 +201,39 @@
 	var VocabularyAll = function (_React$Component3) {
 	  _inherits(VocabularyAll, _React$Component3);
 	
-	  function VocabularyAll() {
+	  function VocabularyAll(props) {
 	    _classCallCheck(this, VocabularyAll);
 	
-	    return _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).apply(this, arguments));
+	    var _this3 = _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).call(this, props));
+	
+	    _this3.resolveVocabularies = _this3.resolveVocabularies.bind(_this3);
+	    return _this3;
 	  }
 	
 	  _createClass(VocabularyAll, [{
+	    key: 'resolveVocabularies',
+	    value: function resolveVocabularies() {
+	      if (this.props.lessonNumber == 1) {
+	        return lesson1.vocabulary;
+	      }
+	      if (this.props.lessonNumber == 2) {
+	        return lesson2.vocabulary;
+	      } else {
+	        return "lesson not defined";
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var vocArr = this.resolveVocabularies();
+	      var vocComponentArr = [];
+	
+	      console.log("vocArr: " + vocArr + " first voc: " + vocArr[0] + " german: " + vocArr[0].german);
+	
+	      for (var i = 0; i < vocArr.length; i++) {
+	        vocComponentArr.push(_react2.default.createElement(VocabularySingle, { key: "voc" + i, german: vocArr[i].german, english: vocArr[i].english, chinese: vocArr[i].chinese }));
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'vocabulary' },
@@ -218,17 +242,7 @@
 	          null,
 	          ' Vokabeln \u2013 Vocabulary \u2013 \u55AE\u5B57'
 	        ),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc1', german: 'Hanna', english: 'female Name', chinese: '\u5973\u6027\u540D' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc2', german: 'Marie', english: 'female Name', chinese: '\u5973\u6027\u540D' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc3', german: 'hallo', english: 'hello', chinese: '\u4F60\u597D' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc4', german: 'ich', english: 'I', chinese: '\u6211' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc5', german: 'du', english: 'you (singular)', chinese: '\u4F60' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc6', german: 'sein', english: 'to be', chinese: '\u662F' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc7', german: 'hei\xDFen', english: 'to be called', chinese: '\u53EB\uFF0C\u59D3\uFF0C\u8B02' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc8', german: 'sich freuen', english: 'to be happy', chinese: '\u9AD8\u8208\uFF0C\u958B\u5FC3' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc9', german: '(jemanden) kennenlernen', english: 'to get to know (someone)', chinese: '\u8A8D\u8B58 \uFF08\u4E00\u500B\u4EBA\uFF09' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc10', german: 'wie', english: 'how', chinese: '\u600E\u9EBC\uFF0C\u600E\u6A23' }),
-	        _react2.default.createElement(VocabularySingle, { key: 'voc11', german: 'auch', english: 'also, too, as well', chinese: '\u4E5F' })
+	        vocComponentArr
 	      );
 	    }
 	  }]);
@@ -276,15 +290,32 @@
 	var PracticeText = function (_React$Component5) {
 	  _inherits(PracticeText, _React$Component5);
 	
-	  function PracticeText() {
+	  function PracticeText(props) {
 	    _classCallCheck(this, PracticeText);
 	
-	    return _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).apply(this, arguments));
+	    var _this5 = _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).call(this, props));
+	
+	    _this5.resolvePracticeText = _this5.resolvePracticeText.bind(_this5);
+	    return _this5;
 	  }
 	
 	  _createClass(PracticeText, [{
+	    key: 'resolvePracticeText',
+	    value: function resolvePracticeText() {
+	      if (this.props.lessonNumber == 1) {
+	        return lesson1.practiceText;
+	      }
+	      if (this.props.lessonNumber == 2) {
+	        return lesson2.practiceText;
+	      } else {
+	        return "lesson not defined";
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var practiceText = this.resolvePracticeText();
+	      console.log("practiceText: " + practiceText + "german? " + practiceText.german);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'practice' },
@@ -293,45 +324,9 @@
 	          null,
 	          ' \xDCbungstext \u2013 Reading Practice \u2013 \u6703\u8A71\u5167\u5BB9'
 	        ),
-	        _react2.default.createElement(PracticeTextBox, { language: 'english', text: [_react2.default.createElement(
-	            'span',
-	            { key: 'name1', className: 'name' },
-	            'Hanna:'
-	          ), "Hallo, ich bin Hanna. Wie heißt du?", _react2.default.createElement('br', { key: 'br1' }), _react2.default.createElement('br', { key: 'br2' }), _react2.default.createElement(
-	            'span',
-	            { key: 'name2', className: 'name' },
-	            'Marie:'
-	          ), "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!", _react2.default.createElement('br', { key: 'br3' }), _react2.default.createElement('br', { key: 'br4' }), _react2.default.createElement(
-	            'span',
-	            { key: 'name3', className: 'name' },
-	            'Hanna:'
-	          ), "Freut mich auch!"] }),
-	        _react2.default.createElement(PracticeTextBox, { language: 'english', text: [_react2.default.createElement(
-	            'span',
-	            { key: 'name1', className: 'name' },
-	            'Hanna:'
-	          ), "Hello, I am Hanna. What is your name?", _react2.default.createElement('br', { key: 'br1' }), _react2.default.createElement('br', { key: 'br2' }), _react2.default.createElement(
-	            'span',
-	            { key: 'name2', className: 'name' },
-	            'Marie:'
-	          ), "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)", _react2.default.createElement('br', { key: 'br3' }), _react2.default.createElement('br', { key: 'br4' }), _react2.default.createElement(
-	            'span',
-	            { key: 'name3', className: 'name' },
-	            'Hanna:'
-	          ), "Nice to meet you too! (Lit.: I am happy too!)"] }),
-	        _react2.default.createElement(PracticeTextBox, { language: 'chinese', text: [_react2.default.createElement(
-	            'span',
-	            { key: 'name1', className: 'name' },
-	            'Hanna:'
-	          ), "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）", _react2.default.createElement('br', { key: 'br1' }), _react2.default.createElement('br', { key: 'br2' }), _react2.default.createElement(
-	            'span',
-	            { key: 'name2', className: 'name' },
-	            'Marie:'
-	          ), "你好，Hanna。 我叫Marie。 高興認識你！", _react2.default.createElement('br', { key: 'br3' }), _react2.default.createElement('br', { key: 'br4' }), _react2.default.createElement(
-	            'span',
-	            { key: 'name3', className: 'name' },
-	            'Hanna:'
-	          ), "我也高興認識你！"] })
+	        _react2.default.createElement(PracticeTextBox, { language: 'german', text: practiceText.german }),
+	        _react2.default.createElement(PracticeTextBox, { language: 'english', text: practiceText.english }),
+	        _react2.default.createElement(PracticeTextBox, { language: 'chinese', text: practiceText.chinese })
 	      );
 	    }
 	  }]);
@@ -8224,16 +8219,62 @@
 /*!****************************!*\
   !*** ./lessons/lesson1.js ***!
   \****************************/
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	module.exports = {
-	  lessonTitle: "Hallo!",
-	  practiceText: "asdf lorem ipsum test test 123",
-	  vocabulary: "asdfasdfasdf, vocs 123",
-	  grammar: "grammar123",
-	  tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
+	      lessonTitle: "Hallo!",
+	      practiceText: {
+	            german: [_react2.default.createElement(
+	                  "span",
+	                  { key: "name1", className: "name" },
+	                  "Hanna:"
+	            ), "Hallo, ich bin Hanna. Wie heißt du?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	                  "span",
+	                  { key: "name2", className: "name" },
+	                  "Marie:"
+	            ), "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	                  "span",
+	                  { key: "name3", className: "name" },
+	                  "Hanna:"
+	            ), "Freut mich auch!"],
+	            english: [_react2.default.createElement(
+	                  "span",
+	                  { key: "name1", className: "name" },
+	                  "Hanna:"
+	            ), "Hello, I am Hanna. What is your name?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	                  "span",
+	                  { key: "name2", className: "name" },
+	                  "Marie:"
+	            ), "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	                  "span",
+	                  { key: "name3", className: "name" },
+	                  "Hanna:"
+	            ), "Nice to meet you too! (Lit.: I am happy too!)"],
+	            chinese: [_react2.default.createElement(
+	                  "span",
+	                  { key: "name1", className: "name" },
+	                  "Hanna:"
+	            ), "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	                  "span",
+	                  { key: "name2", className: "name" },
+	                  "Marie:"
+	            ), "你好，Hanna。 我叫Marie。 高興認識你！", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	                  "span",
+	                  { key: "name3", className: "name" },
+	                  "Hanna:"
+	            ), "我也高興認識你！"]
+	      },
+	      vocabulary: [{ german: "Hanna", english: "female Name", chinese: "女性名" }, { german: "Marie", english: "female Name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
+	      grammar: "grammar123",
+	      tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
 	};
 
 /***/ }),
@@ -8247,8 +8288,12 @@
 	
 	module.exports = {
 	  lessonTitle: "lesson2 title asdf",
-	  practiceText: "asdf lorem ipsum test test 123",
-	  vocabulary: "asdfasdfasdf, vocs 123",
+	  practiceText: {
+	    german: "practice german asdf lorem ipsum test test 123",
+	    english: "practice english asdf lorem ipsum test test 123",
+	    chinese: "practice chinese asdf lorem ipsum test test 123"
+	  },
+	  vocabulary: [{ german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }],
 	  grammar: "grammar123",
 	  tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
 	};
