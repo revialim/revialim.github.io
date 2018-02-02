@@ -67,6 +67,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var numOfLessons = 2; //todo find a better way to update
 	var lesson1 = __webpack_require__(/*! ./lessons/lesson1.js */ 27);
 	var lesson2 = __webpack_require__(/*! ./lessons/lesson2.js */ 28);
 	
@@ -423,17 +424,23 @@
 	  _createClass(NavBar, [{
 	    key: 'render',
 	    value: function render() {
+	      var prevButton = _react2.default.createElement(NavElem, { key: 'nav3', onClick: this.props.onClick,
+	        contentId: this.props.currentContentId - 1,
+	        navTitle: 'Vorherige Lektion \u2013 Previous lesson \u2013 \u524D\u4E00\u8AB2' });
+	
+	      var nextButton = _react2.default.createElement(NavElem, { key: 'nav4', onClick: this.props.onClick,
+	        contentId: this.props.currentContentId + 1,
+	        navTitle: 'N\xE4chste Lektion \u2013 Next lesson \u2013 \u4E0B\u4E00\u8AB2' });
+	
+	      console.log("this.props.currentContentId :" + this.props.currentContentId);
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'navbar' },
 	        _react2.default.createElement(NavElem, { key: 'nav1', onClick: this.props.onClick, contentId: '0', navTitle: 'Home' }),
 	        _react2.default.createElement(NavElem, { key: 'nav2', navUrl: '#all', navTitle: 'Alle Lektionen \u2013 All lessons \u2013 ' }),
-	        _react2.default.createElement(NavElem, { key: 'nav3', onClick: this.props.onClick,
-	          contentId: this.props.currentContentId - 1,
-	          navTitle: 'Vorherige Lektion \u2013 Previous lesson \u2013 \u524D\u4E00\u8AB2' }),
-	        _react2.default.createElement(NavElem, { key: 'nav4', onClick: this.props.onClick,
-	          contentId: this.props.currentContentId + 1,
-	          navTitle: 'N\xE4chste Lektion \u2013 Next lesson \u2013 \u4E0B\u4E00\u8AB2' })
+	        this.props.currentContentId - 1 > 0 ? prevButton : "",
+	        this.props.currentContentId + 1 <= numOfLessons ? nextButton : ""
 	      );
 	    }
 	  }]);

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+var numOfLessons = 2; //todo find a better way to update
 var lesson1 = require('./lessons/lesson1.js');
 var lesson2 = require('./lessons/lesson2.js');
 
@@ -223,16 +224,22 @@ class NavBar extends React.Component {
   }
   
   render() {
+    var prevButton = <NavElem key="nav3" onClick={this.props.onClick} 
+          contentId={this.props.currentContentId - 1} 
+          navTitle="Vorherige Lektion – Previous lesson – 前一課" />;
+          
+    var nextButton = <NavElem key="nav4" onClick={this.props.onClick} 
+          contentId={this.props.currentContentId + 1} 
+          navTitle="Nächste Lektion – Next lesson – 下一課" />;
+    
+    console.log("this.props.currentContentId :"+this.props.currentContentId );
+    
     return(
       <div className="navbar">
         <NavElem key="nav1" onClick={this.props.onClick} contentId="0" navTitle="Home" />
         <NavElem key="nav2" navUrl="#all" navTitle="Alle Lektionen – All lessons – " />
-        <NavElem key="nav3" onClick={this.props.onClick} 
-          contentId={this.props.currentContentId - 1} 
-          navTitle="Vorherige Lektion – Previous lesson – 前一課" />
-        <NavElem key="nav4" onClick={this.props.onClick} 
-          contentId={this.props.currentContentId + 1} 
-          navTitle="Nächste Lektion – Next lesson – 下一課" />
+        {(this.props.currentContentId - 1) > 0 ? prevButton : ""}
+        {(this.props.currentContentId + 1) <= numOfLessons ? nextButton : ""}
       </div>
     );
   }
