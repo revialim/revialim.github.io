@@ -113,7 +113,6 @@
 	    var _this2 = _possibleConstructorReturn(this, (LessonPage.__proto__ || Object.getPrototypeOf(LessonPage)).call(this, props));
 	
 	    _this2.getChineseLessonNumber = _this2.getChineseLessonNumber.bind(_this2);
-	    //this.resolveLessonTitle = this.resolveLessonTitle.bind(this);
 	    return _this2;
 	  }
 	
@@ -154,19 +153,6 @@
 	        return this.props.lessonNumber;
 	      }
 	    }
-	
-	    //resolveLessonTitle() {
-	    //  if(this.props.lessonNumber == 1){
-	    //    return lesson1.lessonTitle;
-	    //  }
-	    //  if(this.props.lessonNumber == 2){
-	    //    return lesson2.lessonTitle;
-	    //  }
-	    //  else {
-	    //    return "lesson not defined";
-	    //  }
-	    //}
-	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -210,20 +196,7 @@
 	    _classCallCheck(this, TasksAll);
 	
 	    return _possibleConstructorReturn(this, (TasksAll.__proto__ || Object.getPrototypeOf(TasksAll)).call(this, props));
-	    // this.resolveTasks = this.resolveTasks.bind(this);
 	  }
-	
-	  //resolveTasks() {
-	  //  if(this.props.lessonNumber == 1){
-	  //    return lesson1.tasks;
-	  //  }
-	  //  if(this.props.lessonNumber == 2){
-	  //    return lesson2.tasks;
-	  //  }
-	  //  else {
-	  //    return "lesson not defined";
-	  //  }
-	  //}
 	
 	  _createClass(TasksAll, [{
 	    key: 'render',
@@ -327,28 +300,13 @@
 	  function VocabularyAll(props) {
 	    _classCallCheck(this, VocabularyAll);
 	
-	    var _this6 = _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).call(this, props));
-	
-	    _this6.resolveVocabularies = _this6.resolveVocabularies.bind(_this6);
-	    return _this6;
+	    return _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).call(this, props));
 	  }
 	
 	  _createClass(VocabularyAll, [{
-	    key: 'resolveVocabularies',
-	    value: function resolveVocabularies() {
-	      if (this.props.lessonNumber == 1) {
-	        return lesson1.vocabulary;
-	      }
-	      if (this.props.lessonNumber == 2) {
-	        return lesson2.vocabulary;
-	      } else {
-	        return "lesson not defined";
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var vocArr = this.resolveVocabularies();
+	      var vocArr = lessonsAll.allLessonsList[this.props.lessonNumber - 1].vocabulary;
 	      var vocComponentArr = [];
 	
 	      for (var i = 0; i < vocArr.length; i++) {
@@ -414,28 +372,13 @@
 	  function PracticeText(props) {
 	    _classCallCheck(this, PracticeText);
 	
-	    var _this8 = _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).call(this, props));
-	
-	    _this8.resolvePracticeText = _this8.resolvePracticeText.bind(_this8);
-	    return _this8;
+	    return _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).call(this, props));
 	  }
 	
 	  _createClass(PracticeText, [{
-	    key: 'resolvePracticeText',
-	    value: function resolvePracticeText() {
-	      if (this.props.lessonNumber == 1) {
-	        return lesson1.practiceText;
-	      }
-	      if (this.props.lessonNumber == 2) {
-	        return lesson2.practiceText;
-	      } else {
-	        return "lesson not defined";
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var practiceText = this.resolvePracticeText();
+	      var practiceText = lessonsAll.allLessonsList[this.props.lessonNumber - 1].practiceText;
 	      console.log("practiceText: " + practiceText + "german? " + practiceText.german);
 	      return _react2.default.createElement(
 	        'div',

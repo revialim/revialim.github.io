@@ -22,7 +22,6 @@ class LessonPage extends React.Component {
   constructor(props) {
     super(props);
     this.getChineseLessonNumber = this.getChineseLessonNumber.bind(this);
-    //this.resolveLessonTitle = this.resolveLessonTitle.bind(this);
   }
   
   getChineseLessonNumber() {
@@ -60,18 +59,6 @@ class LessonPage extends React.Component {
       return this.props.lessonNumber;
     }
   }
-  
-  //resolveLessonTitle() {
-  //  if(this.props.lessonNumber == 1){
-  //    return lesson1.lessonTitle;
-  //  }
-  //  if(this.props.lessonNumber == 2){
-  //    return lesson2.lessonTitle;
-  //  }
-  //  else {
-  //    return "lesson not defined";
-  //  }
-  //}
   
   render() {
     const lessonNum =  this.props.lessonNumber;
@@ -155,23 +142,10 @@ class SubTask extends React.Component {
 class VocabularyAll extends React.Component {
   constructor(props) {
     super(props);
-    this.resolveVocabularies = this.resolveVocabularies.bind(this);
-  }
-  
-  resolveVocabularies() {
-    if(this.props.lessonNumber == 1){
-      return lesson1.vocabulary;
-    }
-    if(this.props.lessonNumber == 2){
-      return lesson2.vocabulary;
-    }
-    else {
-      return "lesson not defined";
-    }
   }
   
   render() {
-    const vocArr = this.resolveVocabularies();
+    const vocArr = lessonsAll.allLessonsList[this.props.lessonNumber - 1].vocabulary;
     const vocComponentArr = [];
     
     for(var i = 0; i < vocArr.length; i++){
@@ -208,23 +182,10 @@ class VocabularySingle extends React.Component {
 class PracticeText extends React.Component {
   constructor(props) {
     super(props);
-    this.resolvePracticeText = this.resolvePracticeText.bind(this);
-  }
-  
-  resolvePracticeText() {
-    if(this.props.lessonNumber == 1){
-      return lesson1.practiceText;
-    }
-    if(this.props.lessonNumber == 2){
-      return lesson2.practiceText;
-    }
-    else {
-      return "lesson not defined";
-    }
   }
   
   render() {
-    const practiceText = this.resolvePracticeText();
+    const practiceText = lessonsAll.allLessonsList[this.props.lessonNumber - 1].practiceText;
     console.log("practiceText: "+practiceText + "german? "+ practiceText.german);
     return (
       <div className="practice">
