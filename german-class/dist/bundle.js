@@ -67,10 +67,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var numOfLessons = 2; //todo find a better way to update
 	var lesson1 = __webpack_require__(/*! ./lessons/lesson1 */ 27);
 	var lesson2 = __webpack_require__(/*! ./lessons/lesson2 */ 28);
 	var lessonsAll = __webpack_require__(/*! ./lessonsAll */ 29);
+	var numOfLessons = lessonsAll.allLessonsList.length;
 	
 	var StartPage = function (_React$Component) {
 	  _inherits(StartPage, _React$Component);
@@ -113,7 +113,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (LessonPage.__proto__ || Object.getPrototypeOf(LessonPage)).call(this, props));
 	
 	    _this2.getChineseLessonNumber = _this2.getChineseLessonNumber.bind(_this2);
-	    _this2.resolveLessonTitle = _this2.resolveLessonTitle.bind(_this2);
+	    //this.resolveLessonTitle = this.resolveLessonTitle.bind(this);
 	    return _this2;
 	  }
 	
@@ -154,21 +154,24 @@
 	        return this.props.lessonNumber;
 	      }
 	    }
-	  }, {
-	    key: 'resolveLessonTitle',
-	    value: function resolveLessonTitle() {
-	      if (this.props.lessonNumber == 1) {
-	        return lesson1.lessonTitle;
-	      }
-	      if (this.props.lessonNumber == 2) {
-	        return lesson2.lessonTitle;
-	      } else {
-	        return "lesson not defined";
-	      }
-	    }
+	
+	    //resolveLessonTitle() {
+	    //  if(this.props.lessonNumber == 1){
+	    //    return lesson1.lessonTitle;
+	    //  }
+	    //  if(this.props.lessonNumber == 2){
+	    //    return lesson2.lessonTitle;
+	    //  }
+	    //  else {
+	    //    return "lesson not defined";
+	    //  }
+	    //}
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var lessonNum = this.props.lessonNumber;
+	      var allLessons = lessonsAll.allLessonsList;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'lection main-contents' },
@@ -178,7 +181,7 @@
 	          ' Lektion ',
 	          this.props.lessonNumber,
 	          ' \u2013 Lesson ',
-	          this.props.lessonNumber,
+	          lessonNum,
 	          ' \u2013 \u7B2C',
 	          this.getChineseLessonNumber(),
 	          '\u8AB2'
@@ -187,12 +190,12 @@
 	          'div',
 	          { className: 'lection-title' },
 	          ' ',
-	          this.resolveLessonTitle(),
+	          allLessons[lessonNum - 1].lessonTitle,
 	          ' '
 	        ),
-	        _react2.default.createElement(PracticeText, { lessonNumber: this.props.lessonNumber }),
-	        _react2.default.createElement(VocabularyAll, { lessonNumber: this.props.lessonNumber }),
-	        _react2.default.createElement(TasksAll, { lessonNumber: this.props.lessonNumber })
+	        _react2.default.createElement(PracticeText, { lessonNumber: lessonNum }),
+	        _react2.default.createElement(VocabularyAll, { lessonNumber: lessonNum }),
+	        _react2.default.createElement(TasksAll, { lessonNumber: lessonNum })
 	      );
 	    }
 	  }]);
@@ -206,28 +209,26 @@
 	  function TasksAll(props) {
 	    _classCallCheck(this, TasksAll);
 	
-	    var _this3 = _possibleConstructorReturn(this, (TasksAll.__proto__ || Object.getPrototypeOf(TasksAll)).call(this, props));
-	
-	    _this3.resolveTasks = _this3.resolveTasks.bind(_this3);
-	    return _this3;
+	    return _possibleConstructorReturn(this, (TasksAll.__proto__ || Object.getPrototypeOf(TasksAll)).call(this, props));
+	    // this.resolveTasks = this.resolveTasks.bind(this);
 	  }
 	
+	  //resolveTasks() {
+	  //  if(this.props.lessonNumber == 1){
+	  //    return lesson1.tasks;
+	  //  }
+	  //  if(this.props.lessonNumber == 2){
+	  //    return lesson2.tasks;
+	  //  }
+	  //  else {
+	  //    return "lesson not defined";
+	  //  }
+	  //}
+	
 	  _createClass(TasksAll, [{
-	    key: 'resolveTasks',
-	    value: function resolveTasks() {
-	      if (this.props.lessonNumber == 1) {
-	        return lesson1.tasks;
-	      }
-	      if (this.props.lessonNumber == 2) {
-	        return lesson2.tasks;
-	      } else {
-	        return "lesson not defined";
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var tasks = this.resolveTasks();
+	      var tasks = lessonsAll.allLessonsList[this.props.lessonNumber - 1].tasks;
 	      var tasksAll = [];
 	
 	      for (var i = 0; i < tasks.length; i++) {
@@ -262,8 +263,11 @@
 	  _createClass(Task, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log("task rendering: " + this.props.taskContent);
+	
 	      var subTasks = this.props.taskContent.taskSubjects;
 	      var subTasksAll = [];
+	
 	      for (var i = 0; i < subTasks.length; i++) {
 	        subTasksAll.push(_react2.default.createElement(SubTask, { key: "subtask" + i, subTaskNum: i, subTaskContent: this.props.taskContent.taskSubjects[i] }));
 	      }
@@ -304,7 +308,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'span',
-	          { 'class': 'subtask indent' },
+	          { className: 'subtask indent' },
 	          this.props.subTaskNum + 1,
 	          '.'
 	        ),
@@ -495,19 +499,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      //let pageContent = null;
-	      //if(this.state.currentPage == 0){
-	      //  pageContent = <StartPage />;
-	      //}
-	      //
-	      //if(this.state.currentPage == 1){
-	      //  pageContent = <LessonPage lessonNumber="1" lessonId="1" />
-	      //}
-	      //
-	      //if(this.state.currentPage == 2){
-	      //  pageContent = <LessonPage lessonNumber="2" lessonId="2" />
-	      //}
-	      //
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -8502,6 +8493,22 @@
 	    },
 	    vocabulary: [{ german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }],
 	    grammar: "grammar123",
+	    tasks: [{
+	      taskText: "task1 text asdf",
+	      taskSubjects: ["asdf", "zuio", "qwer"]
+	    }, {
+	      taskText: "task2 text asdf",
+	      taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+	    }]
+	  }, {
+	    lessonTitle: "lesson3 title asdf",
+	    practiceText: {
+	      german: "practice3 german asdf lorem ipsum test test 123",
+	      english: "practice3 english asdf lorem ipsum test test 123",
+	      chinese: "practice3 chinese asdf lorem ipsum test test 123"
+	    },
+	    vocabulary: [{ german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞" }],
+	    grammar: "grammar3 123",
 	    tasks: [{
 	      taskText: "task1 text asdf",
 	      taskSubjects: ["asdf", "zuio", "qwer"]

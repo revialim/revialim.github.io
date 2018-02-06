@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const numOfLessons = 2; //todo find a better way to update
 const lesson1 = require('./lessons/lesson1');
 const lesson2 = require('./lessons/lesson2');
 const lessonsAll = require('./lessonsAll');
+const numOfLessons = lessonsAll.allLessonsList.length;
 
 class StartPage extends React.Component {
   render() {
@@ -22,7 +22,7 @@ class LessonPage extends React.Component {
   constructor(props) {
     super(props);
     this.getChineseLessonNumber = this.getChineseLessonNumber.bind(this);
-    this.resolveLessonTitle = this.resolveLessonTitle.bind(this);
+    //this.resolveLessonTitle = this.resolveLessonTitle.bind(this);
   }
   
   getChineseLessonNumber() {
@@ -61,26 +61,28 @@ class LessonPage extends React.Component {
     }
   }
   
-  resolveLessonTitle() {
-    if(this.props.lessonNumber == 1){
-      return lesson1.lessonTitle;
-    }
-    if(this.props.lessonNumber == 2){
-      return lesson2.lessonTitle;
-    }
-    else {
-      return "lesson not defined";
-    }
-  }
+  //resolveLessonTitle() {
+  //  if(this.props.lessonNumber == 1){
+  //    return lesson1.lessonTitle;
+  //  }
+  //  if(this.props.lessonNumber == 2){
+  //    return lesson2.lessonTitle;
+  //  }
+  //  else {
+  //    return "lesson not defined";
+  //  }
+  //}
   
   render() {
+    const lessonNum =  this.props.lessonNumber;
+    const allLessons = lessonsAll.allLessonsList;
     return(
       <div className="lection main-contents">
-        <h2> Lektion {this.props.lessonNumber} – Lesson {this.props.lessonNumber} – 第{this.getChineseLessonNumber()}課</h2>
-        <div className="lection-title"> {this.resolveLessonTitle()} </div>
-        <PracticeText lessonNumber={this.props.lessonNumber} />
-        <VocabularyAll lessonNumber={this.props.lessonNumber} />
-        <TasksAll lessonNumber={this.props.lessonNumber} />
+        <h2> Lektion {this.props.lessonNumber} – Lesson {lessonNum} – 第{this.getChineseLessonNumber()}課</h2>
+        <div className="lection-title"> {allLessons[lessonNum - 1].lessonTitle} </div>
+        <PracticeText lessonNumber={lessonNum} />
+        <VocabularyAll lessonNumber={lessonNum} />
+        <TasksAll lessonNumber={lessonNum} />
       </div>
     );
   }
@@ -89,23 +91,10 @@ class LessonPage extends React.Component {
 class TasksAll extends React.Component {
   constructor(props) {
     super(props);
-    this.resolveTasks = this.resolveTasks.bind(this);
-  }
-  
-  resolveTasks() {
-    if(this.props.lessonNumber == 1){
-      return lesson1.tasks;
-    }
-    if(this.props.lessonNumber == 2){
-      return lesson2.tasks;
-    }
-    else {
-      return "lesson not defined";
-    }
   }
   
   render() {
-    const tasks = this.resolveTasks();
+    const tasks = lessonsAll.allLessonsList[this.props.lessonNumber - 1].tasks;
     const tasksAll = [];
     
     for(var i = 0; i < tasks.length; i++){
@@ -129,8 +118,11 @@ class Task extends React.Component {
   }
   
   render() {
+    console.log("task rendering: " + this.props.taskContent);
+    
     const subTasks = this.props.taskContent.taskSubjects;
     const subTasksAll = [];
+    
     for(var i = 0; i < subTasks.length; i++){
       subTasksAll.push(
         <SubTask key={"subtask"+i} subTaskNum={i} subTaskContent={this.props.taskContent.taskSubjects[i]}/> 
@@ -154,7 +146,7 @@ class SubTask extends React.Component {
   render() {
     return(
       <div>
-        <span class="subtask indent">{this.props.subTaskNum+1}.</span> {this.props.subTaskContent}
+        <span className="subtask indent">{this.props.subTaskNum+1}.</span> {this.props.subTaskContent}
       </div>
     );
   }
@@ -280,9 +272,9 @@ class MainComponent extends React.Component {
       <div>
         <NavBar onClick={this.handlePageClick} currentContentId={this.state.currentPage}/>
       
-        {this.state.currentPage == 0 ? 
-          <StartPage /> : 
-          <LessonPage lessonNumber={this.state.currentPage} lessonId={this.state.currentPage} />}
+        { 
+          (this.state.currentPage == 0)? <StartPage /> : <LessonPage lessonNumber={this.state.currentPage} lessonId={this.state.currentPage} />
+        }
       
         <AllLessons onClick={this.handlePageClick} />
       </div>

@@ -83,6 +83,28 @@ module.exports = { allLessonsList: [
         taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
       }
     ]
+  },
+  {
+    lessonTitle: "lesson3 title asdf",
+    practiceText: {
+      german: "practice3 german asdf lorem ipsum test test 123", 
+      english: "practice3 english asdf lorem ipsum test test 123", 
+      chinese: "practice3 chinese asdf lorem ipsum test test 123"
+    },
+    vocabulary: [
+      {german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞"},
+      {german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞"}
+    ],
+    grammar: "grammar3 123",
+    tasks: [{
+        taskText: "task1 text asdf", 
+        taskSubjects: ["asdf", "zuio", "qwer"]
+      },
+      {
+        taskText: "task2 text asdf",
+        taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+      }
+    ]
   }
 
 ]};
