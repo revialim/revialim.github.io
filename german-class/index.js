@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var numOfLessons = 2; //todo find a better way to update
-var lesson1 = require('./lessons/lesson1');
-var lesson2 = require('./lessons/lesson2');
+const numOfLessons = 2; //todo find a better way to update
+const lesson1 = require('./lessons/lesson1');
+const lesson2 = require('./lessons/lesson2');
+const lessonsAll = require('./lessonsAll');
 
 class StartPage extends React.Component {
   render() {
@@ -102,19 +103,6 @@ class TasksAll extends React.Component {
       return "lesson not defined";
     }
   }
-  
-  /*
-  [
-    {
-      taskText: "Conjugate the following verbs: – 請做以下的動詞變化：", 
-      taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
-    },
-    {
-      taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
-      taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
-    }
-  ]
-  */
   
   render() {
     const tasks = this.resolveTasks();
@@ -288,26 +276,15 @@ class MainComponent extends React.Component {
   }
   
   render() {
-    let pageContent = null;
-    if(this.state.currentPage == 0){
-      pageContent = <StartPage />;
-    }
-    
-    if(this.state.currentPage == 1){
-      pageContent = <LessonPage lessonNumber="1" lessonId="1" />
-    }
-    
-    if(this.state.currentPage == 2){
-      pageContent = <LessonPage lessonNumber="2" lessonId="2" />
-    }
-    
     return (
       <div>
         <NavBar onClick={this.handlePageClick} currentContentId={this.state.currentPage}/>
       
-        {pageContent}
+        {this.state.currentPage == 0 ? 
+          <StartPage /> : 
+          <LessonPage lessonNumber={this.state.currentPage} lessonId={this.state.currentPage} />}
       
-        <AllLessons />
+        <AllLessons onClick={this.handlePageClick} />
       </div>
     );
   }
@@ -316,7 +293,7 @@ class MainComponent extends React.Component {
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {contentId: this.props.currentContentId};
+    //this.state = {contentId: this.props.currentContentId};
   }
   
   render() {
@@ -333,7 +310,7 @@ class NavBar extends React.Component {
     return(
       <div className="navbar">
         <NavElem key="nav1" onClick={this.props.onClick} contentId="0" navTitle="Home" />
-        <NavElem key="nav2" navUrl="#all" navTitle="Alle Lektionen – All lessons – " />
+        <NavElem key="nav2" navUrl="#all" navTitle="Alle Lektionen – All lessons – 所有的課" />
         {(this.props.currentContentId - 1) > 0 ? prevButton : ""}
         {(this.props.currentContentId + 1) <= numOfLessons ? nextButton : ""}
       </div>
@@ -344,7 +321,7 @@ class NavBar extends React.Component {
 class NavElem extends React.Component {
   constructor(props) {
     super(props);
-    this.navItemClicked = this.navItemClicked.bind(this)
+    this.navItemClicked = this.navItemClicked.bind(this);
   }
   
   navItemClicked() {
@@ -366,14 +343,30 @@ class NavElem extends React.Component {
 }
 
 class AllLessons extends React.Component {
+  constructor(props) {
+    super(props);
+    this.lessonsItemClicked = this.lessonsItemClicked.bind(this);
+  }
+  
+  lessonsItemClicked(id) {
+    this.props.onClick(id);
+  }
+  
   render() {
+    const lessonItemsList = [];
+    const allLessons = lessonsAll.allLessonsList;
+    
+    for(var i = 0; i < allLessons.length; i++){
+      lessonItemsList.push(
+        <li key={"lessons"+i}><div onClick={this.lessonsItemClicked.bind(this, (i+1))}>Lesson {i+1} – "{allLessons[i].lessonTitle}"</div></li>
+      );
+    }
+    
     return(
       <div id="all">
         <h2>Alle Lektionen – All lessons – </h2>
         <ul>
-          <li key="lessons0"><a href="./lesson01.html">Lektion 1 – Lesson 1 – 第一課</a></li>
-          <li key="lessons1"><a href="./lesson_numbers.html">Zahlen – Numbers – 數目字</a></li>
-          <li key="lessons2"><a href="./lesson_abc.html">Das Alphabet – The alphabet – 德文字母</a></li>
+          {lessonItemsList}
         </ul>
       </div>
     );

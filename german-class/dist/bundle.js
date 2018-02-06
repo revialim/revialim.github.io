@@ -70,6 +70,7 @@
 	var numOfLessons = 2; //todo find a better way to update
 	var lesson1 = __webpack_require__(/*! ./lessons/lesson1 */ 27);
 	var lesson2 = __webpack_require__(/*! ./lessons/lesson2 */ 28);
+	var lessonsAll = __webpack_require__(/*! ./lessonsAll */ 29);
 	
 	var StartPage = function (_React$Component) {
 	  _inherits(StartPage, _React$Component);
@@ -223,20 +224,6 @@
 	        return "lesson not defined";
 	      }
 	    }
-	
-	    /*
-	    [
-	      {
-	        taskText: "Conjugate the following verbs: – 請做以下的動詞變化：", 
-	        taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
-	      },
-	      {
-	        taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
-	        taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
-	      }
-	    ]
-	    */
-	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -508,25 +495,25 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var pageContent = null;
-	      if (this.state.currentPage == 0) {
-	        pageContent = _react2.default.createElement(StartPage, null);
-	      }
-	
-	      if (this.state.currentPage == 1) {
-	        pageContent = _react2.default.createElement(LessonPage, { lessonNumber: '1', lessonId: '1' });
-	      }
-	
-	      if (this.state.currentPage == 2) {
-	        pageContent = _react2.default.createElement(LessonPage, { lessonNumber: '2', lessonId: '2' });
-	      }
-	
+	      //let pageContent = null;
+	      //if(this.state.currentPage == 0){
+	      //  pageContent = <StartPage />;
+	      //}
+	      //
+	      //if(this.state.currentPage == 1){
+	      //  pageContent = <LessonPage lessonNumber="1" lessonId="1" />
+	      //}
+	      //
+	      //if(this.state.currentPage == 2){
+	      //  pageContent = <LessonPage lessonNumber="2" lessonId="2" />
+	      //}
+	      //
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(NavBar, { onClick: this.handlePageClick, currentContentId: this.state.currentPage }),
-	        pageContent,
-	        _react2.default.createElement(AllLessons, null)
+	        this.state.currentPage == 0 ? _react2.default.createElement(StartPage, null) : _react2.default.createElement(LessonPage, { lessonNumber: this.state.currentPage, lessonId: this.state.currentPage }),
+	        _react2.default.createElement(AllLessons, { onClick: this.handlePageClick })
 	      );
 	    }
 	  }]);
@@ -540,10 +527,8 @@
 	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
 	
-	    var _this11 = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
-	
-	    _this11.state = { contentId: _this11.props.currentContentId };
-	    return _this11;
+	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	    //this.state = {contentId: this.props.currentContentId};
 	  }
 	
 	  _createClass(NavBar, [{
@@ -563,7 +548,7 @@
 	        'div',
 	        { className: 'navbar' },
 	        _react2.default.createElement(NavElem, { key: 'nav1', onClick: this.props.onClick, contentId: '0', navTitle: 'Home' }),
-	        _react2.default.createElement(NavElem, { key: 'nav2', navUrl: '#all', navTitle: 'Alle Lektionen \u2013 All lessons \u2013 ' }),
+	        _react2.default.createElement(NavElem, { key: 'nav2', navUrl: '#all', navTitle: 'Alle Lektionen \u2013 All lessons \u2013 \u6240\u6709\u7684\u8AB2' }),
 	        this.props.currentContentId - 1 > 0 ? prevButton : "",
 	        this.props.currentContentId + 1 <= numOfLessons ? nextButton : ""
 	      );
@@ -615,15 +600,42 @@
 	var AllLessons = function (_React$Component13) {
 	  _inherits(AllLessons, _React$Component13);
 	
-	  function AllLessons() {
+	  function AllLessons(props) {
 	    _classCallCheck(this, AllLessons);
 	
-	    return _possibleConstructorReturn(this, (AllLessons.__proto__ || Object.getPrototypeOf(AllLessons)).apply(this, arguments));
+	    var _this13 = _possibleConstructorReturn(this, (AllLessons.__proto__ || Object.getPrototypeOf(AllLessons)).call(this, props));
+	
+	    _this13.lessonsItemClicked = _this13.lessonsItemClicked.bind(_this13);
+	    return _this13;
 	  }
 	
 	  _createClass(AllLessons, [{
+	    key: 'lessonsItemClicked',
+	    value: function lessonsItemClicked(id) {
+	      this.props.onClick(id);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var lessonItemsList = [];
+	      var allLessons = lessonsAll.allLessonsList;
+	
+	      for (var i = 0; i < allLessons.length; i++) {
+	        lessonItemsList.push(_react2.default.createElement(
+	          'li',
+	          { key: "lessons" + i },
+	          _react2.default.createElement(
+	            'div',
+	            { onClick: this.lessonsItemClicked.bind(this, i + 1) },
+	            'Lesson ',
+	            i + 1,
+	            ' \u2013 "',
+	            allLessons[i].lessonTitle,
+	            '"'
+	          )
+	        ));
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'all' },
@@ -635,33 +647,7 @@
 	        _react2.default.createElement(
 	          'ul',
 	          null,
-	          _react2.default.createElement(
-	            'li',
-	            { key: 'lessons0' },
-	            _react2.default.createElement(
-	              'a',
-	              { href: './lesson01.html' },
-	              'Lektion 1 \u2013 Lesson 1 \u2013 \u7B2C\u4E00\u8AB2'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            { key: 'lessons1' },
-	            _react2.default.createElement(
-	              'a',
-	              { href: './lesson_numbers.html' },
-	              'Zahlen \u2013 Numbers \u2013 \u6578\u76EE\u5B57'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            { key: 'lessons2' },
-	            _react2.default.createElement(
-	              'a',
-	              { href: './lesson_abc.html' },
-	              'Das Alphabet \u2013 The alphabet \u2013 \u5FB7\u6587\u5B57\u6BCD'
-	            )
-	          )
+	          lessonItemsList
 	        )
 	      );
 	    }
@@ -8439,6 +8425,91 @@
 	    taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
 	  }]
 	};
+
+/***/ }),
+/* 29 */
+/*!***********************!*\
+  !*** ./lessonsAll.js ***!
+  \***********************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	module.exports = { allLessonsList: [{
+	    lessonTitle: "Hallo!",
+	    practiceText: {
+	      german: [_react2.default.createElement(
+	        "span",
+	        { key: "name1", className: "name" },
+	        "Hanna:"
+	      ), "Hallo, ich bin Hanna. Wie heißt du?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	        "span",
+	        { key: "name2", className: "name" },
+	        "Marie:"
+	      ), "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	        "span",
+	        { key: "name3", className: "name" },
+	        "Hanna:"
+	      ), "Freut mich auch!"],
+	      english: [_react2.default.createElement(
+	        "span",
+	        { key: "name1", className: "name" },
+	        "Hanna:"
+	      ), "Hello, I am Hanna. What is your name?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	        "span",
+	        { key: "name2", className: "name" },
+	        "Marie:"
+	      ), "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	        "span",
+	        { key: "name3", className: "name" },
+	        "Hanna:"
+	      ), "Nice to meet you too! (Lit.: I am happy too!)"],
+	      chinese: [_react2.default.createElement(
+	        "span",
+	        { key: "name1", className: "name" },
+	        "Hanna:"
+	      ), "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	        "span",
+	        { key: "name2", className: "name" },
+	        "Marie:"
+	      ), "你好，Hanna。 我叫Marie。 高興認識你！", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	        "span",
+	        { key: "name3", className: "name" },
+	        "Hanna:"
+	      ), "我也高興認識你！"]
+	    },
+	    vocabulary: [{ german: "Hanna", english: "female Name", chinese: "女性名" }, { german: "Marie", english: "female Name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
+	    grammar: "grammar123",
+	    tasks: [{
+	      taskText: "Conjugate the following verbs: – 請做以下的動詞變化：",
+	      taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
+	    }, {
+	      taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
+	      taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
+	    }]
+	  }, {
+	    lessonTitle: "lesson2 title asdf",
+	    practiceText: {
+	      german: "practice german asdf lorem ipsum test test 123",
+	      english: "practice english asdf lorem ipsum test test 123",
+	      chinese: "practice chinese asdf lorem ipsum test test 123"
+	    },
+	    vocabulary: [{ german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }],
+	    grammar: "grammar123",
+	    tasks: [{
+	      taskText: "task1 text asdf",
+	      taskSubjects: ["asdf", "zuio", "qwer"]
+	    }, {
+	      taskText: "task2 text asdf",
+	      taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+	    }]
+	  }] };
 
 /***/ })
 /******/ ]);
