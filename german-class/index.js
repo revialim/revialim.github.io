@@ -69,6 +69,7 @@ class LessonPage extends React.Component {
         <div className="lection-title"> {allLessons[lessonNum - 1].lessonTitle} </div>
         <PracticeText lessonNumber={lessonNum} />
         <VocabularyAll lessonNumber={lessonNum} />
+        <GrammarAll lessonNumber={lessonNum} />
         <TasksAll lessonNumber={lessonNum} />
       </div>
     );
@@ -134,6 +135,23 @@ class SubTask extends React.Component {
     return(
       <div>
         <span className="subtask indent">{this.props.subTaskNum+1}.</span> {this.props.subTaskContent}
+      </div>
+    );
+  }
+}
+
+class GrammarAll extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    const grammarContent = lessonsAll.allLessonsList[this.props.lessonNumber - 1].grammar;
+    
+    return (
+      <div className="grammar">
+        <h3>Grammatik – Grammar – 語法</h3>
+        {grammarContent}
       </div>
     );
   }

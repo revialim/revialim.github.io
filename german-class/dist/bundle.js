@@ -181,6 +181,7 @@
 	        ),
 	        _react2.default.createElement(PracticeText, { lessonNumber: lessonNum }),
 	        _react2.default.createElement(VocabularyAll, { lessonNumber: lessonNum }),
+	        _react2.default.createElement(GrammarAll, { lessonNumber: lessonNum }),
 	        _react2.default.createElement(TasksAll, { lessonNumber: lessonNum })
 	      );
 	    }
@@ -294,8 +295,38 @@
 	  return SubTask;
 	}(_react2.default.Component);
 	
-	var VocabularyAll = function (_React$Component6) {
-	  _inherits(VocabularyAll, _React$Component6);
+	var GrammarAll = function (_React$Component6) {
+	  _inherits(GrammarAll, _React$Component6);
+	
+	  function GrammarAll(props) {
+	    _classCallCheck(this, GrammarAll);
+	
+	    return _possibleConstructorReturn(this, (GrammarAll.__proto__ || Object.getPrototypeOf(GrammarAll)).call(this, props));
+	  }
+	
+	  _createClass(GrammarAll, [{
+	    key: 'render',
+	    value: function render() {
+	      var grammarContent = lessonsAll.allLessonsList[this.props.lessonNumber - 1].grammar;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'grammar' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Grammatik \u2013 Grammar \u2013 \u8A9E\u6CD5'
+	        ),
+	        grammarContent
+	      );
+	    }
+	  }]);
+	
+	  return GrammarAll;
+	}(_react2.default.Component);
+	
+	var VocabularyAll = function (_React$Component7) {
+	  _inherits(VocabularyAll, _React$Component7);
 	
 	  function VocabularyAll(props) {
 	    _classCallCheck(this, VocabularyAll);
@@ -329,8 +360,8 @@
 	  return VocabularyAll;
 	}(_react2.default.Component);
 	
-	var VocabularySingle = function (_React$Component7) {
-	  _inherits(VocabularySingle, _React$Component7);
+	var VocabularySingle = function (_React$Component8) {
+	  _inherits(VocabularySingle, _React$Component8);
 	
 	  function VocabularySingle(props) {
 	    _classCallCheck(this, VocabularySingle);
@@ -366,8 +397,8 @@
 	  return VocabularySingle;
 	}(_react2.default.Component);
 	
-	var PracticeText = function (_React$Component8) {
-	  _inherits(PracticeText, _React$Component8);
+	var PracticeText = function (_React$Component9) {
+	  _inherits(PracticeText, _React$Component9);
 	
 	  function PracticeText(props) {
 	    _classCallCheck(this, PracticeText);
@@ -398,8 +429,8 @@
 	  return PracticeText;
 	}(_react2.default.Component);
 	
-	var PracticeTextBox = function (_React$Component9) {
-	  _inherits(PracticeTextBox, _React$Component9);
+	var PracticeTextBox = function (_React$Component10) {
+	  _inherits(PracticeTextBox, _React$Component10);
 	
 	  function PracticeTextBox(props) {
 	    _classCallCheck(this, PracticeTextBox);
@@ -421,17 +452,17 @@
 	  return PracticeTextBox;
 	}(_react2.default.Component);
 	
-	var MainComponent = function (_React$Component10) {
-	  _inherits(MainComponent, _React$Component10);
+	var MainComponent = function (_React$Component11) {
+	  _inherits(MainComponent, _React$Component11);
 	
 	  function MainComponent(props) {
 	    _classCallCheck(this, MainComponent);
 	
-	    var _this10 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+	    var _this11 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
 	
-	    _this10.handlePageClick = _this10.handlePageClick.bind(_this10);
-	    _this10.state = { currentPage: 0 };
-	    return _this10;
+	    _this11.handlePageClick = _this11.handlePageClick.bind(_this11);
+	    _this11.state = { currentPage: 0 };
+	    return _this11;
 	  }
 	
 	  _createClass(MainComponent, [{
@@ -455,8 +486,8 @@
 	  return MainComponent;
 	}(_react2.default.Component);
 	
-	var NavBar = function (_React$Component11) {
-	  _inherits(NavBar, _React$Component11);
+	var NavBar = function (_React$Component12) {
+	  _inherits(NavBar, _React$Component12);
 	
 	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
@@ -492,16 +523,16 @@
 	  return NavBar;
 	}(_react2.default.Component);
 	
-	var NavElem = function (_React$Component12) {
-	  _inherits(NavElem, _React$Component12);
+	var NavElem = function (_React$Component13) {
+	  _inherits(NavElem, _React$Component13);
 	
 	  function NavElem(props) {
 	    _classCallCheck(this, NavElem);
 	
-	    var _this12 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
+	    var _this13 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
 	
-	    _this12.navItemClicked = _this12.navItemClicked.bind(_this12);
-	    return _this12;
+	    _this13.navItemClicked = _this13.navItemClicked.bind(_this13);
+	    return _this13;
 	  }
 	
 	  _createClass(NavElem, [{
@@ -531,16 +562,16 @@
 	  return NavElem;
 	}(_react2.default.Component);
 	
-	var AllLessons = function (_React$Component13) {
-	  _inherits(AllLessons, _React$Component13);
+	var AllLessons = function (_React$Component14) {
+	  _inherits(AllLessons, _React$Component14);
 	
 	  function AllLessons(props) {
 	    _classCallCheck(this, AllLessons);
 	
-	    var _this13 = _possibleConstructorReturn(this, (AllLessons.__proto__ || Object.getPrototypeOf(AllLessons)).call(this, props));
+	    var _this14 = _possibleConstructorReturn(this, (AllLessons.__proto__ || Object.getPrototypeOf(AllLessons)).call(this, props));
 	
-	    _this13.lessonsItemClicked = _this13.lessonsItemClicked.bind(_this13);
-	    return _this13;
+	    _this14.lessonsItemClicked = _this14.lessonsItemClicked.bind(_this14);
+	    return _this14;
 	  }
 	
 	  _createClass(AllLessons, [{
@@ -8419,7 +8450,628 @@
 	      ), "我也高興認識你！"]
 	    },
 	    vocabulary: [{ german: "Hanna", english: "female Name", chinese: "女性名" }, { german: "Marie", english: "female Name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
-	    grammar: "grammar123",
+	    grammar: [_react2.default.createElement(
+	      "div",
+	      { className: "section" },
+	      _react2.default.createElement(
+	        "h4",
+	        null,
+	        "Konjugation \u2013 conjugation \u2013 \u8B8A\u4F4D"
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "table-container" },
+	        _react2.default.createElement(
+	          "table",
+	          null,
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "Infinitiv: ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~en"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "singular"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "plural"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "1. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ich ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~e"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "wir ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~en"
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "2. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "du ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~st"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ihr ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~t"
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "3. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "er/sie/es ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~t"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "sie ",
+	              _react2.default.createElement(
+	                "b",
+	                null,
+	                "~en"
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "table-container" },
+	        _react2.default.createElement(
+	          "table",
+	          null,
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "en \u2013 to walk \u2013 \u8D70"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "singular"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "plural"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "1. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ich ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "e"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "wir ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "en"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "2. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "du ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "st"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ihr ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "t"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "3. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "er/sie/es ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "t"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "sie ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "geh"
+	              ),
+	              "en"
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "table-container" },
+	        _react2.default.createElement(
+	          "table",
+	          null,
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "sein \u2013 to be \u2013 \u662F"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "singular"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "plural"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "1. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ich ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "bin"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "wir ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "sind"
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "2. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "du ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "bist"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ihr ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "seid"
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "3. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "er/sie/es ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "ist"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "sie ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "sind"
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "table-container" },
+	        _react2.default.createElement(
+	          "table",
+	          null,
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "en \u2013 to be called \u2013 \u53EB"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "singular"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "plural"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "1. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ich ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "e"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "wir ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "en"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "2. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "du ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "(s)t"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ihr ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "t"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "3. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "er/sie/es ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "t"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "sie ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "hei\xDF"
+	              ),
+	              "en"
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "table-container" },
+	        _react2.default.createElement(
+	          "table",
+	          null,
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "(sich) ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "en \u2013 to be happy \u2013 \u9AD8\u8208"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "singular"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "plural"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "1. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ich ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "e (mich)"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "wir ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "en (uns)"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "2. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "du ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "st (dich)"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "ihr ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "t (euch)"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "3. Person"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "er/sie/es ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "t (sich)"
+	            ),
+	            _react2.default.createElement(
+	              "td",
+	              null,
+	              "sie ",
+	              _react2.default.createElement(
+	                "span",
+	                { className: "highlited" },
+	                "freu"
+	              ),
+	              "en (sich)"
+	            )
+	          )
+	        )
+	      )
+	    )],
 	    tasks: [{
 	      taskText: "Conjugate the following verbs: – 請做以下的動詞變化：",
 	      taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
