@@ -10,5 +10,13 @@ module.exports = {
     {german: "Vokabel deutsch", english: "voc english", chinese: "中文詞"}
   ],
   grammar: "grammar123",
-  tasks: {task1: "task1 asdf", task2: "task2 asdfasdf"}
+  tasks: [{
+      taskText: "task1 text asdf", 
+      taskSubjects: ["asdf", "zuio", "qwer"]
+    },
+    {
+      taskText: "task2 text asdf",
+      taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+    }
+  ]
 }

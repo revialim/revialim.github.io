@@ -79,6 +79,94 @@ class LessonPage extends React.Component {
         <div className="lection-title"> {this.resolveLessonTitle()} </div>
         <PracticeText lessonNumber={this.props.lessonNumber} />
         <VocabularyAll lessonNumber={this.props.lessonNumber} />
+        <TasksAll lessonNumber={this.props.lessonNumber} />
+      </div>
+    );
+  }
+}
+
+class TasksAll extends React.Component {
+  constructor(props) {
+    super(props);
+    this.resolveTasks = this.resolveTasks.bind(this);
+  }
+  
+  resolveTasks() {
+    if(this.props.lessonNumber == 1){
+      return lesson1.tasks;
+    }
+    if(this.props.lessonNumber == 2){
+      return lesson2.tasks;
+    }
+    else {
+      return "lesson not defined";
+    }
+  }
+  
+  /*
+  [
+    {
+      taskText: "Conjugate the following verbs: – 請做以下的動詞變化：", 
+      taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
+    },
+    {
+      taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
+      taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
+    }
+  ]
+  */
+  
+  render() {
+    const tasks = this.resolveTasks();
+    const tasksAll = [];
+    
+    for(var i = 0; i < tasks.length; i++){
+        tasksAll.push(
+          <Task key={"task"+i} taskNum={i} taskContent={tasks[i]}/>
+        );
+    }
+    
+    return(
+      <div className="tasks">
+        <h3>Aufgaben - Tasks - 練習</h3>
+        {tasksAll}
+      </div>
+    );
+  }
+}
+
+class Task extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    const subTasks = this.props.taskContent.taskSubjects;
+    const subTasksAll = [];
+    for(var i = 0; i < subTasks.length; i++){
+      subTasksAll.push(
+        <SubTask key={"subtask"+i} subTaskNum={i} subTaskContent={this.props.taskContent.taskSubjects[i]}/> 
+      );
+    }
+    
+    return(
+      <div className="task">
+      <span className="subtask">{this.props.taskNum +1}.</span> {this.props.taskContent.taskText}
+        {subTasksAll}
+      </div>
+    );
+  }
+}
+
+class SubTask extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    return(
+      <div>
+        <span class="subtask indent">{this.props.subTaskNum+1}.</span> {this.props.subTaskContent}
       </div>
     );
   }
@@ -106,8 +194,6 @@ class VocabularyAll extends React.Component {
     const vocArr = this.resolveVocabularies();
     const vocComponentArr = [];
     
-    console.log("vocArr: "+vocArr + " first voc: "+vocArr[0] +" german: "+vocArr[0].german);
-    
     for(var i = 0; i < vocArr.length; i++){
         vocComponentArr.push(
           <VocabularySingle key={"voc"+i} german={vocArr[i].german} english={vocArr[i].english} chinese={vocArr[i].chinese} />
@@ -116,7 +202,7 @@ class VocabularyAll extends React.Component {
     
     return (
       <div className="vocabulary">
-        <h3> Vokabeln – Vocabulary – 單字</h3>
+        <h3>Vokabeln – Vocabulary – 單字</h3>
         {vocComponentArr}
       </div>
     );

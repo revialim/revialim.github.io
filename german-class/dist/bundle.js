@@ -190,7 +190,8 @@
 	          ' '
 	        ),
 	        _react2.default.createElement(PracticeText, { lessonNumber: this.props.lessonNumber }),
-	        _react2.default.createElement(VocabularyAll, { lessonNumber: this.props.lessonNumber })
+	        _react2.default.createElement(VocabularyAll, { lessonNumber: this.props.lessonNumber }),
+	        _react2.default.createElement(TasksAll, { lessonNumber: this.props.lessonNumber })
 	      );
 	    }
 	  }]);
@@ -198,16 +199,147 @@
 	  return LessonPage;
 	}(_react2.default.Component);
 	
-	var VocabularyAll = function (_React$Component3) {
-	  _inherits(VocabularyAll, _React$Component3);
+	var TasksAll = function (_React$Component3) {
+	  _inherits(TasksAll, _React$Component3);
+	
+	  function TasksAll(props) {
+	    _classCallCheck(this, TasksAll);
+	
+	    var _this3 = _possibleConstructorReturn(this, (TasksAll.__proto__ || Object.getPrototypeOf(TasksAll)).call(this, props));
+	
+	    _this3.resolveTasks = _this3.resolveTasks.bind(_this3);
+	    return _this3;
+	  }
+	
+	  _createClass(TasksAll, [{
+	    key: 'resolveTasks',
+	    value: function resolveTasks() {
+	      if (this.props.lessonNumber == 1) {
+	        return lesson1.tasks;
+	      }
+	      if (this.props.lessonNumber == 2) {
+	        return lesson2.tasks;
+	      } else {
+	        return "lesson not defined";
+	      }
+	    }
+	
+	    /*
+	    [
+	      {
+	        taskText: "Conjugate the following verbs: – 請做以下的動詞變化：", 
+	        taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
+	      },
+	      {
+	        taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
+	        taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
+	      }
+	    ]
+	    */
+	
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var tasks = this.resolveTasks();
+	      var tasksAll = [];
+	
+	      for (var i = 0; i < tasks.length; i++) {
+	        tasksAll.push(_react2.default.createElement(Task, { key: "task" + i, taskNum: i, taskContent: tasks[i] }));
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'tasks' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Aufgaben - Tasks - \u7DF4\u7FD2'
+	        ),
+	        tasksAll
+	      );
+	    }
+	  }]);
+	
+	  return TasksAll;
+	}(_react2.default.Component);
+	
+	var Task = function (_React$Component4) {
+	  _inherits(Task, _React$Component4);
+	
+	  function Task(props) {
+	    _classCallCheck(this, Task);
+	
+	    return _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
+	  }
+	
+	  _createClass(Task, [{
+	    key: 'render',
+	    value: function render() {
+	      var subTasks = this.props.taskContent.taskSubjects;
+	      var subTasksAll = [];
+	      for (var i = 0; i < subTasks.length; i++) {
+	        subTasksAll.push(_react2.default.createElement(SubTask, { key: "subtask" + i, subTaskNum: i, subTaskContent: this.props.taskContent.taskSubjects[i] }));
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'task' },
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'subtask' },
+	          this.props.taskNum + 1,
+	          '.'
+	        ),
+	        ' ',
+	        this.props.taskContent.taskText,
+	        subTasksAll
+	      );
+	    }
+	  }]);
+	
+	  return Task;
+	}(_react2.default.Component);
+	
+	var SubTask = function (_React$Component5) {
+	  _inherits(SubTask, _React$Component5);
+	
+	  function SubTask(props) {
+	    _classCallCheck(this, SubTask);
+	
+	    return _possibleConstructorReturn(this, (SubTask.__proto__ || Object.getPrototypeOf(SubTask)).call(this, props));
+	  }
+	
+	  _createClass(SubTask, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'span',
+	          { 'class': 'subtask indent' },
+	          this.props.subTaskNum + 1,
+	          '.'
+	        ),
+	        ' ',
+	        this.props.subTaskContent
+	      );
+	    }
+	  }]);
+	
+	  return SubTask;
+	}(_react2.default.Component);
+	
+	var VocabularyAll = function (_React$Component6) {
+	  _inherits(VocabularyAll, _React$Component6);
 	
 	  function VocabularyAll(props) {
 	    _classCallCheck(this, VocabularyAll);
 	
-	    var _this3 = _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).call(this, props));
+	    var _this6 = _possibleConstructorReturn(this, (VocabularyAll.__proto__ || Object.getPrototypeOf(VocabularyAll)).call(this, props));
 	
-	    _this3.resolveVocabularies = _this3.resolveVocabularies.bind(_this3);
-	    return _this3;
+	    _this6.resolveVocabularies = _this6.resolveVocabularies.bind(_this6);
+	    return _this6;
 	  }
 	
 	  _createClass(VocabularyAll, [{
@@ -228,8 +360,6 @@
 	      var vocArr = this.resolveVocabularies();
 	      var vocComponentArr = [];
 	
-	      console.log("vocArr: " + vocArr + " first voc: " + vocArr[0] + " german: " + vocArr[0].german);
-	
 	      for (var i = 0; i < vocArr.length; i++) {
 	        vocComponentArr.push(_react2.default.createElement(VocabularySingle, { key: "voc" + i, german: vocArr[i].german, english: vocArr[i].english, chinese: vocArr[i].chinese }));
 	      }
@@ -240,7 +370,7 @@
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          ' Vokabeln \u2013 Vocabulary \u2013 \u55AE\u5B57'
+	          'Vokabeln \u2013 Vocabulary \u2013 \u55AE\u5B57'
 	        ),
 	        vocComponentArr
 	      );
@@ -250,8 +380,8 @@
 	  return VocabularyAll;
 	}(_react2.default.Component);
 	
-	var VocabularySingle = function (_React$Component4) {
-	  _inherits(VocabularySingle, _React$Component4);
+	var VocabularySingle = function (_React$Component7) {
+	  _inherits(VocabularySingle, _React$Component7);
 	
 	  function VocabularySingle(props) {
 	    _classCallCheck(this, VocabularySingle);
@@ -287,16 +417,16 @@
 	  return VocabularySingle;
 	}(_react2.default.Component);
 	
-	var PracticeText = function (_React$Component5) {
-	  _inherits(PracticeText, _React$Component5);
+	var PracticeText = function (_React$Component8) {
+	  _inherits(PracticeText, _React$Component8);
 	
 	  function PracticeText(props) {
 	    _classCallCheck(this, PracticeText);
 	
-	    var _this5 = _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).call(this, props));
+	    var _this8 = _possibleConstructorReturn(this, (PracticeText.__proto__ || Object.getPrototypeOf(PracticeText)).call(this, props));
 	
-	    _this5.resolvePracticeText = _this5.resolvePracticeText.bind(_this5);
-	    return _this5;
+	    _this8.resolvePracticeText = _this8.resolvePracticeText.bind(_this8);
+	    return _this8;
 	  }
 	
 	  _createClass(PracticeText, [{
@@ -334,8 +464,8 @@
 	  return PracticeText;
 	}(_react2.default.Component);
 	
-	var PracticeTextBox = function (_React$Component6) {
-	  _inherits(PracticeTextBox, _React$Component6);
+	var PracticeTextBox = function (_React$Component9) {
+	  _inherits(PracticeTextBox, _React$Component9);
 	
 	  function PracticeTextBox(props) {
 	    _classCallCheck(this, PracticeTextBox);
@@ -357,17 +487,17 @@
 	  return PracticeTextBox;
 	}(_react2.default.Component);
 	
-	var MainComponent = function (_React$Component7) {
-	  _inherits(MainComponent, _React$Component7);
+	var MainComponent = function (_React$Component10) {
+	  _inherits(MainComponent, _React$Component10);
 	
 	  function MainComponent(props) {
 	    _classCallCheck(this, MainComponent);
 	
-	    var _this7 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+	    var _this10 = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
 	
-	    _this7.handlePageClick = _this7.handlePageClick.bind(_this7);
-	    _this7.state = { currentPage: 0 };
-	    return _this7;
+	    _this10.handlePageClick = _this10.handlePageClick.bind(_this10);
+	    _this10.state = { currentPage: 0 };
+	    return _this10;
 	  }
 	
 	  _createClass(MainComponent, [{
@@ -404,16 +534,16 @@
 	  return MainComponent;
 	}(_react2.default.Component);
 	
-	var NavBar = function (_React$Component8) {
-	  _inherits(NavBar, _React$Component8);
+	var NavBar = function (_React$Component11) {
+	  _inherits(NavBar, _React$Component11);
 	
 	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
 	
-	    var _this8 = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	    var _this11 = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
 	
-	    _this8.state = { contentId: _this8.props.currentContentId };
-	    return _this8;
+	    _this11.state = { contentId: _this11.props.currentContentId };
+	    return _this11;
 	  }
 	
 	  _createClass(NavBar, [{
@@ -443,16 +573,16 @@
 	  return NavBar;
 	}(_react2.default.Component);
 	
-	var NavElem = function (_React$Component9) {
-	  _inherits(NavElem, _React$Component9);
+	var NavElem = function (_React$Component12) {
+	  _inherits(NavElem, _React$Component12);
 	
 	  function NavElem(props) {
 	    _classCallCheck(this, NavElem);
 	
-	    var _this9 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
+	    var _this12 = _possibleConstructorReturn(this, (NavElem.__proto__ || Object.getPrototypeOf(NavElem)).call(this, props));
 	
-	    _this9.navItemClicked = _this9.navItemClicked.bind(_this9);
-	    return _this9;
+	    _this12.navItemClicked = _this12.navItemClicked.bind(_this12);
+	    return _this12;
 	  }
 	
 	  _createClass(NavElem, [{
@@ -482,8 +612,8 @@
 	  return NavElem;
 	}(_react2.default.Component);
 	
-	var AllLessons = function (_React$Component10) {
-	  _inherits(AllLessons, _React$Component10);
+	var AllLessons = function (_React$Component13) {
+	  _inherits(AllLessons, _React$Component13);
 	
 	  function AllLessons() {
 	    _classCallCheck(this, AllLessons);
@@ -8230,51 +8360,57 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	module.exports = {
-	      lessonTitle: "Hallo!",
-	      practiceText: {
-	            german: [_react2.default.createElement(
-	                  "span",
-	                  { key: "name1", className: "name" },
-	                  "Hanna:"
-	            ), "Hallo, ich bin Hanna. Wie heißt du?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
-	                  "span",
-	                  { key: "name2", className: "name" },
-	                  "Marie:"
-	            ), "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
-	                  "span",
-	                  { key: "name3", className: "name" },
-	                  "Hanna:"
-	            ), "Freut mich auch!"],
-	            english: [_react2.default.createElement(
-	                  "span",
-	                  { key: "name1", className: "name" },
-	                  "Hanna:"
-	            ), "Hello, I am Hanna. What is your name?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
-	                  "span",
-	                  { key: "name2", className: "name" },
-	                  "Marie:"
-	            ), "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
-	                  "span",
-	                  { key: "name3", className: "name" },
-	                  "Hanna:"
-	            ), "Nice to meet you too! (Lit.: I am happy too!)"],
-	            chinese: [_react2.default.createElement(
-	                  "span",
-	                  { key: "name1", className: "name" },
-	                  "Hanna:"
-	            ), "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
-	                  "span",
-	                  { key: "name2", className: "name" },
-	                  "Marie:"
-	            ), "你好，Hanna。 我叫Marie。 高興認識你！", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
-	                  "span",
-	                  { key: "name3", className: "name" },
-	                  "Hanna:"
-	            ), "我也高興認識你！"]
-	      },
-	      vocabulary: [{ german: "Hanna", english: "female Name", chinese: "女性名" }, { german: "Marie", english: "female Name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
-	      grammar: "grammar123",
-	      tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
+	  lessonTitle: "Hallo!",
+	  practiceText: {
+	    german: [_react2.default.createElement(
+	      "span",
+	      { key: "name1", className: "name" },
+	      "Hanna:"
+	    ), "Hallo, ich bin Hanna. Wie heißt du?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	      "span",
+	      { key: "name2", className: "name" },
+	      "Marie:"
+	    ), "Hallo, Hanna. Ich heiße Marie. Freut mich dich kennenzulernen!", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	      "span",
+	      { key: "name3", className: "name" },
+	      "Hanna:"
+	    ), "Freut mich auch!"],
+	    english: [_react2.default.createElement(
+	      "span",
+	      { key: "name1", className: "name" },
+	      "Hanna:"
+	    ), "Hello, I am Hanna. What is your name?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	      "span",
+	      { key: "name2", className: "name" },
+	      "Marie:"
+	    ), "Hello, Hanna. My name is Marie. Nice to meet you! （Literally: I am happy to get to know you!)", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	      "span",
+	      { key: "name3", className: "name" },
+	      "Hanna:"
+	    ), "Nice to meet you too! (Lit.: I am happy too!)"],
+	    chinese: [_react2.default.createElement(
+	      "span",
+	      { key: "name1", className: "name" },
+	      "Hanna:"
+	    ), "你好，我是Hanna。 你叫什麼？ （Lit.: 怎麼叫你？）", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	      "span",
+	      { key: "name2", className: "name" },
+	      "Marie:"
+	    ), "你好，Hanna。 我叫Marie。 高興認識你！", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	      "span",
+	      { key: "name3", className: "name" },
+	      "Hanna:"
+	    ), "我也高興認識你！"]
+	  },
+	  vocabulary: [{ german: "Hanna", english: "female Name", chinese: "女性名" }, { german: "Marie", english: "female Name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
+	  grammar: "grammar123",
+	  tasks: [{
+	    taskText: "Conjugate the following verbs: – 請做以下的動詞變化：",
+	    taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
+	  }, {
+	    taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
+	    taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
+	  }]
 	};
 
 /***/ }),
@@ -8295,7 +8431,13 @@
 	  },
 	  vocabulary: [{ german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }],
 	  grammar: "grammar123",
-	  tasks: { task1: "task1 asdf", task2: "task2 asdfasdf" }
+	  tasks: [{
+	    taskText: "task1 text asdf",
+	    taskSubjects: ["asdf", "zuio", "qwer"]
+	  }, {
+	    taskText: "task2 text asdf",
+	    taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+	  }]
 	};
 
 /***/ })

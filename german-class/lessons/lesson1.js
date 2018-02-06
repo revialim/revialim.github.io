@@ -50,5 +50,14 @@ module.exports = {
     {german: "auch", english: "also, too, as well", chinese: "也"}
   ],
   grammar: "grammar123",
-  tasks: {task1: "task1 asdf", task2: "task2 asdfasdf"}
+  tasks: [
+    {
+      taskText: "Conjugate the following verbs: – 請做以下的動詞變化：", 
+      taskSubjects: ["trinken (to drink - 喝)", "heißen (to be called - 叫)", "lachen (to laugh - 笑)"]
+    },
+    {
+      taskText: "Translate these sentences into German: - 請翻譯以下的句子：",
+      taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
+    }
+  ]
 };
