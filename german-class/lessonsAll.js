@@ -181,18 +181,76 @@ module.exports = { allLessonsList: [
     ]
   },
   {
-    lessonTitle: "lesson2 title asdf",
+    lessonTitle: "Kann ich mir einen Stift ausleihen?",
     practiceText: {
-      german: "practice german asdf lorem ipsum test test 123", 
-      english: "practice english asdf lorem ipsum test test 123", 
-      chinese: "practice chinese asdf lorem ipsum test test 123"
+      german: [
+            <span key="name1" className="name">Bert:</span>,
+            "Hey, kann ich mir einen Stift ausleihen?",
+            <br key="br1"/>, 
+            <br key="br2"/>,
+            <span key="name2" className="name">Ralf:</span>,
+            "Ja. Möchtest du den Bleistift oder den Kugelschreiber?",
+            <br key="br3"/>, 
+            <br key="br4"/>,
+            <span key="name3" className="name">Bert:</span>,
+            "Den Kugelschreiber, bitte!",
+            <br key="br5"/>, 
+            <br key="br6"/>,
+            <span key="name4" className="name">Ralf:</span>,
+            "Hier.",
+            <br key="br7"/>, 
+            <br key="br8"/>,
+            <span key="name5" className="name">Bert:</span>,
+            "Dankeschön!"
+            ], 
+      english: [
+            <span key="name1" className="name">Bert:</span>,
+            "Hey, can I borrow a pen?",
+            <br key="br1"/>, 
+            <br key="br2"/>,
+            <span key="name2" className="name">Ralf:</span>,
+            "Yes. Do you want the pencil or the ball pen?",
+            <br key="br3"/>, 
+            <br key="br4"/>,
+            <span key="name3" className="name">Bert:</span>,
+            "The ball pen, please!",
+            <br key="br5"/>, 
+            <br key="br6"/>,
+            <span key="name4" className="name">Ralf:</span>,
+            "Here you go.",
+            <br key="br7"/>, 
+            <br key="br8"/>,
+            <span key="name5" className="name">Bert:</span>,
+            "Thank you!"
+            ], 
+      chinese: [
+            <span key="name1" className="name">Bert:</span>,
+            "我可以借一支筆嗎？",
+            <br key="br1"/>, 
+            <br key="br2"/>,
+            <span key="name2" className="name">Ralf:</span>,
+            "可以. 你要鉛筆還是原子筆?",
+            <br key="br3"/>, 
+            <br key="br4"/>,
+            <span key="name3" className="name">Bert:</span>,
+            "原子筆。",
+            <br key="br5"/>, 
+            <br key="br6"/>,
+            <span key="name4" className="name">Ralf:</span>,
+            "這裡。",
+            <br key="br7"/>, 
+            <br key="br8"/>,
+            <span key="name5" className="name">Bert:</span>,
+            "謝謝！"
+            ]
     },
     vocabulary: [
-      {german: "Vokabel deutsch", english: "voc english", chinese: "中文詞"},
-      {german: "Vokabel deutsch", english: "voc english", chinese: "中文詞"}
+      {german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞"},
+      {german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞"}
     ],
-    grammar: "grammar123",
-    tasks: [{
+    grammar: "grammar3 123",
+    tasks: [
+      {
         taskText: "task1 text asdf", 
         taskSubjects: ["asdf", "zuio", "qwer"]
       },
@@ -203,24 +261,68 @@ module.exports = { allLessonsList: [
     ]
   },
   {
-    lessonTitle: "lesson3 title asdf",
+    lessonTitle: "Alphabet",
     practiceText: {
-      german: "practice3 german asdf lorem ipsum test test 123", 
-      english: "practice3 english asdf lorem ipsum test test 123", 
-      chinese: "practice3 chinese asdf lorem ipsum test test 123"
+      german: [
+        <div>
+          Das deutsche Alphabet hat 30 Buchstaben. Zusätzlich zu den Buchstaben von A bis Z gibt es noch die Umlaute Ä, Ö und Ü und das scharfe S, das ß.
+        </div>,
+        <br />,
+        <div>
+          <h4>Buchstabenkombinationen</h4>
+          <div> eu - 'oi'</div>
+          <div> ei – 'ai'</div>
+          <div> ph - 'f' </div>
+          <div> ch </div>
+          <div> sch </div>
+          <div> st – scht </div>
+          <br />
+          <div> h nach einem Vokal verlängert die Aussprache (ah, eh, ih, oh, uh) </div>
+          <div> doppelte Konsonanten nach einem Vokal verkürzen die Aussprache </div>
+        </div>
+      ], 
+      english: [
+        "The german alphabet has 30 letters. Additional to the letters from A to Z there are the secondary vowels Ä, Ö and Ü and also the sharp S, the ß (read: es zet)"
+      ], 
+      chinese: ""
     },
     vocabulary: [
-      {german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞"},
-      {german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞"}
+      {german: "A a", english: "a", chinese: "Apfel, Ameise"},
+      {german: "B b", english: "be", chinese: "bald"},
+      {german: "C c", english: "ze, ce", chinese: "Chemie"},
+      {german: "D d", english: "de", chinese: "dort"},
+      {german: "E e", english: "e", chinese: "Ei, Ente"},
+      {german: "F f", english: "ef", chinese: "Fuchs, Frau"},
+      {german: "G g", english: "ge", chinese: "gerne, gut"},
+      {german: "H h", english: "ha", chinese: "Haus, hier"},
+      {german: "I i", english: "ih", chinese: "in, Insel"},
+      {german: "J j", english: "jot", chinese: "Jahr"},
+      {german: "K k", english: "ka", chinese: "kalt"},
+      {german: "L l", english: "el", chinese: "laut, leise"},
+      {german: "M m", english: "em", chinese: "Mann, Maus"},
+      {german: "N n", english: "en", chinese: "nein, nur"},
+      {german: "O o", english: "o", chinese: "ohne, Ohr"},
+      {german: "P p", english: "pe", chinese: "Papier, Pause"},
+      {german: "Q q", english: "ku, qu", chinese: "Qualle, quasi"},
+      {german: "R r", english: "er", chinese: "Reis, rauf, runter"},
+      {german: "S s", english: "es", chinese: "Silber, sehen"},
+      {german: "T t", english: "te", chinese: "tanzen"},
+      {german: "U u", english: "u", chinese: "Uhr, unter"},
+      {german: "V v", english: "fau", chinese: "Vogel, vier"},
+      {german: "W w", english: "we", chinese: "warm"},
+      {german: "X x", english: "iks, ix", chinese: ""},
+      {german: "Y y", english: "ypsilon", chinese: ""},
+      {german: "Z z", english: "zet", chinese: "Zahl, Zeit"},
+      {german: "Ä ä", english: "ä", chinese: "ändern"},
+      {german: "Ö ö", english: "ö", chinese: "Öl, öde"},
+      {german: "Ü ü", english: "ü", chinese: "über"},
+      {german: "ß (sz)", english: "es zet", chinese: ""}
     ],
-    grammar: "grammar3 123",
+    grammar: []
+    ,
     tasks: [{
-        taskText: "task1 text asdf", 
-        taskSubjects: ["asdf", "zuio", "qwer"]
-      },
-      {
-        taskText: "task2 text asdf",
-        taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+        taskText: "Read the alphabet out loud for yourself", 
+        taskSubjects: []
       }
     ]
   }

@@ -435,16 +435,47 @@
 	  function PracticeTextBox(props) {
 	    _classCallCheck(this, PracticeTextBox);
 	
-	    return _possibleConstructorReturn(this, (PracticeTextBox.__proto__ || Object.getPrototypeOf(PracticeTextBox)).call(this, props));
+	    var _this10 = _possibleConstructorReturn(this, (PracticeTextBox.__proto__ || Object.getPrototypeOf(PracticeTextBox)).call(this, props));
+	
+	    _this10.handleVisibility = _this10.handleVisibility.bind(_this10);
+	    _this10.state = { showText: false };
+	    return _this10;
 	  }
 	
 	  _createClass(PracticeTextBox, [{
+	    key: 'handleVisibility',
+	    value: function handleVisibility() {
+	      if (this.state.showText) {
+	        this.setState({ showText: false });
+	      } else {
+	        this.setState({ showText: true });
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      //set visibility to true for german text box in the beginning
+	      if (this.props.language == "german") {
+	        this.setState({ showText: true });
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'p',
 	        { key: "pt" + this.props.language, className: this.props.language },
-	        this.props.text
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'visibility-button', onClick: this.handleVisibility.bind(this) },
+	          this.state.showText ? "hide " + this.props.language : "show " + this.props.language,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: "textbox " + (this.state.showText ? "visible" : "hidden") },
+	          this.props.text
+	        )
 	      );
 	    }
 	  }]);
@@ -9080,27 +9111,71 @@
 	      taskSubjects: ["Her name is Marie. 我叫Marie。 (--> heißen)", "You drink coffee (Kaffee). 你喝咖啡。 (--> trinken)", "They laugh. 他們笑了。(--> lachen)"]
 	    }]
 	  }, {
-	    lessonTitle: "lesson2 title asdf",
+	    lessonTitle: "Kann ich mir einen Stift ausleihen?",
 	    practiceText: {
-	      german: "practice german asdf lorem ipsum test test 123",
-	      english: "practice english asdf lorem ipsum test test 123",
-	      chinese: "practice chinese asdf lorem ipsum test test 123"
-	    },
-	    vocabulary: [{ german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel deutsch", english: "voc english", chinese: "中文詞" }],
-	    grammar: "grammar123",
-	    tasks: [{
-	      taskText: "task1 text asdf",
-	      taskSubjects: ["asdf", "zuio", "qwer"]
-	    }, {
-	      taskText: "task2 text asdf",
-	      taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
-	    }]
-	  }, {
-	    lessonTitle: "lesson3 title asdf",
-	    practiceText: {
-	      german: "practice3 german asdf lorem ipsum test test 123",
-	      english: "practice3 english asdf lorem ipsum test test 123",
-	      chinese: "practice3 chinese asdf lorem ipsum test test 123"
+	      german: [_react2.default.createElement(
+	        "span",
+	        { key: "name1", className: "name" },
+	        "Bert:"
+	      ), "Hey, kann ich mir einen Stift ausleihen?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	        "span",
+	        { key: "name2", className: "name" },
+	        "Ralf:"
+	      ), "Ja. Möchtest du den Bleistift oder den Kugelschreiber?", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	        "span",
+	        { key: "name3", className: "name" },
+	        "Bert:"
+	      ), "Den Kugelschreiber, bitte!", _react2.default.createElement("br", { key: "br5" }), _react2.default.createElement("br", { key: "br6" }), _react2.default.createElement(
+	        "span",
+	        { key: "name4", className: "name" },
+	        "Ralf:"
+	      ), "Hier.", _react2.default.createElement("br", { key: "br7" }), _react2.default.createElement("br", { key: "br8" }), _react2.default.createElement(
+	        "span",
+	        { key: "name5", className: "name" },
+	        "Bert:"
+	      ), "Dankeschön!"],
+	      english: [_react2.default.createElement(
+	        "span",
+	        { key: "name1", className: "name" },
+	        "Bert:"
+	      ), "Hey, can I borrow a pen?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	        "span",
+	        { key: "name2", className: "name" },
+	        "Ralf:"
+	      ), "Yes. Do you want the pencil or the ball pen?", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	        "span",
+	        { key: "name3", className: "name" },
+	        "Bert:"
+	      ), "The ball pen, please!", _react2.default.createElement("br", { key: "br5" }), _react2.default.createElement("br", { key: "br6" }), _react2.default.createElement(
+	        "span",
+	        { key: "name4", className: "name" },
+	        "Ralf:"
+	      ), "Here you go.", _react2.default.createElement("br", { key: "br7" }), _react2.default.createElement("br", { key: "br8" }), _react2.default.createElement(
+	        "span",
+	        { key: "name5", className: "name" },
+	        "Bert:"
+	      ), "Thank you!"],
+	      chinese: [_react2.default.createElement(
+	        "span",
+	        { key: "name1", className: "name" },
+	        "Bert:"
+	      ), "我可以借一支筆嗎？", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
+	        "span",
+	        { key: "name2", className: "name" },
+	        "Ralf:"
+	      ), "可以. 你要鉛筆還是原子筆?", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
+	        "span",
+	        { key: "name3", className: "name" },
+	        "Bert:"
+	      ), "原子筆。", _react2.default.createElement("br", { key: "br5" }), _react2.default.createElement("br", { key: "br6" }), _react2.default.createElement(
+	        "span",
+	        { key: "name4", className: "name" },
+	        "Ralf:"
+	      ), "這裡。", _react2.default.createElement("br", { key: "br7" }), _react2.default.createElement("br", { key: "br8" }), _react2.default.createElement(
+	        "span",
+	        { key: "name5", className: "name" },
+	        "Bert:"
+	      ), "謝謝！"]
 	    },
 	    vocabulary: [{ german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞" }],
 	    grammar: "grammar3 123",
@@ -9110,6 +9185,73 @@
 	    }, {
 	      taskText: "task2 text asdf",
 	      taskSubjects: ["sub1", "sub2", "sub3", "sub4"]
+	    }]
+	  }, {
+	    lessonTitle: "Alphabet",
+	    practiceText: {
+	      german: [_react2.default.createElement(
+	        "div",
+	        null,
+	        "Das deutsche Alphabet hat 30 Buchstaben. Zus\xE4tzlich zu den Buchstaben von A bis Z gibt es noch die Umlaute \xC4, \xD6 und \xDC und das scharfe S, das \xDF."
+	      ), _react2.default.createElement("br", null), _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "h4",
+	          null,
+	          "Buchstabenkombinationen"
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " eu - 'oi'"
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " ei \u2013 'ai'"
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " ph - 'f' "
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " ch "
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " sch "
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " st \u2013 scht "
+	        ),
+	        _react2.default.createElement("br", null),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " h nach einem Vokal verl\xE4ngert die Aussprache (ah, eh, ih, oh, uh) "
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          " doppelte Konsonanten nach einem Vokal verk\xFCrzen die Aussprache "
+	        )
+	      )],
+	      english: ["The german alphabet has 30 letters. Additional to the letters from A to Z there are the secondary vowels Ä, Ö and Ü and also the sharp S, the ß (read: es zet)"],
+	      chinese: ""
+	    },
+	    vocabulary: [{ german: "A a", english: "a", chinese: "Apfel, Ameise" }, { german: "B b", english: "be", chinese: "bald" }, { german: "C c", english: "ze, ce", chinese: "Chemie" }, { german: "D d", english: "de", chinese: "dort" }, { german: "E e", english: "e", chinese: "Ei, Ente" }, { german: "F f", english: "ef", chinese: "Fuchs, Frau" }, { german: "G g", english: "ge", chinese: "gerne, gut" }, { german: "H h", english: "ha", chinese: "Haus, hier" }, { german: "I i", english: "ih", chinese: "in, Insel" }, { german: "J j", english: "jot", chinese: "Jahr" }, { german: "K k", english: "ka", chinese: "kalt" }, { german: "L l", english: "el", chinese: "laut, leise" }, { german: "M m", english: "em", chinese: "Mann, Maus" }, { german: "N n", english: "en", chinese: "nein, nur" }, { german: "O o", english: "o", chinese: "ohne, Ohr" }, { german: "P p", english: "pe", chinese: "Papier, Pause" }, { german: "Q q", english: "ku, qu", chinese: "Qualle, quasi" }, { german: "R r", english: "er", chinese: "Reis, rauf, runter" }, { german: "S s", english: "es", chinese: "Silber, sehen" }, { german: "T t", english: "te", chinese: "tanzen" }, { german: "U u", english: "u", chinese: "Uhr, unter" }, { german: "V v", english: "fau", chinese: "Vogel, vier" }, { german: "W w", english: "we", chinese: "warm" }, { german: "X x", english: "iks, ix", chinese: "" }, { german: "Y y", english: "ypsilon", chinese: "" }, { german: "Z z", english: "zet", chinese: "Zahl, Zeit" }, { german: "Ä ä", english: "ä", chinese: "ändern" }, { german: "Ö ö", english: "ö", chinese: "Öl, öde" }, { german: "Ü ü", english: "ü", chinese: "über" }, { german: "ß (sz)", english: "es zet", chinese: "" }],
+	    grammar: [],
+	
+	    tasks: [{
+	      taskText: "Read the alphabet out loud for yourself",
+	      taskSubjects: []
 	    }]
 	  }] };
 

@@ -223,12 +223,32 @@ class PracticeText extends React.Component {
 class PracticeTextBox extends React.Component {
   constructor(props) {
     super(props);
+    this.handleVisibility = this.handleVisibility.bind(this);
+    this.state = {showText: false};
   }
   
-  render(){
+  handleVisibility(){
+    if(this.state.showText){
+      this.setState({showText: false});
+    } else {
+      this.setState({showText: true});
+    }
+  }
+  
+  componentDidMount(){
+    //set visibility to true for german text box in the beginning
+    if(this.props.language == "german"){
+      this.setState({showText: true});
+    }
+  }
+  
+  render(){    
     return (
       <p key={"pt"+this.props.language} className={this.props.language}>
-        {this.props.text}
+        <div className="visibility-button" onClick={this.handleVisibility.bind(this)}>{this.state.showText ? ("hide " + this.props.language) : ("show "+ this.props.language)} </div>
+        <span className={"textbox " + (this.state.showText ? "visible" : "hidden")}>
+          {this.props.text}
+        </span>
       </p>
     );
   }

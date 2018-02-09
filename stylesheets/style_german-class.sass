@@ -192,9 +192,15 @@ div#all
 div.practice
   p
     background-color: #fff
-    padding: 1.3em
-    margin-bottom: 0.7em
+    margin: 0.7em 0
     
+    .visibility-button
+      padding: 1.3em 1.3em 0.6em 1.3em
+    .textbox
+      padding: 0.6em 1.3em 1.3em 1.3em
+      &.visible
+        display: block
+        
     .name
       padding-right: 0.7em
       color: $theme-base
@@ -233,3 +239,6 @@ div.tasks
     
 .highlited
   color: $theme-highlite
+
+.hidden
+  display: none

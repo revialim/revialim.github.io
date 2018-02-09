@@ -155,8 +155,13 @@ div#all {
 
 div.practice p {
   background-color: #fff;
-  padding: 1.3em;
-  margin-bottom: 0.7em; }
+  margin: 0.7em 0; }
+  div.practice p .visibility-button {
+    padding: 1.3em 1.3em 0.6em 1.3em; }
+  div.practice p .textbox {
+    padding: 0.6em 1.3em 1.3em 1.3em; }
+    div.practice p .textbox.visible {
+      display: block; }
   div.practice p .name {
     padding-right: 0.7em;
     color: #0268b6; }
@@ -188,5 +193,8 @@ div.tasks .subtask {
 
 .highlited {
   color: #0987e7; }
+
+.hidden {
+  display: none; }
 
 /*# sourceMappingURL=style_german-class.css.map */
