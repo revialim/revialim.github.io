@@ -466,7 +466,7 @@
 	        'p',
 	        { key: "pt" + this.props.language, className: this.props.language },
 	        _react2.default.createElement(
-	          'div',
+	          'span',
 	          { className: 'visibility-button', onClick: this.handleVisibility.bind(this) },
 	          this.state.showText ? "hide " + this.props.language : "show " + this.props.language,
 	          ' '
@@ -8480,7 +8480,7 @@
 	        "Hanna:"
 	      ), "我也高興認識你！"]
 	    },
-	    vocabulary: [{ german: "Hanna", english: "female Name", chinese: "女性名" }, { german: "Marie", english: "female Name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
+	    vocabulary: [{ german: "Hanna", english: "female given name", chinese: "女性名" }, { german: "Marie", english: "female given name", chinese: "女性名" }, { german: "hallo", english: "hello", chinese: "你好" }, { german: "ich", english: "I", chinese: "我" }, { german: "du", english: "you (singular)", chinese: "你" }, { german: "sein", english: "to be", chinese: "是" }, { german: "heißen", english: "to be called", chinese: "叫，姓，謂" }, { german: "sich freuen", english: "to be happy", chinese: "高興，開心" }, { german: "(jemanden) kennenlernen", english: "to get to know (someone)", chinese: "認識 （一個人）" }, { german: "wie", english: "how", chinese: "怎麼，怎樣" }, { german: "auch", english: "also, too, as well", chinese: "也" }],
 	    grammar: [_react2.default.createElement(
 	      "div",
 	      { className: "section" },
@@ -9116,68 +9116,68 @@
 	      german: [_react2.default.createElement(
 	        "span",
 	        { key: "name1", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "Hey, kann ich mir einen Stift ausleihen?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
 	        "span",
 	        { key: "name2", className: "name" },
-	        "Ralf:"
+	        "Alex:"
 	      ), "Ja. Möchtest du den Bleistift oder den Kugelschreiber?", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
 	        "span",
 	        { key: "name3", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "Den Kugelschreiber, bitte!", _react2.default.createElement("br", { key: "br5" }), _react2.default.createElement("br", { key: "br6" }), _react2.default.createElement(
 	        "span",
 	        { key: "name4", className: "name" },
-	        "Ralf:"
+	        "Alex:"
 	      ), "Hier.", _react2.default.createElement("br", { key: "br7" }), _react2.default.createElement("br", { key: "br8" }), _react2.default.createElement(
 	        "span",
 	        { key: "name5", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "Dankeschön!"],
 	      english: [_react2.default.createElement(
 	        "span",
 	        { key: "name1", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "Hey, can I borrow a pen?", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
 	        "span",
 	        { key: "name2", className: "name" },
-	        "Ralf:"
+	        "Alex:"
 	      ), "Yes. Do you want the pencil or the ball pen?", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
 	        "span",
 	        { key: "name3", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "The ball pen, please!", _react2.default.createElement("br", { key: "br5" }), _react2.default.createElement("br", { key: "br6" }), _react2.default.createElement(
 	        "span",
 	        { key: "name4", className: "name" },
-	        "Ralf:"
+	        "Alex:"
 	      ), "Here you go.", _react2.default.createElement("br", { key: "br7" }), _react2.default.createElement("br", { key: "br8" }), _react2.default.createElement(
 	        "span",
 	        { key: "name5", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "Thank you!"],
 	      chinese: [_react2.default.createElement(
 	        "span",
 	        { key: "name1", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "我可以借一支筆嗎？", _react2.default.createElement("br", { key: "br1" }), _react2.default.createElement("br", { key: "br2" }), _react2.default.createElement(
 	        "span",
 	        { key: "name2", className: "name" },
-	        "Ralf:"
+	        "Alex:"
 	      ), "可以. 你要鉛筆還是原子筆?", _react2.default.createElement("br", { key: "br3" }), _react2.default.createElement("br", { key: "br4" }), _react2.default.createElement(
 	        "span",
 	        { key: "name3", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "原子筆。", _react2.default.createElement("br", { key: "br5" }), _react2.default.createElement("br", { key: "br6" }), _react2.default.createElement(
 	        "span",
 	        { key: "name4", className: "name" },
-	        "Ralf:"
+	        "Alex:"
 	      ), "這裡。", _react2.default.createElement("br", { key: "br7" }), _react2.default.createElement("br", { key: "br8" }), _react2.default.createElement(
 	        "span",
 	        { key: "name5", className: "name" },
-	        "Bert:"
+	        "Marcel:"
 	      ), "謝謝！"]
 	    },
-	    vocabulary: [{ german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞" }, { german: "Vokabel3 deutsch", english: "voc english", chinese: "中文詞" }],
+	    vocabulary: [{ german: "Marcel", english: "male given name", chinese: "男性名" }, { german: "Alex", english: "male given name", chinese: "男性名" }, { german: "können", english: "can, be able to", chinese: "會，可以，能" }, { german: "möchten (Konj.II), mögen (Infinitiv)", english: "used here as: to want, would like", chinese: "想要" }, { german: "ausleihen", english: "to borrow", chinese: "借" }, { german: "Stift", english: "pen", chinese: "筆" }, { german: "Bleistift", english: "pencil", chinese: "鉛筆" }, { german: "Kugelschreiber", english: "ball pen", chinese: "原子筆" }, { german: "bitte", english: "please", chinese: "請" }, { german: "hier", english: "here", chinese: "這裡" }, { german: "dankeschön", english: "thank you", chinese: "謝謝" }],
 	    grammar: "grammar3 123",
 	    tasks: [{
 	      taskText: "task1 text asdf",

@@ -245,7 +245,7 @@ class PracticeTextBox extends React.Component {
   render(){    
     return (
       <p key={"pt"+this.props.language} className={this.props.language}>
-        <div className="visibility-button" onClick={this.handleVisibility.bind(this)}>{this.state.showText ? ("hide " + this.props.language) : ("show "+ this.props.language)} </div>
+        <span className="visibility-button" onClick={this.handleVisibility.bind(this)}>{this.state.showText ? ("hide " + this.props.language) : ("show "+ this.props.language)} </span>
         <span className={"textbox " + (this.state.showText ? "visible" : "hidden")}>
           {this.props.text}
         </span>
