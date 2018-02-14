@@ -255,7 +255,8 @@ module.exports = { allLessonsList: [
       {german: "Kugelschreiber", english: "ball pen", chinese: "原子筆"},
       {german: "bitte", english: "please", chinese: "請"},
       {german: "hier", english: "here", chinese: "這裡"},
-      {german: "dankeschön", english: "thank you", chinese: "謝謝"}
+      {german: "dankeschön", english: "thank you", chinese: "謝謝"},
+      {german: "oder", english: "or", chinese: "或是，或"}
     ],
     grammar: "grammar3 123",
     tasks: [
