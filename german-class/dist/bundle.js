@@ -438,13 +438,18 @@
 	    var _this10 = _possibleConstructorReturn(this, (PracticeTextBox.__proto__ || Object.getPrototypeOf(PracticeTextBox)).call(this, props));
 	
 	    _this10.handleVisibility = _this10.handleVisibility.bind(_this10);
-	    _this10.state = { showText: false };
+	    _this10.getShowTextIcon = _this10.getShowTextIcon.bind(_this10);
+	    _this10.state = { showText: false, key: 0 };
 	    return _this10;
 	  }
 	
 	  _createClass(PracticeTextBox, [{
 	    key: 'handleVisibility',
 	    value: function handleVisibility() {
+	      console.log("showText is now: " + this.state.showText);
+	
+	      this.setState({ key: Math.random() });
+	
 	      if (this.state.showText) {
 	        this.setState({ showText: false });
 	      } else {
@@ -460,16 +465,34 @@
 	      }
 	    }
 	  }, {
+	    key: 'getShowTextIcon',
+	    value: function getShowTextIcon() {
+	
+	      if (this.state.showText) {
+	        return _react2.default.createElement(
+	          'span',
+	          { key: this.state.key },
+	          _react2.default.createElement('i', { className: 'fas fa-caret-square-up' })
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'span',
+	          { key: this.state.key },
+	          _react2.default.createElement('i', { className: 'fas fa-caret-square-down' })
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	
 	      return _react2.default.createElement(
 	        'p',
 	        { key: "pt" + this.props.language, className: this.props.language },
 	        _react2.default.createElement(
 	          'span',
 	          { className: 'visibility-button', onClick: this.handleVisibility.bind(this) },
-	          this.state.showText ? "hide " + this.props.language : "show " + this.props.language,
-	          ' '
+	          this.getShowTextIcon()
 	        ),
 	        _react2.default.createElement(
 	          'span',
@@ -9177,7 +9200,7 @@
 	        "Marcel:"
 	      ), "謝謝！"]
 	    },
-	    vocabulary: [{ german: "Marcel", english: "male given name", chinese: "男性名" }, { german: "Alex", english: "male given name", chinese: "男性名" }, { german: "können", english: "can, be able to", chinese: "會，可以，能" }, { german: "möchten (Konj.II), mögen (Infinitiv)", english: "used here as: to want, would like", chinese: "想要" }, { german: "ausleihen", english: "to borrow", chinese: "借" }, { german: "Stift", english: "pen", chinese: "筆" }, { german: "Bleistift", english: "pencil", chinese: "鉛筆" }, { german: "Kugelschreiber", english: "ball pen", chinese: "原子筆" }, { german: "bitte", english: "please", chinese: "請" }, { german: "hier", english: "here", chinese: "這裡" }, { german: "dankeschön", english: "thank you", chinese: "謝謝" }],
+	    vocabulary: [{ german: "Marcel", english: "male given name", chinese: "男性名" }, { german: "Alex", english: "male given name", chinese: "男性名" }, { german: "können", english: "can, be able to", chinese: "會，可以，能" }, { german: "möchten (Konj.II), mögen (Infinitiv)", english: "used here as: to want, would like", chinese: "想要" }, { german: "ausleihen", english: "to borrow", chinese: "借" }, { german: "Stift", english: "pen", chinese: "筆" }, { german: "Bleistift", english: "pencil", chinese: "鉛筆" }, { german: "Kugelschreiber", english: "ball pen", chinese: "原子筆" }, { german: "bitte", english: "please", chinese: "請" }, { german: "hier", english: "here", chinese: "這裡" }, { german: "dankeschön", english: "thank you", chinese: "謝謝" }, { german: "oder", english: "or", chinese: "或是，或" }],
 	    grammar: "grammar3 123",
 	    tasks: [{
 	      taskText: "task1 text asdf",

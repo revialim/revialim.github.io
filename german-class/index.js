@@ -224,10 +224,15 @@ class PracticeTextBox extends React.Component {
   constructor(props) {
     super(props);
     this.handleVisibility = this.handleVisibility.bind(this);
-    this.state = {showText: false};
+    this.getShowTextIcon = this.getShowTextIcon.bind(this);
+    this.state = {showText: false, key: 0};
   }
   
   handleVisibility(){
+    console.log("showText is now: "+this.state.showText );
+    
+    this.setState({ key: Math.random() });
+    
     if(this.state.showText){
       this.setState({showText: false});
     } else {
@@ -242,10 +247,21 @@ class PracticeTextBox extends React.Component {
     }
   }
   
-  render(){    
+  getShowTextIcon(){
+    
+    if(this.state.showText){
+      return <span key={this.state.key}><i className="fas fa-caret-square-up"></i></span>;
+    } else {
+      return <span key={this.state.key}><i className="fas fa-caret-square-down"></i></span>;
+    }
+  }
+  render(){
+    
     return (
       <p key={"pt"+this.props.language} className={this.props.language}>
-        <span className="visibility-button" onClick={this.handleVisibility.bind(this)}>{this.state.showText ? ("hide " + this.props.language) : ("show "+ this.props.language)} </span>
+        <span className="visibility-button" onClick={this.handleVisibility.bind(this)}>
+          {this.getShowTextIcon()}
+        </span>
         <span className={"textbox " + (this.state.showText ? "visible" : "hidden")}>
           {this.props.text}
         </span>
