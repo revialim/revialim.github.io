@@ -1,6 +1,8 @@
 <html>
   <head>  
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-database.js"></script>
+
     <script>
       // Initialize Firebase
       var config = {
@@ -30,10 +32,9 @@
           <span> Der Fläche rechts sei <span id="size-relation">3</span>-mal größer als die linke.</span>
           <input id="slider1" onInput="changeSize(1);" type="range" min="1" max="300" value="30" class="slider" />
           <div id="relation-value-x-1"></div>
+          <div style="height: 2em;"><button style="float: right;" onClick="calcCorr(1,3);">check</button></div>
         </div>
       </div>
-      
-      <div style="height: 2em;"><button style="float: right;" onClick="calcCorr(1,3);">check</button></div>
     </div>
     
     <div class="container">
@@ -49,10 +50,27 @@
           <span> Der Fläche rechts sei <span id="size-relation">5</span>-mal größer als die linke.</span>
           <input id="slider2" onInput="changeSize(2);" type="range" min="1" max="300" value="30" class="slider" />
           <div id="relation-value-x-2"></div>
+          <div style="height: 2em;"><button style="float: right;" onClick="calcCorr(2,5);">check</button></div>
         </div>
       </div>
-      
-      <div style="height: 2em;"><button style="float: right;" onClick="calcCorr(2,5);">check</button></div>
+    </div>
+    
+    <div class="container">
+      <div>
+        <div style="width: 49%; display: inline-block;">
+          <svg width="500" height="300">
+            <rect id="rect-1a" x="80" y="150" width="20" height="20" stroke="black" stroke-width="2"  fill="" />
+            <rect id="rect-1b" x="250" y="150" width="20" height="20" stroke="black" stroke-width="2"  fill="" />
+            <rect id="rect-1result" x="250" y="150" width="0" height="0" stroke="#E78400" stroke-width="2" fill="white" fill-opacity="0.4"/>
+          </svg>
+        </div>
+        <div style="width: 49%; display: inline-block; vertical-align: top; background-color: rgba(200,200,200, 0.5);">
+          <span> Der Fläche rechts sei <span id="size-relation">3</span>-mal größer als die linke.</span>
+          <input id="slider-rect1" onInput="changeSizeRect(1);" type="range" min="1" max="300" value="30" class="slider" />
+          <div id="relation-value-x-rect-1"></div>
+          <div style="height: 2em;"><button style="float: right;" onClick="calcCorrRect(1,3);">check</button></div>
+        </div>
+      </div>      
     </div>
     
     <div class="container">
@@ -68,51 +86,85 @@
           <span> Der Fläche rechts sei <span id="size-relation">2</span>-mal größer als die linke.</span>
           <input id="slider3" onInput="changeSize(3);" type="range" min="1" max="300" value="30" class="slider" />
           <div id="relation-value-x-3"></div>
+          <div style="height: 2em;"><button style="float: right;" onClick="calcCorr(3,2);">check</button></div>
         </div>
       </div>
-      
-      <div style="height: 2em;"><button style="float: right;" onClick="calcCorr(3,2);">check</button></div>
     </div>
     
+    <div class="container">
+      <div>
+        <div style="width: 49%; display: inline-block;">
+          <svg width="500" height="300">
+            <rect id="rect-2a" x="80" y="150" width="25" height="25" stroke="black" stroke-width="2"  fill="" />
+            <rect id="rect-2b" x="250" y="150" width="25" height="25" stroke="black" stroke-width="2"  fill="" />
+            <rect id="rect-2result" x="250" y="150" width="0" height="0" stroke="#E78400" stroke-width="2" fill="white" fill-opacity="0.4"/>
+          </svg>
+        </div>
+        <div style="width: 49%; display: inline-block; vertical-align: top; background-color: rgba(200,200,200, 0.5);">
+          <span> Der Fläche rechts sei <span id="size-relation">4</span>-mal größer als die linke.</span>
+          <input id="slider-rect2" onInput="changeSizeRect(2);" type="range" min="1" max="300" value="30" class="slider" />
+          <div id="relation-value-x-rect-2"></div>
+          <div style="height: 2em;"><button style="float: right;" onClick="calcCorrRect(2,4);">check</button></div>
+        </div>
+      </div>      
+    </div>
+    
+    <a href="./aufg1-b.html">All results</a>
     <script> 
-    function changeSize(id){
-      var sliderSize = document.getElementById("slider"+id).value;
-      document.getElementById("circle-"+id+"b").setAttribute("r", sliderSize);
-    }
+      function changeSize(id){
+        var sliderSize = document.getElementById("slider"+id).value;
+        document.getElementById("circle-"+id+"b").setAttribute("r", sliderSize);
+      }
+        
+      function changeSizeRect(id){
+        var sliderSize = document.getElementById("slider-rect"+id).value;
+        document.getElementById("rect-"+id+"b").setAttribute("width", sliderSize);
+        document.getElementById("rect-"+id+"b").setAttribute("height", sliderSize);
+      }
+        
+      function calcCircleArea(radius){
+        return Math.PI*radius*radius;
+      }
       
-    function calcCircleArea(radius){
-      return Math.PI*radius*radius;
-    }
-    
-    function getActualRadius(relationVal, enteredRadius){
-      return Math.sqrt(relationVal * enteredRadius * enteredRadius);
-    }
+      function calcRectArea(width, height){
+        return width*height;
+      }
       
-    function calcRelationFactor(enteredRadius, actualRadius){
-      var area1 = calcCircleArea(enteredRadius);
-      var area2 = calcCircleArea(actualRadius);
-      return (Math.log(area1)/Math.log(area2));
-    }
+      function getActualSize(relationVal, originalSize){
+        return Math.sqrt(relationVal * originalSize * originalSize);
+      }
+        
+      function calcRelationFactor(enteredRadius, actualRadius){
+        var area1 = calcCircleArea(enteredRadius);
+        var area2 = calcCircleArea(actualRadius);
+        return (Math.log(area1)/Math.log(area2));
+      }
+        
+      function calcCorr(id, relation){   
+        var fstRadius = (document.getElementById("circle-"+id+"a").getAttribute("r")) * 1;
+        var sndRadius = (document.getElementById("circle-"+id+"b").getAttribute("r")) * 1; 
+        var actualRadius = getActualSize(relation, fstRadius);
+        
+        document.getElementById("relation-value-x-"+id).innerHTML = "<div>x: " + calcRelationFactor(sndRadius, actualRadius) +
+          "</div><div> Gesuchte Größe wird orange umranded angezeigt. </div>";
+        
+        //var resultCircle = 
+        document.getElementById("circle-"+id+"result").setAttribute("r", actualRadius);
+      }
       
-    function calcReverseRelationFactor(enteredRadius, actualRadius){
-      var area1 = calcCircleArea(enteredRadius);
-      var area2 = calcCircleArea(actualRadius);
-      return (Math.log(area2)/Math.log(area1));
-    }
-    
-    function calcCorr(id, relation){
+      function calcCorrRect(id, relation){   
+        var fstSideLength = (document.getElementById("rect-"+id+"a").getAttribute("width")) * 1;
+        var sndSideLength = (document.getElementById("rect-"+id+"b").getAttribute("width")) * 1; 
+        var actualSize = getActualSize(relation, fstSideLength);
+        
+        document.getElementById("relation-value-x-rect-"+id).innerHTML = "<div>x: " + calcRelationFactor(sndSideLength, actualSize) +
+          "</div><div> Gesuchte Größe wird orange umranded angezeigt. </div>";
+        
+        document.getElementById("rect-"+id+"result").setAttribute("width", actualSize);
+        document.getElementById("rect-"+id+"result").setAttribute("height", actualSize);
+      }
       
-      var fstRadius = (document.getElementById("circle-"+id+"a").getAttribute("r")) * 1;
-      var sndRadius = (document.getElementById("circle-"+id+"b").getAttribute("r")) * 1;
-      //var relation = 3; 
-      var actualRadius = getActualRadius(relation, fstRadius);
       
-      document.getElementById("relation-value-x-"+id).innerHTML = "<div>x: " + calcRelationFactor(sndRadius, actualRadius) +
-        "</div><div>x reverse: "+ calcReverseRelationFactor(sndRadius, actualRadius) +
-        "</div><div> Gesuchte Größe wird orange umranded angezeigt. </div>";
-      
-      var resultCircle = document.getElementById("circle-"+id+"result").setAttribute("r", actualRadius);
-    }
     </script>
 
   </body>
