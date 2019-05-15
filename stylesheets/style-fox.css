@@ -1,7 +1,4 @@
-body {
-  /* scroll-behavior: smooth; */
-  /* display: flex; */
-}
+
 .scrolling {
   scroll-behavior: smooth;
 
@@ -10,10 +7,12 @@ body {
 }
 
 .story-img {
-  width: 50%;
+  max-height: inherit;
+  max-width: 50%;
+
 }
 .story-img img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .page_section {

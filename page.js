@@ -23,7 +23,7 @@ var activeSlideIndex = 0;
 function switchSlide(goToSlide){
   activeSlideIndex = getActiveSlideIndex(goToSlide);
   
-  displaySlideshowSlide(activeSlideIndex);
+  // displaySlideshowSlide(activeSlideIndex);
 }
 
 function getActiveSlideIndex(changeByValue){
