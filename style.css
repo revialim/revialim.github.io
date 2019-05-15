@@ -80,49 +80,37 @@ canvas {
   #header .carousel-inner, #carouselExampleControls .carousel-inner {
     padding-bottom: 0; }
     #header .carousel-inner .carousel-item, #carouselExampleControls .carousel-inner .carousel-item {
-      max-height: 100%;
-      top: -15vh; }
+      max-height: 100%; }
       #header .carousel-inner .carousel-item img, #carouselExampleControls .carousel-inner .carousel-item img {
-        opacity: 0.5; }
+        top: -25vh;
+        position: relative; }
       #header .carousel-inner .carousel-item .carousel-caption, #carouselExampleControls .carousel-inner .carousel-item .carousel-caption {
         width: 70%; }
 
-.slideshow .slide {
-  width: 100%;
-  height: inherit;
-  overflow: hidden;
-  padding: inherit; }
-  .slideshow .slide img {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-.slideshow .slide-next, .slideshow .slide-prev {
-  position: absolute;
-  top: 28%;
-  width: auto;
-  padding: inherit;
-  margin: 2px; }
-.slideshow .slide-next {
-  right: 0; }
-.slideshow .slide-prev {
-  left: 0; }
+#scroll_manager {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  height: 90vh;
+  padding-bottom: 0; }
+  #scroll_manager .scroll_elem {
+    height: 90vh; }
 
 .half {
   width: 49%;
   display: inline-block;
   vertical-align: top; }
 
-ul#main-menu {
+ul#main_menu {
   list-style-type: none;
   text-align: center;
-  padding: 0;
-  margin: 0.8em; }
-  ul#main-menu li {
+  padding: 0.8em;
+  margin: 0;
+  height: 10vh; }
+  ul#main_menu li {
     display: inline-block; }
-    ul#main-menu li a {
+    ul#main_menu li a {
       padding: 0.8em; }
-    ul#main-menu li a.current {
+    ul#main_menu li a.current {
       background-color: #9966aa;
       font-style: italic;
       color: #eee; }
