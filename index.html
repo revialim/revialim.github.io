@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body class="dark">
   <div id="carouselExampleControls" class="carousel slide d-block" data-ride="carousel" >
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -46,8 +46,8 @@
     </a>
   </div>
   
-  <ul id="main_menu">
-    <li><a href="#resume">CV</a></li>
+  <ul id="main_menu" class="sticky-top">
+    <li><a href="#resume">Experience</a></li>
     <li><a href="#freetime">Freetime</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -59,8 +59,30 @@
   
     </div>
     <div id="resume" class="scroll_elem">
-      <h3>Curriculum Vitae</h3>
-      <h4>Experience</h4>
+      <h3>Experience</h3>
+      <div class="exp_elem">
+        <div class="exp_title">Fraunhofer Institute for Production Systems and Design Technology (Fraunhofer IPK) | Student assistant</div>
+        <div class="exp_time">2018 October - 2019 April</div>
+        <p>Developing and implementing a web application (front and back end) for the Fraunhofer IPK's Process Assistant software using React.js, Redux, Axios, MongoDB.
+        The Process Assistant provides a web interface for business process models created with the <a href="https://en.wikipedia.org/wiki/Integrated_enterprise_modeling">IEM (integrated enterprise modelling)</a> method to enable everyday usability for all employees of a company.
+        </p>
+        <div class="exp_img"><img src="./imgs/portfolio_ipk.svg"/></div>
+      </div>
+      <div class="exp_elem">
+        <div class="exp_title">Quixel Project (Hochschule für Technik und Wirtschaft Berlin)| Student assistant</div>
+        <div class="exp_time">2017 April - 2017 September</div>
+        <p>Developing and implementing a web interface in React.js to the application’s REST-API, working with back end implemented in Java and PostgreSQL database. Project goals: Provide a software for small- to intermediate-sized companies to enhance their environmental management.
+        </p>
+      </div>
+      <div class="exp_elem">
+        <div class="exp_title">Prianda | Web Developer</div>
+        <div class="exp_time">2016 April - 2016 September</div>
+        <p>Setup and implementation of web pages with Wordpress. Individual adjustments with CSS (generated with Sass), JavaScript, PHP and HTML.
+        </p>
+        <div class="exp_img"><img src="./imgs/portfolio_prianda.svg"/></div>
+      </div>
+      
+      
 
     </div>
     <div id="freetime" class="scroll_elem">

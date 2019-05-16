@@ -23,7 +23,7 @@ $theme-highlite: #9966aa
 h1
   font-size: 3em
   text-align: center
-  color: #000  
+  color: #fff 
   width: 50%
   margin: 2% auto
 
@@ -33,10 +33,10 @@ h2, h3
   width: 50%
   margin: auto
   margin-bottom: 1em
-  color: #000
+  color: #fff
   
   a
-    color: #000
+    color: #fff
 
 p
   font-family: Molengo
@@ -46,9 +46,9 @@ p
   margin-top: 10px
   margin-bottom: 10px
 
-body
-  background-color: #f7f7f7
-  color: $darkgrey
+body.dark
+  background-color: $darkgrey
+  color: $lightgrey
   margin: 0
 
 a
@@ -56,7 +56,7 @@ a
   text-decoration: none
 
   &:hover
-    color: darkgrey
+    color: $lightgrey
 
   &:active
     color: darkseagreen
@@ -84,7 +84,7 @@ canvas
   
 #header, #carouselExampleControls
   display: block
-  background-color: $darkgrey
+  background-color: $lightgrey
   // background-image: url(./imgs/bg-img.jpg)
   background-size: 100%
   background-position-y: 40%
@@ -108,14 +108,34 @@ canvas
 #scroll_manager
   scroll-behavior: smooth
   overflow-y: scroll
-  height: 90vh
+  height: 92vh
+  margin: 0
+  width: 100%
 
   padding-bottom: 0
 
   .scroll_elem
-    height: 90vh
+    min-height: 92vh
+    // width: 90%
 
+#resume
+  .exp_elem
+    width: 100%
 
+    .exp_title, .exp_time
+      width: 100%
+      
+    p
+      width: 49%
+      display: inline-block
+      vertical-align: top
+
+    .exp_img
+      background: #fff
+      border-radius: 0.5em
+      padding: 1em
+      width: 49%
+      display: inline-block
 
 // .slideshow
 //   .slide
@@ -153,7 +173,8 @@ ul#main_menu
   text-align: center
   padding: 0.8em
   margin: 0
-  height: 10vh
+  height: 8vh
+  background-color: rgb(80,80,80)
 
   li
     display: inline-block
@@ -162,7 +183,7 @@ ul#main_menu
     a.current
       background-color: $theme-highlite
       font-style: italic
-      color: $lightgrey
+      color: $darkgrey
 
 .citation p
   font-size: 2.5em

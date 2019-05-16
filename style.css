@@ -13,7 +13,7 @@
 h1 {
   font-size: 3em;
   text-align: center;
-  color: #000;
+  color: #fff;
   width: 50%;
   margin: 2% auto; }
 
@@ -23,9 +23,9 @@ h2, h3 {
   width: 50%;
   margin: auto;
   margin-bottom: 1em;
-  color: #000; }
+  color: #fff; }
   h2 a, h3 a {
-    color: #000; }
+    color: #fff; }
 
 p {
   font-family: Molengo;
@@ -35,16 +35,16 @@ p {
   margin-top: 10px;
   margin-bottom: 10px; }
 
-body {
-  background-color: #f7f7f7;
-  color: #333;
+body.dark {
+  background-color: #333;
+  color: #eee;
   margin: 0; }
 
 a {
   color: #65625c;
   text-decoration: none; }
   a:hover {
-    color: darkgrey; }
+    color: #eee; }
   a:active {
     color: darkseagreen; }
 
@@ -71,7 +71,7 @@ canvas {
 
 #header, #carouselExampleControls {
   display: block;
-  background-color: #333;
+  background-color: #eee;
   background-size: 100%;
   background-position-y: 40%;
   width: 100%;
@@ -90,10 +90,27 @@ canvas {
 #scroll_manager {
   scroll-behavior: smooth;
   overflow-y: scroll;
-  height: 90vh;
+  height: 92vh;
+  margin: 0;
+  width: 100%;
   padding-bottom: 0; }
   #scroll_manager .scroll_elem {
-    height: 90vh; }
+    min-height: 92vh; }
+
+#resume .exp_elem {
+  width: 100%; }
+  #resume .exp_elem .exp_title, #resume .exp_elem .exp_time {
+    width: 100%; }
+  #resume .exp_elem p {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top; }
+  #resume .exp_elem .exp_img {
+    background: #fff;
+    border-radius: 0.5em;
+    padding: 1em;
+    width: 49%;
+    display: inline-block; }
 
 .half {
   width: 49%;
@@ -105,7 +122,8 @@ ul#main_menu {
   text-align: center;
   padding: 0.8em;
   margin: 0;
-  height: 10vh; }
+  height: 8vh;
+  background-color: #505050; }
   ul#main_menu li {
     display: inline-block; }
     ul#main_menu li a {
@@ -113,7 +131,7 @@ ul#main_menu {
     ul#main_menu li a.current {
       background-color: #9966aa;
       font-style: italic;
-      color: #eee; }
+      color: #333; }
 
 .citation p {
   font-size: 2.5em;
