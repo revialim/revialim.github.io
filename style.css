@@ -112,6 +112,14 @@ canvas {
     width: 49%;
     display: inline-block; }
 
+#projects .card {
+  max-width: 32%;
+  display: inline-block;
+  background-color: #000; }
+  #projects .card .card-img-top {
+    max-height: 40vh;
+    object-fit: cover; }
+
 .half {
   width: 49%;
   display: inline-block;
